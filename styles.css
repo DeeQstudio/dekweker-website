@@ -14,7 +14,7 @@
   --shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
   --line-accent: rgba(255, 154, 60, 0.5);
   --radius-pill: 12px;
-  --spotify-height: 260px;
+  --spotify-height: 352px;
 }
 
 html {
@@ -1007,14 +1007,14 @@ p {
   background: #101010;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
-  height: var(--spotify-height);
+  height: auto;
 }
 
 .spotify-embed iframe {
   display: block;
   width: 100%;
-  height: 100%;
   border: 0;
+  height: var(--spotify-height);
 }
 
 .music-card--spotify,
@@ -2042,7 +2042,7 @@ select {
   }
 
   :root {
-    --spotify-height: 240px;
+    --spotify-height: 300px;
   }
 }
 
@@ -2173,7 +2173,7 @@ body {
   }
 
   :root {
-    --spotify-height: 220px;
+    --spotify-height: 260px;
   }
 }
 
@@ -2262,7 +2262,7 @@ body {
   }
 
   :root {
-    --spotify-height: 200px;
+    --spotify-height: 220px;
   }
 
   .cart-drawer {
