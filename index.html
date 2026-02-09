@@ -1,502 +1,491 @@
-<!doctype html>
-<html lang="nl-BE">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
-  <title>De Kweker — Brugge (8000)</title>
-  <meta name="description" content="De Kweker is een rapper uit Brugge (8000). West-Vlaams. Muziek die dicht op het leven zit — zonder uitleg ernaast." />
-  <meta name="robots" content="index,follow" />
-
-  <!-- ✅ FIX: canonical naar WWW -->
-  <link rel="canonical" href="https://www.kwkr.be/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="De Kweker" />
-  <meta property="og:title" content="De Kweker — Brugge (8000)" />
-  <meta property="og:description" content="De Kweker is een rapper uit Brugge (8000). West-Vlaams. Muziek die dicht op het leven zit — zonder uitleg ernaast." />
-  <!-- ✅ FIX: OG image naar WWW -->
-  <meta property="og:image" content="https://www.kwkr.be/assets/og-cover.jpg" />
-  <!-- ✅ FIX: OG url naar WWW -->
-  <meta property="og:url" content="https://www.kwkr.be/" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <!-- ✅ FIX: Twitter image naar WWW -->
-  <meta name="twitter:image" content="https://www.kwkr.be/assets/og-cover.jpg" />
-
-  <!-- Favicons -->
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-
-  <!-- CSS (anker: exact zoals je site) -->
-  <link rel="stylesheet" href="/css/base.css" />
-  <link rel="stylesheet" href="/css/ui.css" />
-  <link rel="stylesheet" href="/css/layout.css" />
-  <link rel="stylesheet" href="/css/components.css" />
-  <link rel="stylesheet" href="/css/pages.css" />
-  <link rel="stylesheet" href="/css/mobile.css" />
-
-  <!-- Landing-only helpers: veilig & scoped -->
-  <style>
-    /* ===== Oranje accent (subtiel, niet schreeuwerig) ===== */
-    :root{
-      --kwkr-accent: rgba(255, 154, 60, .92);     /* warm orange */
-      --kwkr-accent-soft: rgba(255, 154, 60, .16);
-      --kwkr-accent-line: rgba(255, 154, 60, .28);
-      --kwkr-accent-glow: rgba(255, 154, 60, .10);
-    }
-    .accentWarm{ color: var(--kwkr-accent); }
-    .accentLine{
-      height: 1px;
-      width: 100%;
-      background: linear-gradient(90deg, transparent, var(--kwkr-accent-line), transparent);
-      opacity: .9;
-      margin: 12px 0;
-    }
-
-    /* container zoals je site gebruikt */
-    .landingWrap{
-      width: var(--container);
-      margin: 0 auto;
-      padding: 18px 0 44px;
-    }
-
-    /* simpele nav links in header (past in jouw topbar-stijl) */
-    #site-header .navLinks{ display:flex; gap:12px; justify-content:center; }
-    #site-header .navLinks a{
-      color: rgba(255,255,255,.78);
-      text-decoration:none;
-      padding: 8px 12px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-    #site-header .navLinks a:hover{ color: rgba(255,255,255,.92); background: rgba(255,255,255,.06); }
-
-    /* Bio collapse zoals op je main site */
-    .bioRight.isCollapsed .bioBody{
-      max-height: 120px;           /* “klein kader” feel */
-      overflow: hidden;
-      -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
-              mask-image: linear-gradient(to bottom, #000 70%, transparent);
-    }
-    .bioRight .bioBody{
-      max-height: none;
-      overflow: visible;
-      -webkit-mask-image: none;
-              mask-image: none;
-    }
-
-    /* Zorg dat de toggleknop niet ‘raar’ doet */
-    #bioToggle{ white-space: nowrap; }
-
-    /* Uitgelicht + embed blok consistent */
-    .landingFeature{
-      display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: 14px;
-      align-items: start;
-      margin-top: 14px;
-    }
-    @media (max-width: 900px){
-      .landingFeature{ grid-template-columns: 1fr; }
-      #site-header .navLinks{ display:none; }
-    }
-
-    .landingYtWrap{
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.25);
-      aspect-ratio: 16 / 9;
-      box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset, 0 12px 40px rgba(0,0,0,.35);
-    }
-    .landingYtWrap iframe{ width:100%; height:100%; border:0; display:block; }
-
-    /* credits: beetje warmte, minder saai */
-    .landingCredits{
-      margin-top: 12px;
-      padding: 12px 12px 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(0,0,0,.18);
-      box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset, 0 0 0 1px var(--kwkr-accent-glow);
-      position: relative;
-      color: rgba(255,255,255,.78);
-      line-height: 1.6;
-      font-size: 13px;
-    }
-    .landingCredits:before{
-      content:"";
-      position:absolute;
-      left: 0;
-      top: 10px;
-      bottom: 10px;
-      width: 2px;
-      border-radius: 2px;
-      background: var(--kwkr-accent-line);
-      opacity: .9;
-    }
-    .landingCredits strong{ color: rgba(255,255,255,.92); }
-
-    .landingGrid2{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 14px;
-      margin-top: 12px;
-    }
-    @media (max-width: 900px){
-      .landingGrid2{ grid-template-columns: 1fr; }
-    }
-
-    /* mini link-cards in dezelfde stijl als shopCategoryCard */
-    .landingLinkCard{
-      display:flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 16px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(10,10,10,.55);
-      backdrop-filter: blur(10px);
-      text-decoration:none;
-      color: rgba(255,255,255,.92);
-      transition: transform .12s ease, border-color .12s ease, background .12s ease, box-shadow .12s ease;
-      box-shadow: 0 0 0 1px rgba(255,255,255,.02) inset;
-      position: relative;
-      overflow: hidden;
-    }
-    .landingLinkCard:after{
-      content:"";
-      position:absolute;
-      inset: 0;
-      background: radial-gradient(800px 220px at 18% 0%, var(--kwkr-accent-soft), transparent 60%);
-      opacity: .65;
-      pointer-events:none;
-    }
-    .landingLinkCard:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.16);
-      background: rgba(10,10,10,.62);
-      box-shadow: 0 0 0 1px rgba(255,255,255,.04) inset, 0 14px 40px rgba(0,0,0,.35);
-    }
-    .landingLinkTitle{ font-weight: 950; letter-spacing: -.2px; }
-    .landingLinkSub{ margin-top: 6px; color: rgba(255,255,255,.70); font-size: 13px; line-height: 1.45; }
-    .landingLinkHint{ align-self:center; color: rgba(255,255,255,.72); font-size: 12px; }
-
-    .landingFooterRow{
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      color: rgba(255,255,255,.65);
-      font-size: 12px;
-    }
-    .landingFooterRow a{ color: rgba(255,255,255,.85); text-decoration:none; }
-    .landingFooterRow a:hover{ text-decoration: underline; }
-  </style>
-
-  <!-- JSON-LD: Person + sameAs + Pokoe (in dezelfde “kweker” taal) -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MusicGroup",
-  "name": "De Kweker",
-  "alternateName": ["KWKR", "De Kweker (rapper)"],
-  "description": "De Kweker is een rapper uit Brugge (8000). West-Vlaams. Muziek die dicht op het leven zit — zonder uitleg ernaast. Verbonden aan Kwartier West. Releases via Rugged & Raw.",
-  "url": "https://www.kwkr.be/",
-  "genre": ["Hip hop", "Vlaamse hiphop"],
-  "foundingLocation": { "@type": "Place", "name": "Brugge, België" },
-  "sameAs": [
-    "https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG",
-    "https://www.youtube.com/@De.Kweker",
-    "https://soundcloud.com/dekweker",
-    "https://www.instagram.com/dekweker_"
-  ],
-  "subjectOf": [{
-    "@type": "CreativeWork",
-    "name": "Pokoe Magazine – De Kweker (v(err)oader)",
-    "url": "https://pokoemagazine.nl/de-kweker-verroader/",
-    "publisher": { "@type": "Organization", "name": "Pokoe Magazine" }
-  }]
-}
-</script>
-
-</head>
-
-<header id="site-header">
-  <div class="topbar">
-    <div class="brand">
-      <a class="brandLink" href="/" aria-label="De Kweker">
-        <img
-          src="/assets/de-kweker-belfort.svg"
-          alt="De Kweker — Brugge (8000)"
-          class="brandLogo"
-          decoding="async"
-        />
-      </a>
-    </div>
-
-    <nav class="navLinks" aria-label="Navigatie">
-      <a class="navLink" href="#uitgelicht">Uitgelicht</a>
-      <a class="navLink" href="#bio">Bio</a>
-      <a class="navLink" href="#contact">Contact</a>
-    </nav>
-
-    <div class="actions">
-      <a class="btn btnSecondary" href="#contact">Contact</a>
-    </div>
-  </div>
-</header>
-  <main id="app" role="main">
-    <div class="landingWrap" id="top">
-
-      <!-- HERO -->
-      <section class="panel panelWide">
-        <div class="kickerWarm"><span class="dotWarm"></span> De Kweker • Brugge (8000)</div>
-
-        <h1 class="heroTitle" style="margin-top:10px;">Muziek.<br/>Zonder filter.</h1>
-
-        <p class="lead" style="max-width:58ch;">
-          West-Vlaamse rap.<br/>
-          <span class="accentWarm">Geen uitleg ernaast.</span>
-        </p>
-
-        <div class="ctaRow" style="margin-top:14px;">
-          <a class="btn btnPrimary" href="https://www.youtube.com/watch?v=8Q0LB68kxRw" target="_blank" rel="noopener noreferrer">Bekijk clip</a>
-          <a class="btn btnSecondary" href="https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG" target="_blank" rel="noopener noreferrer">Spotify</a>
-          <a class="btn btnQuiet" href="#contact">Contact</a>
+﻿<!doctype html>
+<html lang='nl'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <title>De Kweker - West-Vlaamse hiphop uit Brugge (8000)</title>
+    <meta
+      name='description'
+      content='De Kweker is een hiphopartiest uit Brugge (8000). West-Vlaamse rap over druk, afkomst en het leven in de stad.'
+    />
+    <link rel='canonical' href='https://www.kwkr.be/' />
+    <meta property='og:title' content='De Kweker - West-Vlaamse hiphop uit Brugge (8000)' />
+    <meta
+      property='og:description'
+      content='De Kweker is een hiphopartiest uit Brugge (8000). West-Vlaamse rap over druk, afkomst en het leven in de stad.'
+    />
+    <meta property='og:type' content='music.musician' />
+    <meta property='og:locale' content='nl_BE' />
+    <meta property='og:url' content='https://www.kwkr.be/' />
+    <meta property='og:image' content='https://www.kwkr.be/assets/og-cover.jpg' />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content='De Kweker - West-Vlaamse hiphop uit Brugge (8000)' />
+    <meta
+      name='twitter:description'
+      content='De Kweker is een hiphopartiest uit Brugge (8000). West-Vlaamse rap over druk, afkomst en het leven in de stad.'
+    />
+    <meta name='twitter:image' content='https://www.kwkr.be/assets/og-cover.jpg' />
+    <link rel='icon' href='favicon.ico' sizes='any' />
+    <link rel='icon' type='image/png' sizes='32x32' href='favicon-32x32.png' />
+    <link rel='icon' type='image/png' sizes='16x16' href='favicon-16x16.png' />
+    <link rel='apple-touch-icon' sizes='180x180' href='apple-touch-icon.png' />
+    <link rel='manifest' href='site.webmanifest' />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
+      rel='stylesheet'
+    />
+    <link rel='stylesheet' href='styles.css' />
+    <script type='application/ld+json'>
+      {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "De Kweker",
+        "genre": ["Hiphop", "Rap"],
+        "description": "De Kweker is een hiphopartiest uit Brugge (8000). West-Vlaamse rap over druk, afkomst en het leven in de stad.",
+        "url": "https://www.kwkr.be/",
+        "image": "https://www.kwkr.be/assets/og-cover.jpg",
+        "sameAs": [
+          "https://www.instagram.com/dekweker_/",
+          "https://www.facebook.com/p/De-Kweker-61570442235326/",
+          "https://www.tiktok.com/@de.kweker?is_from_webapp=1&sender_device=pc",
+          "https://www.youtube.com/@De.kweker",
+          "https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG?si=qxSTBIvlTvmpoofpAtg1ew",
+          "https://soundcloud.com/dekweker",
+          "https://music.apple.com/be/artist/de-kweker/1747400203?l=nl"
+        ]
+      }
+    </script>
+  </head>
+  <body class='page-home'>
+    <a class='skip-link' href='#main'>Skip to content</a>
+    <div class='noise' aria-hidden='true'></div>
+    <header class='site-header'>
+      <nav class='nav container'>
+        <a class='logo' href='#'>
+          <img
+            class='logo-img'
+            src='assets/de-kweker-belfort.svg'
+            alt='De Kweker - Brugge (8000)'
+          />
+          <span class='logo-sub'><span class='accent'>Brugge (8000)</span></span>
+        </a>
+        <div class='nav-links'>
+          <a href='#music'>Muziek</a>
+          <a href='#signature'>Bio</a>
+          <a href='#studio'>Crew</a>
+          <a href='#contact'>Contact</a>
         </div>
+        <a class='cta' href='#contact'>Boek De Kweker</a>
+      </nav>
+    </header>
 
-        <div class="landingGrid2" style="margin-top:14px;">
-          <a class="landingLinkCard" href="https://www.youtube.com/@De.Kweker" target="_blank" rel="noopener noreferrer">
-            <div>
-              <div class="landingLinkTitle">YouTube</div>
-              <div class="landingLinkSub">Clips & visuals</div>
-            </div>
-            <div class="landingLinkHint">Open →</div>
-          </a>
-
-          <a class="landingLinkCard" href="https://soundcloud.com/dekweker" target="_blank" rel="noopener noreferrer">
-            <div>
-              <div class="landingLinkTitle">SoundCloud</div>
-              <div class="landingLinkSub">Extra’s & schetsen</div>
-            </div>
-            <div class="landingLinkHint">Open →</div>
-          </a>
-        </div>
-      </section>
-
-      <!-- UITGELICHT -->
-      <section class="panel panelWide" id="uitgelicht" style="margin-top:14px;">
-        <div class="kickerWarm"><span class="dotWarm"></span> Uitgelicht</div>
-        <h2 style="margin:10px 0 8px;">Lekt Em — officiële videoclip</h2>
-
-        <div class="landingFeature">
-          <div>
-            <p style="margin:0;color:rgba(255,255,255,.82);line-height:1.6;">
-              Geen intro. Gewoon neerzetten.
-              Beeld en tekst zitten op elkaar.
-            </p>
-
-            <div class="accentLine" aria-hidden="true"></div>
-
-            <div class="landingCredits" aria-label="Credits Lekt Em">
-              <div><strong>Regie</strong> · Jan Maes</div>
-              <div><strong>Camera</strong> · Patrick Nishimwe</div>
-              <div><strong>Edit</strong> · Jason Moens</div>
-              <div><strong>Klank</strong> · <span class="accentWarm">NUMB</span></div>
-            </div>
-
-            <div class="ctaRow" style="margin-top:14px;">
-              <a class="btn btnPrimary" href="https://www.youtube.com/watch?v=8Q0LB68kxRw" target="_blank" rel="noopener noreferrer">Kijk op YouTube</a>
-              <a class="btn btnSecondary" href="https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG" target="_blank" rel="noopener noreferrer">Luister op Spotify</a>
-            </div>
-
-            <div style="margin-top:12px;">
-              <a class="textLink" href="https://pokoemagazine.nl/de-kweker-verroader/" target="_blank" rel="noopener noreferrer">
-                Pokoe Magazine: v(err)oader →
-              </a>
-            </div>
+    <main id='main'>
+      <section class='hero container'>
+        <div class='hero-copy reveal'>
+          <p class='eyebrow'>Brugge (8000)</p>
+          <h1>De Kweker. West-Vlaamse hiphop.</h1>
+          <p class='lead'>
+            Rap die dicht op het leven zit. Over druk, afkomst en de stad waar
+            het begon.
+          </p>
+          <div class='hero-actions'>
+            <a class='btn primary' href='#contact'>Boek De Kweker</a>
+            <a class='btn ghost' href='#music'>Luister</a>
           </div>
-
-          <div class="landingYtWrap" aria-label="YouTube embed">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/8Q0LB68kxRw"
-              title="De Kweker — Lekt Em (officiële videoclip)"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
+          <div class='tag-row'>
+            <span class='tag'>BRUGGE (8000)</span>
+            <span class='tag'>KWARTIER WEST</span>
+            <span class='tag'>RUGGED &amp; RAW</span>
           </div>
         </div>
-      </section>
-
-      <!-- BIO -->
-      <section class="panel panelWide" id="bio" style="margin-top:14px;">
-        <div class="bioHero">
-          <div class="bioLeft">
-            <div class="kickerWarm"><span class="dotWarm"></span> Bio</div>
-
-            <h2 class="bioTitle">De Kweker.</h2>
-
-            <p class="bioLead">
-              Geen zever. Eigen kweek.<br/>
-              Wat overblijft als het stil wordt.
-            </p>
-
-            <div class="tagsRow" style="margin-top:10px;">
-              <span class="tag">Releases via <strong>Rugged &amp; Raw</strong></span>
-              <span class="tag">Verbonden aan <strong>Kwartier West</strong></span>
-              <span class="tag">Klank &amp; productie met <strong>NUMB</strong></span>
+        <div class='hero-visual reveal'>
+          <div class='hero-stack'>
+            <div class='hero-panel'>
+              <span class='panel-label'>Nieuwste release</span>
+              <p>Lekt Em. Officiele videoclip. Een eerste blik op De Kweker.</p>
+              <div class='panel-stamp'>VIDEO</div>
             </div>
-
-            <div class="ctaRow" style="margin-top:14px;">
-              <a class="btn btnSecondary" href="https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG" target="_blank" rel="noopener noreferrer">Spotify</a>
-              <a class="btn btnSecondary" href="https://www.youtube.com/@De.Kweker" target="_blank" rel="noopener noreferrer">YouTube</a>
-              <a class="btn btnQuiet" href="#contact">Contact</a>
-            </div>
-          </div>
-
-          <!-- starts collapsed by default -->
-          <div class="bioRight isCollapsed" id="bioPanel">
-            <div class="bioTextHead">
-              <h3 class="bioTextTitle">Verhaal</h3>
-              <button class="btn btnQuiet" id="bioToggle" type="button" aria-expanded="false" aria-controls="bioText">
-                Lees meer
-              </button>
-            </div>
-
-            <div class="bioBody" id="bioText">
-              <p>
-                De Kweker is een rapper uit Brugge (8000).
-                Hij rapt in het West-Vlaams.
-                Omdat dat is hoe er gedacht en gesproken wordt.
-              </p>
-
-              <p>
-                De muziek blijft dicht bij de kern.
-                Geen omwegen, geen verpakking.
-                Wat erin zit, komt uit eigen leven, niet uit wat op dat moment werkt.
-              </p>
-
-              <p>
-                De teksten zijn persoonlijk, maar niet vrijblijvend.
-                Soms ingetogen, soms confronterend.
-                Niet om indruk te maken, maar omdat het zo gezegd moet worden.
-              </p>
-
-              <p>
-                De Kweker maakt deel uit van <strong>Kwartier West</strong>
-                en brengt zijn muziek uit via <strong>Rugged &amp; Raw</strong>.
-                Twee omgevingen die ruimte laten, zonder richting op te leggen.
-              </p>
-            </div>
-
-            <div class="bioQuote">
-              <span class="bioQuoteMark">“</span>
-              <span class="bioQuoteText">Therapie voor mezelf, en misschien ook voor jullie.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-            <!-- CONTACT -->
-      <section class="panel panelWide" id="contact" style="margin-top:14px;">
-        <div class="kickerWarm"><span class="dotWarm"></span> Contact</div>
-        <h2 style="margin:10px 0 8px;">Bookings & links</h2>
-
-        <div class="landingGrid2">
-          <div class="panel" style="padding:16px;">
-            <h3 style="margin:0 0 6px;">Mail</h3>
-            <p class="mutedSmall" style="margin:0 0 10px;">
-              Voor bookings: onderwerp + datum/plaats.
-            </p>
-            <a class="textLink" href="mailto:info@kwkr.be">info@kwkr.be</a>
-          </div>
-
-          <div class="panel" style="padding:16px;">
-            <h3 style="margin:0 0 6px;">Links</h3>
-            <p class="mutedSmall" style="margin:0 0 10px;">
-              Overal dezelfde lijn.
-            </p>
-
-            <div class="landingGrid2" style="margin-top:0;">
-              <a class="landingLinkCard" href="https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG" target="_blank" rel="noopener noreferrer">
+            <div class='hero-panel dark'>
+              <span class='panel-label'>Artist facts</span>
+              <div class='beat-grid'>
                 <div>
-                  <div class="landingLinkTitle">Spotify</div>
-                  <div class="landingLinkSub">Artiestpagina</div>
+                  <span class='beat-label'>City</span>
+                  <span class='beat-value'>8000</span>
                 </div>
-                <div class="landingLinkHint">Open →</div>
-              </a>
-
-              <a class="landingLinkCard" href="https://www.instagram.com/dekweker_" target="_blank" rel="noopener noreferrer">
                 <div>
-                  <div class="landingLinkTitle">Instagram</div>
-                  <div class="landingLinkSub">Updates & snippets</div>
+                  <span class='beat-label'>Taal</span>
+                  <span class='beat-value'>West-VL</span>
                 </div>
-                <div class="landingLinkHint">Open →</div>
-              </a>
+                <div>
+                  <span class='beat-label'>Releases</span>
+                  <span class='beat-value'>R&amp;R</span>
+                </div>
+              </div>
+              <div class='panel-stamp'>BRUGGE</div>
+            </div>
+          </div>
+          <div class='soundwave' aria-hidden='true'>
+            <span style='--bar: 38'></span>
+            <span style='--bar: 62'></span>
+            <span style='--bar: 44'></span>
+            <span style='--bar: 70'></span>
+            <span style='--bar: 52'></span>
+            <span style='--bar: 80'></span>
+            <span style='--bar: 48'></span>
+            <span style='--bar: 66'></span>
+            <span style='--bar: 40'></span>
+          </div>
+          <div class='spray' aria-hidden='true'></div>
+        </div>
+      </section>
+
+      <div class='scroll-hint' aria-hidden='true'>
+        <span>Scroll</span>
+        <span class='scroll-line'></span>
+      </div>
+
+      <section id='signature' class='signature container reveal'>
+        <div class='bio-card'>
+          <p class='eyebrow'>Bio</p>
+          <h2><span class='accent'>De Kweker</span>. Geen zever. Eigen kweek.</h2>
+          <p class='bio-lead'>Wat overblijft als het stil wordt.</p>
+          <div class='bio-copy'>
+            <p>
+              De Kweker is een rapper uit Brugge (8000). Hij rapt in het
+              West-Vlaams. Omdat dat is hoe er gedacht en gesproken wordt.
+            </p>
+            <p>
+              De muziek blijft dicht bij de kern. Geen omwegen, geen
+              verpakking. Wat erin zit, komt uit eigen leven, niet uit wat op
+              dat moment werkt.
+            </p>
+            <p>
+              De teksten zijn persoonlijk, maar niet vrijblijvend. Soms
+              ingetogen, soms confronterend. Niet om indruk te maken, maar
+              omdat het zo gezegd moet worden.
+            </p>
+          </div>
+          <p class='bio-links'>
+            Releases via <span class='accent'>Rugged &amp; Raw</span>. Verbonden
+            aan <span class='accent'>Kwartier West</span>. Klank en productie
+            met <span class='accent'>NUMB</span>.
+          </p>
+        </div>
+      </section>
+
+      <section id='music' class='music container reveal'>
+        <div class='music-top'>
+          <p class='eyebrow'>Muziek</p>
+          <h2>Releases en beelden. <span class='accent'>Alles op een plek.</span></h2>
+          <p class='section-note'>Nieuwste clip: Lekt Em.</p>
+          <div class='music-ctas'>
+            <a
+              class='btn primary'
+              href='https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG?si=qxSTBIvlTvmpoofpAtg1ew'
+              target='_blank'
+              rel='noopener noreferrer'
+              >Spotify</a
+            >
+            <a
+              class='btn ghost'
+              href='https://www.youtube.com/watch?v=8Q0LB68kxRw'
+              target='_blank'
+              rel='noopener noreferrer'
+              >YouTube</a
+            >
+            <a
+              class='btn ghost'
+              href='https://music.apple.com/be/artist/de-kweker/1747400203?l=nl'
+              target='_blank'
+              rel='noopener noreferrer'
+              >Apple Music</a
+            >
+          </div>
+        </div>
+
+        <div class='music-spotlight'>
+          <div class='music-spot-text'>
+            <p class='eyebrow'>Uitgelicht</p>
+            <h3>Lekt Em - officiele videoclip</h3>
+            <p class='music-lead'><strong>Eerste clip.</strong> Sterke binnenkomer.</p>
+            <p class='music-para'>
+              Lekt Em zet neer wie De Kweker is: Brugse roots en een eigen
+              toon. Beeld en tekst horen bij elkaar.
+            </p>
+            <div class='music-credits'>
+              <div><strong>Regie</strong> - Jan Maes</div>
+              <div><strong>Camera</strong> - Patrick Nishimwe</div>
+              <div><strong>Edit</strong> - Jason Moens</div>
+              <div><strong>Klank</strong> - NUMB</div>
+            </div>
+            <div class='music-spot-ctas'>
+              <a
+                class='btn primary'
+                href='https://www.youtube.com/watch?v=8Q0LB68kxRw'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Kijk</a
+              >
+              <a
+                class='btn ghost'
+                href='https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG?si=qxSTBIvlTvmpoofpAtg1ew'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Luister</a
+              >
+              <a class='btn ghost' href='#contact'>Contact</a>
+            </div>
+          </div>
+          <div class='music-spot-media'>
+            <div class='yt-wrap'>
+              <iframe
+                src='https://www.youtube.com/embed/8Q0LB68kxRw'
+                title='De Kweker - Lekt Em (officiele videoclip)'
+                frameborder='0'
+                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                allowfullscreen
+                loading='lazy'
+              ></iframe>
             </div>
           </div>
         </div>
 
-        <!-- footer row: city / deeq credit / links -->
-        <div class="landingFooterRow">
-          <div>Brugge (8000)</div>
-
-          <div class="landingFooterDeeq">
-            © 2026 De Kweker · Powered by
-            <a class="deeqLink" href="https://deeqstudio.com" target="_blank" rel="noopener noreferrer" aria-label="DeeQ Studio">
-              <img class="deeqLogo" src="/assets/deeq-studio.svg" alt="DeeQ Studio" loading="lazy" />
-            </a>
+        <div class='music-grid'>
+          <div class='music-card music-card--spotify'>
+            <div class='music-card-head'>
+              <h3>Spotify</h3>
+              <p class='muted'>Alles samen op een plek.</p>
+            </div>
+            <div class='spotify-embed'>
+              <iframe
+                src='https://open.spotify.com/embed/artist/2v5Tuugqs8s4vaONc286EG?utm_source=generator'
+                width='100%'
+                height='420'
+                frameborder='0'
+                allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+                loading='lazy'
+                title='De Kweker op Spotify'
+              ></iframe>
+            </div>
           </div>
-
-          <div>
-            <a href="https://pokoemagazine.nl/de-kweker-verroader/" target="_blank" rel="noopener noreferrer">Pokoe</a>
-            <span style="opacity:.5;margin:0 8px;">·</span>
-            <a href="https://www.youtube.com/watch?v=8Q0LB68kxRw" target="_blank" rel="noopener noreferrer">Lekt Em</a>
-            <span style="opacity:.5;margin:0 8px;">·</span>
-            <a href="mailto:info@kwkr.be">info@kwkr.be</a>
+          <div class='music-card music-card--quote'>
+            <div class='music-card-head'>
+              <h3>Rond de muziek</h3>
+              <p class='muted'>Waarom ik muziek maak.</p>
+            </div>
+            <div class='music-quote'>
+              <details class='quote-details'>
+                <summary class='quote-summary'>
+                  <span class='quote-summary-title'>Lees het verhaal</span>
+                  <span class='quote-summary-text'
+                    >Ik maak muziek omdat ik anders te veel binnen hou.</span
+                  >
+                  <span class='quote-summary-sub'>
+                    Omdat sommige dingen blijven knagen als je ze niet
+                    uitspreekt.
+                  </span>
+                  <span class='quote-summary-preview'>
+                    Ik ben geen rapper die een rol speelt. Wat je hoort, da's
+                    gewoon ik - goeie dagen, slechte dagen, twijfels, trots,
+                    fouten en alles ertussen. Soms ben ik zeker van mezelf,
+                    soms totaal niet. En die strijd, die zit in m'n tracks.
+                  </span>
+                  <span class='quote-summary-preview'>
+                    Ik kan niet doen alsof alles chill is als dat niet zo is.
+                    Ik reageer op gevoel, soms te snel, soms te hard, maar altijd
+                    echt.
+                  </span>
+                  <span class='quote-summary-footer'>
+                    Dit is gewoon <span class='accent'>De Kweker</span>.
+                  </span>
+                  <span class='quote-summary-cta'></span>
+                </summary>
+                <div class='quote-body'>
+                  <p class='quote-pull'>Ik ben geen rapper die een rol speelt.</p>
+                  <p>
+                    Wat je hoort, da's gewoon ik - goeie dagen, slechte dagen,
+                    twijfels, trots, fouten en alles ertussen. Soms ben ik zeker
+                    van mezelf, soms totaal niet. En die strijd, die zit in m'n
+                    tracks.
+                  </p>
+                  <p class='quote-pull'>
+                    Ik kan niet doen alsof alles chill is als dat niet zo is.
+                  </p>
+                  <p>
+                    Ik zet geen masker op, want ik kan dat niet volhouden. Ik
+                    reageer op gevoel, soms te snel, soms te hard, maar altijd
+                    echt. En muziek is de plek waar ik dat kwijt kan zonder
+                    uitleg te moeten geven.
+                  </p>
+                  <p>
+                    Veel van wat ik schrijf, komt recht uit momenten waar niemand
+                    bij was. Avonden alleen, discussies, spijt, liefde,
+                    frustratie... <span class='quote-highlight'>Brugge</span>,
+                    mensen rond mij, dingen die blijven hangen. Ik schrijf niet
+                    om stoer te doen, maar om lucht te krijgen.
+                  </p>
+                  <p>
+                    Soms luister ik zelf terug en denk ik: ja, zo voelde het echt
+                    toen.
+                  </p>
+                  <p>
+                    En als iemand anders zich daarin herkent, dan weet ik
+                    waarvoor ik het doe.
+                  </p>
+                  <p class='quote-pull'>
+                    Ik maak muziek omdat ik anders
+                    <span class='quote-highlight'>mezelf verlies</span>.
+                  </p>
+                  <p>
+                    Omdat sommige dingen beter klinken dan dat ik ze kan zeggen.
+                  </p>
+                  <p>
+                    En omdat, hoe tegenstrijdig ik soms ook ben... dit altijd
+                    klopt.
+                  </p>
+                  <p class='quote-pull'>Dit is geen personage.</p>
+                  <p>Dit is gewoon <span class='accent'>De Kweker</span>.</p>
+                </div>
+              </details>
+            </div>
           </div>
         </div>
       </section>
 
-    </div>
-  </main>
+      <section id='studio' class='studio container reveal'>
+        <div class='studio-grid'>
+          <div>
+          <p class='eyebrow'>Crew</p>
+          <h2>Live set en crew rond <span class='accent'>De Kweker</span>.</h2>
+          <p>
+            De Kweker staat scherp live: energie, timing en contact met het
+            publiek. Van studio tot podium draait het om detail en flow.
+          </p>
+          <div class='studio-tags'>
+            <span>Live set</span>
+            <span>Podium</span>
+            <span>Flow</span>
+          </div>
+        </div>
+          <div class='studio-panel'>
+          <h3>Kweker checklist</h3>
+          <ul>
+            <li>West-Vlaamse stem met Brugse roots</li>
+            <li>Teksten uit eigen leven: twijfel, trots en fouten</li>
+            <li>Reageren op gevoel, niet op imago</li>
+            <li>Live energie en direct contact met publiek</li>
+          </ul>
+        </div>
+      </div>
+      </section>
+    </main>
 
-  <!-- Bio toggle (no dependencies) -->
-  <script>
-    (function(){
-      const btn = document.getElementById("bioToggle");
-      const panel = document.getElementById("bioPanel");
-      if(!btn || !panel) return;
+    <footer id='contact' class='contact'>
+      <div class='contact-inner container reveal'>
+        <div>
+          <p class='eyebrow'>Contact</p>
+          <h2>Boek De Kweker voor shows en collabs.</h2>
+          <p>Management, boekingen of samenwerkingen - stuur een mail.</p>
+        </div>
+        <div class='contact-actions'>
+          <a class='btn primary' href='mailto:info@kwkr.be'>Contact</a>
+          <p class='contact-note'>De Kweker - 2026</p>
+        </div>
+      </div>
+      <div class='contact-grid container reveal'>
+        <div class='contact-block'>
+          <h3>Socials</h3>
+          <p class='muted'>Updates, teasers en clips.</p>
+          <ul class='contact-list'>
+            <li>
+              <a
+                href='https://www.instagram.com/dekweker_/'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                href='https://www.facebook.com/p/De-Kweker-61570442235326/'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Facebook</a
+              >
+            </li>
+            <li>
+              <a href='https://www.tiktok.com/@de.kweker?is_from_webapp=1&sender_device=pc' target='_blank' rel='noopener noreferrer'>TikTok</a>
+            </li>
+          </ul>
+        </div>
+        <div class='contact-block'>
+          <h3>Officiele artiesten kanalen</h3>
+          <p class='muted'>Luister en volg via de officiele kanalen.</p>
+          <ul class='contact-list'>
+            <li>
+              <a
+                href='https://www.youtube.com/@De.kweker'
+                target='_blank'
+                rel='noopener noreferrer'
+                >YouTube</a
+              >
+            </li>
+            <li>
+              <a
+                href='https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG?si=qxSTBIvlTvmpoofpAtg1ew'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Spotify</a
+              >
+            </li>
+            <li>
+              <a
+                href='https://soundcloud.com/dekweker'
+                target='_blank'
+                rel='noopener noreferrer'
+                >SoundCloud</a
+              >
+            </li>
+            <li>
+              <a
+                href='https://music.apple.com/be/artist/de-kweker/1747400203?l=nl'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Apple Music</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class='footer-line container'>
+        <span>Brugge (8000) - De Kweker</span>
+        <span class='footer-brand'>
+          <span>Powered by</span>
+          <a
+            class='deeq-link'
+            href='https://deeqstudio.com/'
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label='DeeQstudio'
+          >
+            <img
+              class='deeq-logo'
+              src='assets/deeq-studio.svg'
+              alt='DeeQ Studio'
+              loading='lazy'
+            />
+          </a>
+          <span id='year'></span>
+        </span>
+      </div>
+    </footer>
 
-      btn.addEventListener("click", function(){
-        const wasCollapsed = panel.classList.contains("isCollapsed");
-        panel.classList.toggle("isCollapsed");
-
-        const expanded = wasCollapsed;
-        btn.textContent = expanded ? "Lees minder" : "Lees meer";
-        btn.setAttribute("aria-expanded", expanded ? "true" : "false");
-      });
-    })();
-  </script>
-
-  <!-- DeeQ footer year -->
-  <script>
-    (function(){
-      const y = document.getElementById("deeqYear");
-      if(y) y.textContent = new Date().getFullYear();
-    })();
-  </script>
-</body>
+    <script src='script.js'></script>
+  </body>
 </html>
+
+
+
+
