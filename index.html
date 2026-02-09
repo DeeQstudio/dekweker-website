@@ -1,8 +1,8 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang='nl'>
   <head>
     <meta charset='utf-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover' />
     <title>De Kweker - West-Vlaamse hiphop uit Brugge (8000)</title>
     <meta
       name='description'
@@ -71,13 +71,28 @@
           />
           <span class='logo-sub'><span class='accent'>Brugge (8000)</span></span>
         </a>
-        <div class='nav-links'>
-          <a href='#music'>Muziek</a>
-          <a href='#signature'>Bio</a>
-          <a href='#studio'>Crew</a>
-          <a href='#contact'>Contact</a>
+        <button
+          class='nav-toggle'
+          type='button'
+          aria-expanded='false'
+          aria-controls='nav-panel'
+        >
+          <span class='nav-toggle-label'>Menu</span>
+          <span class='nav-toggle-icon' aria-hidden='true'>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <div id='nav-panel' class='nav-panel'>
+          <div class='nav-links'>
+            <a href='#music'>Muziek</a>
+            <a href='#signature'>Bio</a>
+            <a href='#studio'>Crew</a>
+            <a href='#contact'>Contact</a>
+          </div>
+          <a class='cta nav-cta' href='#contact'>Boek De Kweker</a>
         </div>
-        <a class='cta' href='#contact'>Boek De Kweker</a>
       </nav>
     </header>
 
@@ -94,6 +109,18 @@
             <a class='btn primary' href='#contact'>Boek De Kweker</a>
             <a class='btn ghost' href='#music'>Luister</a>
           </div>
+          <div class='release-note'>
+            <span class='release-kicker'>Nieuwste release</span>
+            <span class='release-title'>Lekt Em.</span>
+            <span class='release-meta'>Officiële videoclip</span>
+            <a
+              class='release-link'
+              href='https://www.youtube.com/watch?v=8Q0LB68kxRw'
+              target='_blank'
+              rel='noopener noreferrer'
+              >Bekijk</a
+            >
+          </div>
           <div class='tag-row'>
             <span class='tag'>BRUGGE (8000)</span>
             <span class='tag'>KWARTIER WEST</span>
@@ -102,11 +129,6 @@
         </div>
         <div class='hero-visual reveal'>
           <div class='hero-stack'>
-            <div class='hero-panel'>
-              <span class='panel-label'>Nieuwste release</span>
-              <p>Lekt Em. Officiele videoclip. Een eerste blik op De Kweker.</p>
-              <div class='panel-stamp'>VIDEO</div>
-            </div>
             <div class='hero-panel dark'>
               <span class='panel-label'>Artist facts</span>
               <div class='beat-grid'>
@@ -369,14 +391,48 @@
             <span>Flow</span>
           </div>
         </div>
-          <div class='studio-panel'>
-          <h3>Kweker checklist</h3>
-          <ul>
-            <li>West-Vlaamse stem met Brugse roots</li>
-            <li>Teksten uit eigen leven: twijfel, trots en fouten</li>
-            <li>Reageren op gevoel, niet op imago</li>
-            <li>Live energie en direct contact met publiek</li>
-          </ul>
+        <div class='studio-stack'>
+          <article class='studio-panel studio-panel--feature'>
+            <span class='panel-label'>Kwartier West</span>
+            <h3>Wijkenergie en echte verhalen.</h3>
+            <p class='muted'>
+              Kwartier West is het kompas: straat, stilte en solidariteit.
+              Hier komt de toon vandaan.
+            </p>
+            <ul class='studio-list'>
+              <li>Brugse roots met rauwe randjes.</li>
+              <li>Observaties van buurt, familie en druk.</li>
+              <li>West-VL in cadans en kleur.</li>
+            </ul>
+          </article>
+
+          <article class='studio-panel studio-panel--feature'>
+            <span class='panel-label'>Rugged &amp; Raw</span>
+            <h3>Rauw, direct, zonder filter.</h3>
+            <p class='muted'>
+              De sound is hoekig en warm tegelijk: drums die bijten,
+              melodie die blijft hangen.
+            </p>
+            <ul class='studio-list'>
+              <li>Hard op de kick, zacht op de kern.</li>
+              <li>Geen maskers, wel nuance.</li>
+              <li>Live voelt het als een stomp, maar blijft menselijk.</li>
+            </ul>
+          </article>
+
+          <article class='studio-panel studio-panel--feature'>
+            <span class='panel-label'>Numb</span>
+            <h3>Overdruk, verdoving en terug naar gevoel.</h3>
+            <p class='muted'>
+              Numb gaat over momenten waarop alles te veel is, en hoe je
+              toch weer wakker wordt.
+            </p>
+            <ul class='studio-list'>
+              <li>Spanning en stilte in balans.</li>
+              <li>Refrein dat blijft kleven.</li>
+              <li>Sfeer van nacht tot ochtend.</li>
+            </ul>
+          </article>
         </div>
       </div>
       </section>
