@@ -977,6 +977,7 @@ p {
   backdrop-filter: blur(8px);
   position: relative;
   overflow: hidden;
+  align-self: start;
 }
 
 .music-card::before {
@@ -1005,7 +1006,7 @@ p {
   background: #101010;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
-  height: 320px;
+  height: 352px;
 }
 
 .spotify-embed iframe {
@@ -1312,20 +1313,28 @@ p {
   column-gap: 2.6rem;
   row-gap: 2.4rem;
   align-items: start;
+  grid-template-areas:
+    "copy rugged"
+    "kw numb";
 }
 
 .studio-copy {
   display: grid;
   gap: 1.4rem;
   max-width: 34rem;
+  grid-area: copy;
 }
 
-.studio-stack {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.8rem;
-  align-items: start;
-  grid-auto-rows: 1fr;
+.studio-panel--rugged {
+  grid-area: rugged;
+}
+
+.studio-panel--kw {
+  grid-area: kw;
+}
+
+.studio-panel--numb {
+  grid-area: numb;
 }
 
 .studio-tags {
@@ -1364,7 +1373,9 @@ p {
   backdrop-filter: blur(14px);
 }
 
-.studio-stack .studio-panel {
+.studio-panel--rugged,
+.studio-panel--kw,
+.studio-panel--numb {
   height: 100%;
 }
 
@@ -1911,10 +1922,11 @@ select {
 
   .studio-grid {
     grid-template-columns: 1fr;
-  }
-
-  .studio-stack {
-    grid-template-columns: 1fr;
+    grid-template-areas:
+      "copy"
+      "kw"
+      "rugged"
+      "numb";
   }
 
 
@@ -2029,7 +2041,7 @@ select {
   }
 
   .spotify-embed {
-    height: 280px;
+    height: 300px;
   }
 }
 
@@ -2160,7 +2172,7 @@ body {
   }
 
   .spotify-embed {
-    height: 240px;
+    height: 260px;
   }
 }
 
