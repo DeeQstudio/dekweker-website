@@ -14,6 +14,7 @@
   --shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
   --line-accent: rgba(255, 154, 60, 0.5);
   --radius-pill: 12px;
+  --spotify-height: 260px;
 }
 
 html {
@@ -1006,7 +1007,7 @@ p {
   background: #101010;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
-  height: 352px;
+  height: var(--spotify-height);
 }
 
 .spotify-embed iframe {
@@ -2040,8 +2041,8 @@ select {
     align-items: flex-start;
   }
 
-  .spotify-embed {
-    height: 300px;
+  :root {
+    --spotify-height: 240px;
   }
 }
 
@@ -2171,8 +2172,8 @@ body {
     padding: 1rem;
   }
 
-  .spotify-embed {
-    height: 260px;
+  :root {
+    --spotify-height: 220px;
   }
 }
 
@@ -2260,8 +2261,8 @@ body {
     height: 180px;
   }
 
-  .spotify-embed {
-    height: 220px;
+  :root {
+    --spotify-height: 200px;
   }
 
   .cart-drawer {
