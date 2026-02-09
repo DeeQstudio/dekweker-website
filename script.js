@@ -24,6 +24,20 @@
     });
   }
 
+  const bioDetails = document.querySelector('.bio-details');
+  if (bioDetails) {
+    const mq = window.matchMedia('(max-width: 700px)');
+    const syncBioState = () => {
+      if (mq.matches) {
+        bioDetails.removeAttribute('open');
+      } else {
+        bioDetails.setAttribute('open', '');
+      }
+    };
+    syncBioState();
+    mq.addEventListener('change', syncBioState);
+  }
+
   const reveals = document.querySelectorAll('.reveal');
   if (!reveals.length) return;
 
