@@ -2173,7 +2173,7 @@ body {
   }
 
   :root {
-    --spotify-height: 260px;
+    --spotify-height: 152px;
   }
 }
 
@@ -2262,7 +2262,7 @@ body {
   }
 
   :root {
-    --spotify-height: 220px;
+    --spotify-height: 152px;
   }
 
   .cart-drawer {
