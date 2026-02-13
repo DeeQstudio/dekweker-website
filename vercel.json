@@ -3,11 +3,15 @@
     { "src": "^/site\\.html$", "status": 308, "headers": { "Location": "/" } },
     { "src": "^/maintenance\\.html$", "status": 308, "headers": { "Location": "/" } },
 
-    { "src": "^/context$", "dest": "/context/de-kweker-context.pdf" },
-    { "src": "^/context/(.*)$", "dest": "/context/$1" },
+    { "src": "^/context$", "dest": "/context/de-kweker-context.pdf", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive" } },
+    { "src": "^/context/(.*)$", "dest": "/context/$1", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive" } },
+
+    { "src": "^/media$", "dest": "/media/index.html" },
+    { "src": "^/media/$", "dest": "/media/index.html" },
+    { "src": "^/sporen$", "dest": "/media/index.html" },
+    { "src": "^/sporen/$", "dest": "/media/index.html" },
 
     { "handle": "filesystem" },
-
     { "src": "^(.*)$", "dest": "/index.html" }
   ]
 }

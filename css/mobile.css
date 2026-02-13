@@ -42,8 +42,8 @@ body.no-scroll{
 
   @supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))){
     .mobileOverlay{
+            -webkit-backdrop-filter: blur(10px) saturate(110%);
       backdrop-filter: blur(10px) saturate(110%);
-      -webkit-backdrop-filter: blur(10px) saturate(110%);
     }
   }
 
@@ -96,8 +96,8 @@ body.no-scroll{
 
   @supports ((backdrop-filter: blur(18px)) or (-webkit-backdrop-filter: blur(18px))){
     .mobileDrawer{
+            -webkit-backdrop-filter: blur(18px) saturate(125%);
       backdrop-filter: blur(18px) saturate(125%);
-      -webkit-backdrop-filter: blur(18px) saturate(125%);
     }
   }
 

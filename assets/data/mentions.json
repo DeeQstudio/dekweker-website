@@ -1,0 +1,56 @@
+[
+    {
+        "type":  "press",
+        "publisher":  "Pokoe Magazine",
+        "title":  "De Kweker - V(err)oader",
+        "url":  "https://pokoemagazine.nl/de-kweker-verroader/"
+    },
+    {
+        "type":  "press",
+        "publisher":  "Pokoe Magazine",
+        "title":  "De Kweker ft. King Skam - Alles Of Niets",
+        "url":  "https://pokoemagazine.nl/de-kweker-ft-king-skam-alles-of-niets/"
+    },
+    {
+        "type":  "press",
+        "publisher":  "Pokoe Magazine",
+        "title":  "De Kweker - Moed(ig)er",
+        "url":  "https://pokoemagazine.nl/de-kweker-moediger/"
+    },
+    {
+        "type":  "profile",
+        "platform":  "VI.BE",
+        "title":  "De Kweker op VI.BE",
+        "url":  "https://vi.be/platform/DeKweker"
+    },
+    {
+        "type":  "profile",
+        "platform":  "Spotify",
+        "title":  "De Kweker op Spotify",
+        "url":  "https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG"
+    },
+    {
+        "type":  "profile",
+        "platform":  "YouTube",
+        "title":  "De Kweker op YouTube",
+        "url":  "https://www.youtube.com/@De.Kweker"
+    },
+    {
+        "type":  "profile",
+        "platform":  "SoundCloud",
+        "title":  "De Kweker op SoundCloud",
+        "url":  "https://soundcloud.com/dekweker"
+    },
+    {
+        "type":  "profile",
+        "platform":  "Instagram",
+        "title":  "De Kweker op Instagram",
+        "url":  "https://www.instagram.com/dekweker_"
+    },
+    {
+        "type":  "profile",
+        "platform":  "TikTok",
+        "title":  "De Kweker op TikTok",
+        "url":  "https://www.tiktok.com/@de.kweker"
+    }
+]

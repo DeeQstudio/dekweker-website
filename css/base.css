@@ -179,8 +179,8 @@ input:focus, textarea:focus{
 /* Blur only when supported */
 @supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))){
   .panel{
-    backdrop-filter: blur(14px) saturate(115%);
     -webkit-backdrop-filter: blur(14px) saturate(115%);
+    backdrop-filter: blur(14px) saturate(115%);
   }
 }
 
@@ -278,8 +278,8 @@ input:focus, textarea:focus{
 
 @supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))){
   .cart{
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
   }
 }
 

@@ -1,49 +1,544 @@
 <!doctype html>
-<html lang="nl-BE">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>De Kweker — West-Vlaamse rapper uit Brugge (8000)</title>
+<html lang='nl-BE'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover' />
+    <meta name='theme-color' content='#0b0b0b' />
+    <meta name='application-name' content='De Kweker' />
+    <meta name='apple-mobile-web-app-title' content='De Kweker' />
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta name='msapplication-TileColor' content='#0b0b0b' />
+    <meta name='msapplication-TileImage' content='/mstile-150x150.png' />
+    <meta name='msapplication-config' content='/browserconfig.xml' />
+    
+    <title>De Kweker Store - Blueprint</title>
+    
+    <meta
+      name='description'
+      content='Store blueprint voor De Kweker. Tunnelvisie vinyl en CD visuals, merch en checkout flow klaar voor launch.'
+    />
+    <meta name='author' content='De Kweker' />
+    
+    <meta name='robots' content='noindex, nofollow, noarchive, noimageindex' />
+    <link rel='canonical' href='https://www.kwkr.be/site.html' />
+    <meta property='og:title' content='De Kweker Store - Blueprint' />
+    <meta property='og:type' content='website' />
+    <meta property='og:site_name' content='De Kweker' />
+    <meta property='og:locale' content='nl_BE' />
+    <meta property='og:url' content='https://www.kwkr.be/site.html' />
+    <meta
+      property='og:description'
+      content='Store blueprint voor De Kweker. Tunnelvisie vinyl en CD visuals, merch en checkout flow klaar voor launch.'
+    />
+    <meta property='og:image' content='https://www.kwkr.be/assets/og-cover.jpg' />
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='630' />
+    <meta property='og:image:alt' content='De Kweker store blueprint' />
+    
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content='De Kweker Store - Blueprint' />
+    <meta
+      name='twitter:description'
+      content='Store blueprint voor De Kweker. Tunnelvisie vinyl en CD visuals, merch en checkout flow klaar voor launch.'
+    />
+    <meta name='twitter:image' content='https://www.kwkr.be/assets/og-cover.jpg' />
+    <meta name='twitter:image:alt' content='De Kweker store blueprint' />
+    <link rel='shortcut icon' href='/favicon.ico' />
+    <link rel='icon' href='/favicon.ico' sizes='any' />
+    <link rel='icon' type='image/png' sizes='96x96' href='/favicon-96x96.png' />
+    <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+    <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+    <link rel='manifest' href='/site.webmanifest' />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
+      rel='stylesheet'
+    />
+    <link rel='stylesheet' href='css/styles.css' />
+  </head>
+  <body class='page-store'>
+    <a class='skip-link' href='#main'>Ga naar inhoud</a>
+    <div class='noise' aria-hidden='true'></div>
+    <header class='site-header'>
+      <nav class='nav container' aria-label='Hoofdmenu'>
+        <a class='logo' href='/'>
+          <img
+            class='logo-img'
+            src='assets/de-kweker-belfort.svg'
+            width='52'
+            height='52'
+            loading='eager'
+            decoding='async'
+            alt='De Kweker - Brugge (8000)'
+          />
+          <span class='logo-sub'>Store blueprint</span>
+        </a>
+        <button
+          class='nav-toggle'
+          type='button'
+          aria-expanded='false'
+          aria-controls='nav-panel'
+        >
+          <span class='nav-toggle-label'>Menu</span>
+          <span class='nav-toggle-icon' aria-hidden='true'>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <div id='nav-panel' class='nav-panel'>
+          <div class='nav-links'>
+            <a href='#music' aria-current='page'>Music</a>
+            <a href='/media'>Media</a>
+            <a href='#merch'>Merch</a>
+            <a href='#events'>Events</a>
+            <a href='#legal'>Legal</a>
+          </div>
+          <button class='cart-toggle' type='button' data-cart-open>
+            Cart <span id='cart-count'>0</span>
+          </button>
+        </div>
+      </nav>
+    </header>
 
-  <meta name="description" content="De Kweker is een rapper uit Brugge die in het West-Vlaams rapt over mentale druk, identiteit en afkomst. Eerlijk, sober en zonder pose." />
-  <meta name="robots" content="noindex,nofollow" />
-  <link rel="canonical" href="https://kwkr.be/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="De Kweker" />
-  <meta property="og:title" content="De Kweker — West-Vlaamse rapper uit Brugge (8000)" />
-  <meta property="og:description" content="De Kweker is een rapper uit Brugge die in het West-Vlaams rapt over mentale druk, identiteit en afkomst. Eerlijk, sober en zonder pose." />
-  <meta property="og:image" content="https://kwkr.be/assets/og-cover.jpg" />
-  <meta property="og:url" content="https://kwkr.be/" />
+    <main id='main'>
+      <section class='hero container'>
+        <div class='hero-copy reveal'>
+          <p class='eyebrow'>Store blueprint</p>
+          <h1>Tunnelvisie drop en merch, klaar voor live wanneer jij dat bent.</h1>
+          <p class='lead'>
+            Dit is de toekomstige webshop. De logica is klaar, checkout staat in
+            prelaunch tot najaar 2026.
+          </p>
+          <div class='hero-actions'>
+            <a class='btn primary' href='#merch'>Shop preview</a>
+            <a class='btn ghost' href='#legal'>Legal ready</a>
+          </div>
+          <div class='tag-row'>
+            <span class='tag'>VINYL</span>
+            <span class='tag'>CD</span>
+            <span class='tag'>PREORDER READY</span>
+          </div>
+        </div>
+        <div class='hero-visual reveal'>
+          <div class='hero-panel dark'>
+            <span class='panel-label'>Album: Tunnelvisie</span>
+            <p>Tracklist, visuals en story blijven 1:1 met de live assets.</p>
+            <div class='panel-stamp'>LIMITED</div>
+          </div>
+          <div class='spray' aria-hidden='true'></div>
+        </div>
+      </section>
 
+      <section id='music' class='music container reveal'>
+        <div class='section-header'>
+          <p class='eyebrow'>Music</p>
+          <h2>Tracklist en release info.</h2>
+        </div>
+        <div class='tracklist'>
+          <div class='track'>
+            <span class='track-num'>01</span>
+            <div>
+              <h3>Intro: The Kweker</h3>
+              <p>Opbouw van sfeer en verhaal.</p>
+            </div>
+            <span class='track-time'>2:11</span>
+          </div>
+          <div class='track'>
+            <span class='track-num'>02</span>
+            <div>
+              <h3>Midnight Studio</h3>
+              <p>Rauw en ritmisch, klaar voor live visuals.</p>
+            </div>
+            <span class='track-time'>3:28</span>
+          </div>
+          <div class='track'>
+            <span class='track-num'>03</span>
+            <div>
+              <h3>Kweker Tag</h3>
+              <p>Signature track met scherpe productie.</p>
+            </div>
+            <span class='track-time'>3:44</span>
+          </div>
+          <div class='track'>
+            <span class='track-num'>04</span>
+            <div>
+              <h3>Finale: Launch</h3>
+              <p>Voorbereid op drop en merch run.</p>
+            </div>
+            <span class='track-time'>4:05</span>
+          </div>
+        </div>
+      </section>
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://www.kwkr.be/assets/og-cover.jpg" />
+      <section id='merch' class='merch container reveal'>
+        <div class='section-header'>
+          <p class='eyebrow'>Merch</p>
+          <h2>Drop ready. Catalog kan direct worden gevuld.</h2>
+        </div>
+        <div class='product-grid'>
+          <article
+            class='product-card'
+            data-product-id='vinyl-tunnelvisie'
+            data-product-name='Tunnelvisie Vinyl'
+            data-product-price='42'
+          >
+            <div class='product-art'>
+              <img
+                src='assets/products/vinyl/tunnelvisie-front.webp'
+                alt='Tunnelvisie - Vinyl'
+                loading='lazy'
+              />
+              <span>VINYL</span>
+            </div>
+            <div class='product-head'>
+              <h3>Tunnelvisie Vinyl</h3>
+              <span class='price'>EUR 42</span>
+            </div>
+            <p>Genummerd, limited pressing. Pressing start na preorders.</p>
+            <div class='product-meta'>
+              <label class='field'>
+                Size
+                <select name='size'>
+                  <option>12 inch</option>
+                </select>
+              </label>
+              <label class='field'>
+                Color
+                <select name='color'>
+                  <option>Black</option>
+                  <option>Smoke</option>
+                </select>
+              </label>
+            </div>
+            <button class='btn primary add-to-cart' type='button'>
+              Add to cart
+            </button>
+          </article>
 
-  <!-- Favicons -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+          <article
+            class='product-card'
+            data-product-id='cd-tunnelvisie'
+            data-product-name='Tunnelvisie CD'
+            data-product-price='25'
+          >
+            <div class='product-art'>
+              <img
+                src='assets/products/cd/tunnelvisie-front-cd.webp'
+                alt='Tunnelvisie - CD'
+                loading='lazy'
+              />
+              <span>CD</span>
+            </div>
+            <div class='product-head'>
+              <h3>Tunnelvisie CD</h3>
+              <span class='price'>EUR 25</span>
+            </div>
+            <p>Compact, proper, klaar om te draaien.</p>
+            <div class='product-meta'>
+              <label class='field'>
+                Size
+                <select name='size'>
+                  <option>CD</option>
+                </select>
+              </label>
+              <label class='field'>
+                Color
+                <select name='color'>
+                  <option>Standard</option>
+                </select>
+              </label>
+            </div>
+            <button class='btn primary add-to-cart' type='button'>
+              Add to cart
+            </button>
+          </article>
 
-  <!-- CSS -->
-<link rel="stylesheet" href="/css/base.css" />
-<link rel="stylesheet" href="/css/ui.css" />
-<link rel="stylesheet" href="/css/layout.css" />
-<link rel="stylesheet" href="/css/components.css" />
-<link rel="stylesheet" href="/css/pages.css" />
-<link rel="stylesheet" href="/css/mobile.css" />
-</head>
-<body class="isSite">
+          <article
+            class='product-card'
+            data-product-id='hoodie-black'
+            data-product-name='Kweker Hoodie'
+            data-product-price='65'
+          >
+            <div class='product-art text-only'>
+              <span>HOODIE</span>
+            </div>
+            <div class='product-head'>
+              <h3>Kweker Hoodie</h3>
+              <span class='price'>EUR 65</span>
+            </div>
+            <p>Heavy cotton, oversized, Kweker stamp.</p>
+            <div class='product-meta'>
+              <label class='field'>
+                Size
+                <select name='size'>
+                  <option>XS</option>
+                  <option>S</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                </select>
+              </label>
+              <label class='field'>
+                Color
+                <select name='color'>
+                  <option>Black</option>
+                  <option>Bone</option>
+                </select>
+              </label>
+            </div>
+            <button class='btn primary add-to-cart' type='button'>
+              Add to cart
+            </button>
+          </article>
 
-  <header id="site-header"></header>
-  <main id="app" role="main"></main>
+          <article
+            class='product-card'
+            data-product-id='tee-live'
+            data-product-name='Live Tee'
+            data-product-price='35'
+          >
+            <div class='product-art text-only'>
+              <span>TEE</span>
+            </div>
+            <div class='product-head'>
+              <h3>Live Tee</h3>
+              <span class='price'>EUR 35</span>
+            </div>
+            <p>Tour energy, print die hard binnenkomt.</p>
+            <div class='product-meta'>
+              <label class='field'>
+                Size
+                <select name='size'>
+                  <option>XS</option>
+                  <option>S</option>
+                  <option>M</option>
+                  <option>L</option>
+                  <option>XL</option>
+                </select>
+              </label>
+              <label class='field'>
+                Color
+                <select name='color'>
+                  <option>White</option>
+                  <option>Charcoal</option>
+                </select>
+              </label>
+            </div>
+            <button class='btn primary add-to-cart' type='button'>
+              Add to cart
+            </button>
+          </article>
+        </div>
+        <p class='section-note'>
+          Prijzen zijn placeholders. Checkout blijft locked tot live moment.
+        </p>
+      </section>
 
-  <div id="ui-root"></div>
-  <div id="toastHost" role="status" aria-live="polite" aria-atomic="true"></div>
+      <section id='events' class='events container reveal'>
+        <div class='section-header'>
+          <p class='eyebrow'>Events</p>
+          <h2>Release momentum en live presence.</h2>
+        </div>
+        <div class='events-grid'>
+          <article class='event-card'>
+            <h3>Release show</h3>
+            <p>Venue + datum invullen zodra de booking rond is.</p>
+            <span class='pill'>Najaar 2026</span>
+          </article>
+          <article class='event-card'>
+            <h3>Pop-up merch</h3>
+            <p>Limited items, live print en meet moment.</p>
+            <span class='pill'>Najaar 2026</span>
+          </article>
+          <article class='event-card'>
+            <h3>Studio session</h3>
+            <p>Behind the scenes content + storytelling.</p>
+            <span class='pill'>Voorjaar 2026</span>
+          </article>
+        </div>
+      </section>
 
+      <section id='legal' class='legal container reveal'>
+        <div class='section-header'>
+          <p class='eyebrow'>Legal ready</p>
+          <h2>Structuur die klaar is voor legale verkoop.</h2>
+        </div>
+        <div class='legal-grid'>
+          <div class='legal-card'>
+            <h3>Bedrijfsgegevens</h3>
+            <ul>
+              <li>Bedrijfsnaam: [invullen]</li>
+              <li>Adres: [invullen]</li>
+              <li>BTW nummer: [invullen]</li>
+              <li>Ondernemingsnummer: [invullen]</li>
+              <li>Contact: [invullen]</li>
+            </ul>
+          </div>
+          <div class='legal-card'>
+            <h3>Levering en retour</h3>
+            <ul>
+              <li>Verzendkosten per regio ingesteld</li>
+              <li>Retourtermijn: [invullen]</li>
+              <li>Retouradres: [invullen]</li>
+              <li>Schade en lost packages flow</li>
+            </ul>
+          </div>
+          <div class='legal-card'>
+            <h3>Checkout compliance</h3>
+            <ul>
+              <li>Algemene voorwaarden akkoord checkbox</li>
+              <li>Privacy policy link</li>
+              <li>Prijs, BTW en shipping transparant</li>
+              <li>Payment provider hook klaar</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
 
-  <noscript>Deze website heeft JavaScript nodig.</noscript>
-  <script type="module" src="/js/app.js"></script>
-</body>
+    <footer class='contact'>
+      <div class='contact-inner container reveal'>
+        <div>
+          <p class='eyebrow'>Contact</p>
+          <h2>Store ready voor launch.</h2>
+          <p>Update deze blueprint zodra je live wil gaan.</p>
+        </div>
+        <div class='contact-actions'>
+          <a class='btn primary' href='mailto:info@kwkr.be'>Contact</a>
+          <p class='contact-note'>De Kweker - Store Blueprint - 2026</p>
+        </div>
+      </div>
+      <div class='contact-grid container reveal'>
+        <div class='contact-block'>
+          <h3>Socials</h3>
+          <p class='muted'>Updates, teasers en clips.</p>
+          <ul class='contact-list'>
+            <li>
+              <a
+                href='https://www.instagram.com/dekweker_/'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                href='https://www.facebook.com/p/De-Kweker-61570442235326/'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Facebook</a
+              >
+            </li>
+            <li>
+              <a href='https://www.tiktok.com/@de.kweker?is_from_webapp=1&sender_device=pc' target='_blank' rel='noopener noreferrer'>TikTok</a>
+            </li>
+          </ul>
+        </div>
+        <div class='contact-block'>
+          <h3>Officiele artiesten kanalen</h3>
+          <p class='muted'>Luister en volg via de officiele kanalen.</p>
+          <ul class='contact-list'>
+            <li>
+              <a
+                href='https://www.youtube.com/@De.Kweker'
+                target='_blank'
+                rel='noopener noreferrer'
+                >YouTube</a
+              >
+            </li>
+            <li>
+              <a
+                href='https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG?si=qxSTBIvlTvmpoofpAtg1ew'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Spotify</a
+              >
+            </li>
+            <li>
+              <a
+                href='https://soundcloud.com/dekweker'
+                target='_blank'
+                rel='noopener noreferrer'
+                >SoundCloud</a
+              >
+            </li>
+            <li>
+              <a
+                href='https://music.apple.com/be/artist/de-kweker/1747400203?l=nl'
+                target='_blank'
+                rel='noopener noreferrer'
+                >Apple Music</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class='footer-line container'>
+        <span>Prototype 1.00</span>
+        <a class='footer-media' href='/media'>Media</a>
+        <span id='year'></span>
+      </div>
+    </footer>
+
+    <div class='cart-backdrop' id='cart-backdrop' data-cart-close></div>
+    <aside class='cart-drawer' id='cart-drawer' aria-hidden='true'>
+      <div class='cart-header'>
+        <h3>Your cart</h3>
+        <button class='icon-btn' type='button' data-cart-close>Close</button>
+      </div>
+      <div class='cart-body'>
+        <p class='cart-empty' id='cart-empty'>Cart is empty.</p>
+        <ul class='cart-items' id='cart-items'></ul>
+      </div>
+      <div class='cart-summary'>
+        <div class='summary-row'>
+          <span>Subtotal</span>
+          <span id='cart-subtotal'>EUR 0</span>
+        </div>
+        <div class='summary-row summary-shipping'>
+          <div class='summary-shipping-label'>
+            <span>Shipping</span>
+            <select id='shipping-region'>
+              <option value='BE'>Belgium</option>
+              <option value='EU'>EU</option>
+              <option value='INT'>International</option>
+            </select>
+          </div>
+          <span id='cart-shipping'>EUR 0</span>
+        </div>
+        <div class='summary-row'>
+          <span>VAT (21%)</span>
+          <span id='cart-vat'>EUR 0</span>
+        </div>
+        <div class='summary-row total'>
+          <span>Total</span>
+          <span id='cart-total'>EUR 0</span>
+        </div>
+        <label class='terms'>
+          <input type='checkbox' id='terms-accept' />
+          I accept the terms and privacy policy.
+        </label>
+        <button class='btn primary' type='button' id='checkout-btn'>
+          Checkout
+        </button>
+        <p class='checkout-note' id='checkout-note'></p>
+      </div>
+    </aside>
+
+    <script src='script.js'></script>
+    <script src='store.js'></script>
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+

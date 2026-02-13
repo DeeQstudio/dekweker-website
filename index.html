@@ -1,72 +1,125 @@
 <!doctype html>
-<html lang='nl'>
+<html lang='nl-BE'>
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover' />
+    <meta name='theme-color' content='#0b0b0b' />
+    <meta name='application-name' content='De Kweker' />
+    <meta name='apple-mobile-web-app-title' content='De Kweker' />
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta name='msapplication-TileColor' content='#0b0b0b' />
+    <meta name='msapplication-TileImage' content='/mstile-150x150.png' />
+    <meta name='msapplication-config' content='/browserconfig.xml' />
+    
     <title>De Kweker - West-Vlaamse hiphop uit Brugge (8000)</title>
+    
     <meta
       name='description'
       content='De Kweker is een hiphopartiest uit Brugge (8000). West-Vlaamse rap over druk, afkomst en het leven in de stad.'
     />
+    <meta name='author' content='De Kweker' />
+    
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
     <link rel='canonical' href='https://www.kwkr.be/' />
+    <link rel='alternate' hreflang='nl-BE' href='https://www.kwkr.be/' />
     <meta property='og:title' content='De Kweker - West-Vlaamse hiphop uit Brugge (8000)' />
     <meta
       property='og:description'
       content='De Kweker is een hiphopartiest uit Brugge (8000). West-Vlaamse rap over druk, afkomst en het leven in de stad.'
     />
     <meta property='og:type' content='music.musician' />
+    <meta property='og:site_name' content='De Kweker' />
     <meta property='og:locale' content='nl_BE' />
+    
     <meta property='og:url' content='https://www.kwkr.be/' />
+    
     <meta property='og:image' content='https://www.kwkr.be/assets/og-cover.jpg' />
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='630' />
+    <meta property='og:image:alt' content='De Kweker - West-Vlaamse hiphop uit Brugge' />
     <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:title' content='De Kweker - West-Vlaamse hiphop uit Brugge (8000)' />
+    
     <meta
       name='twitter:description'
       content='De Kweker is een hiphopartiest uit Brugge (8000). West-Vlaamse rap over druk, afkomst en het leven in de stad.'
     />
+    
     <meta name='twitter:image' content='https://www.kwkr.be/assets/og-cover.jpg' />
-    <link rel='icon' href='favicon.ico' sizes='any' />
-    <link rel='icon' type='image/png' sizes='32x32' href='favicon-32x32.png' />
-    <link rel='icon' type='image/png' sizes='16x16' href='favicon-16x16.png' />
-    <link rel='apple-touch-icon' sizes='180x180' href='apple-touch-icon.png' />
-    <link rel='manifest' href='site.webmanifest' />
+    
+    <meta name='twitter:image:alt' content='De Kweker - West-Vlaamse hiphop uit Brugge' />
+    <link rel='shortcut icon' href='/favicon.ico' />
+    <link rel='icon' href='/favicon.ico' sizes='any' />
+    <link rel='icon' type='image/png' sizes='96x96' href='/favicon-96x96.png' />
+    <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+    <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+    <link rel='manifest' href='/site.webmanifest' />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
       href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
       rel='stylesheet'
     />
-    <link rel='stylesheet' href='styles.css' />
+    <link rel='stylesheet' href='css/styles.css' />
     <script type='application/ld+json'>
       {
         "@context": "https://schema.org",
-        "@type": "MusicGroup",
-        "name": "De Kweker",
-        "genre": ["Hiphop", "Rap"],
-        "description": "De Kweker is een hiphopartiest uit Brugge (8000). West-Vlaamse rap over druk, afkomst en het leven in de stad.",
-        "url": "https://www.kwkr.be/",
-        "image": "https://www.kwkr.be/assets/og-cover.jpg",
-        "sameAs": [
-          "https://www.instagram.com/dekweker_/",
-          "https://www.facebook.com/p/De-Kweker-61570442235326/",
-          "https://www.tiktok.com/@de.kweker?is_from_webapp=1&sender_device=pc",
-          "https://www.youtube.com/@De.kweker",
-          "https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG?si=qxSTBIvlTvmpoofpAtg1ew",
-          "https://soundcloud.com/dekweker",
-          "https://music.apple.com/be/artist/de-kweker/1747400203?l=nl"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://www.kwkr.be/#website",
+            "url": "https://www.kwkr.be/",
+            "name": "De Kweker",
+            "inLanguage": "nl-BE"
+          },
+          {
+            "@type": "MusicGroup",
+            "@id": "https://www.kwkr.be/#artist",
+            "name": "De Kweker",
+            "url": "https://www.kwkr.be/",
+            "image": "https://www.kwkr.be/assets/og-cover.jpg",
+            "description": "De Kweker is een hiphopartiest uit Brugge (8000). West-Vlaamse rap over druk, afkomst en het leven in de stad.",
+            "genre": ["Hiphop", "Rap"],
+            "inLanguage": "nl-BE",
+            "foundingLocation": {
+              "@type": "Place",
+              "name": "Brugge (8000), Belgie"
+            },
+            "sameAs": [
+              "https://www.instagram.com/dekweker_/",
+              "https://www.facebook.com/p/De-Kweker-61570442235326/",
+              "https://www.tiktok.com/@de.kweker",
+              "https://www.youtube.com/@De.Kweker",
+              "https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG",
+              "https://soundcloud.com/dekweker",
+              "https://music.apple.com/be/artist/de-kweker/1747400203?l=nl",
+              "https://vi.be/platform/DeKweker"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "info@kwkr.be",
+              "contactType": "bookings",
+              "availableLanguage": ["nl", "en"]
+            }
+          }
         ]
       }
     </script>
   </head>
   <body class='page-home'>
-    <a class='skip-link' href='#main'>Skip to content</a>
+    <a class='skip-link' href='#main'>Ga naar inhoud</a>
     <div class='noise' aria-hidden='true'></div>
     <header class='site-header'>
-      <nav class='nav container'>
-        <a class='logo' href='#'>
+      <nav class='nav container' aria-label='Hoofdmenu'>
+        <a class='logo' href='/'>
           <img
             class='logo-img'
             src='assets/de-kweker-belfort.svg'
+            width='52'
+            height='52'
+            loading='eager'
+            decoding='async'
             alt='De Kweker - Brugge (8000)'
           />
           <span class='logo-sub'><span class='accent'>Brugge (8000)</span></span>
@@ -86,7 +139,8 @@
         </button>
         <div id='nav-panel' class='nav-panel'>
           <div class='nav-links'>
-            <a href='#music'>Muziek</a>
+            <a href='#music' aria-current='page'>Muziek</a>
+            <a href='/media'>Media</a>
             <a href='#signature'>Bio</a>
             <a href='#studio'>Crew</a>
             <a href='#contact'>Contact</a>
@@ -108,6 +162,7 @@
           <div class='hero-actions'>
             <a class='btn primary' href='#contact'>Boek De Kweker</a>
             <a class='btn ghost' href='#music'>Luister</a>
+            <a class='btn ghost' href='/media'>Media</a>
           </div>
           <div class='release-note'>
             <span class='release-kicker'>Nieuwste release</span>
@@ -144,15 +199,15 @@
             </div>
           </div>
           <div class='soundwave' aria-hidden='true'>
-            <span style='--bar: 38'></span>
-            <span style='--bar: 62'></span>
-            <span style='--bar: 44'></span>
-            <span style='--bar: 70'></span>
-            <span style='--bar: 52'></span>
-            <span style='--bar: 80'></span>
-            <span style='--bar: 48'></span>
-            <span style='--bar: 66'></span>
-            <span style='--bar: 40'></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
           <div class='spray' aria-hidden='true'></div>
         </div>
@@ -261,12 +316,12 @@
           <div class='music-spot-media'>
             <div class='yt-wrap'>
               <iframe
-                src='https://www.youtube.com/embed/8Q0LB68kxRw'
+                src='https://www.youtube.com/embed/8Q0LB68kxRw?rel=0'
                 title='De Kweker - Lekt Em (officiele videoclip)'
-                frameborder='0'
+                loading='lazy'
                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
                 allowfullscreen
-                loading='lazy'
+                referrerpolicy='strict-origin-when-cross-origin'
               ></iframe>
             </div>
           </div>
@@ -280,12 +335,11 @@
             </div>
             <div class='spotify-embed'>
               <iframe
-                src='https://open.spotify.com/embed/artist/2v5Tuugqs8s4vaONc286EG?utm_source=generator'
-                width='100%'
-                frameborder='0'
-                allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
-                loading='lazy'
+                src='https://open.spotify.com/embed/artist/2v5Tuugqs8s4vaONc286EG?utm_source=generator&theme=0'
+                referrerpolicy='strict-origin-when-cross-origin'
                 title='De Kweker op Spotify'
+                loading='lazy'
+                allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
               ></iframe>
             </div>
           </div>
@@ -474,7 +528,7 @@
           <ul class='contact-list'>
             <li>
               <a
-                href='https://www.youtube.com/@De.kweker'
+                href='https://www.youtube.com/@De.Kweker'
                 target='_blank'
                 rel='noopener noreferrer'
                 >YouTube</a
@@ -509,6 +563,7 @@
       </div>
       <div class='footer-line container'>
         <span>Brugge (8000) - De Kweker</span>
+        <a class='footer-media' href='/media'>Media</a>
         <span class='footer-brand'>
           <span>Powered by</span>
           <a
@@ -521,8 +576,11 @@
             <img
               class='deeq-logo'
               src='assets/deeq-studio.svg'
+              width='84'
+              height='20'
               alt='DeeQ Studio'
               loading='lazy'
+              decoding='async'
             />
           </a>
           <span id='year'></span>
@@ -533,6 +591,20 @@
     <script src='script.js'></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
