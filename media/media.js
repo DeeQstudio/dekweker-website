@@ -1,5 +1,10 @@
 (() => {
-  const DATA_URL = '/assets/data/mentions.json';
+  const DATA_URLS = [
+    '/assets/data/mentions.json',
+    '/media/mentions.json',
+    './mentions.json'
+  ];
+
   const pressList = document.getElementById('press-list');
   const profileList = document.getElementById('profile-list');
   const countPress = document.getElementById('count-press');
@@ -139,6 +144,27 @@
     return li;
   };
 
+  const setUpdated = () => {
+    if (!updated) return;
+    const now = new Date();
+    updated.dateTime = now.toISOString();
+    updated.textContent = now.toLocaleDateString('nl-BE');
+  };
+
+  const renderItems = (items) => {
+    const press = items.filter((item) => item.type === 'press');
+    const profiles = items.filter((item) => item.type === 'profile');
+
+    pressList.replaceChildren(...press.map((item) => makePressItem(item)));
+    profileList.replaceChildren(...profiles.map((item) => makeProfileItem(item)));
+
+    if (countPress) countPress.textContent = String(press.length);
+    if (countProfile) countProfile.textContent = String(profiles.length);
+    if (countTotal) countTotal.textContent = String(items.length);
+
+    setUpdated();
+  };
+
   const setErrorState = () => {
     const message = document.createElement('li');
     message.className = 'sporen-empty';
@@ -146,40 +172,35 @@
       'Bronnen konden niet geladen worden. Probeer later opnieuw.';
     pressList.replaceChildren(message.cloneNode(true));
     profileList.replaceChildren(message);
+    if (updated) {
+      updated.textContent = 'onbekend';
+    }
   };
 
-  fetch(DATA_URL, { cache: 'no-store' })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Dataset niet beschikbaar');
+  const fetchMentions = async () => {
+    for (const url of DATA_URLS) {
+      try {
+        const response = await fetch(url, { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(`Dataset niet beschikbaar op ${url}`);
+        }
+        const items = await response.json();
+        if (!Array.isArray(items)) {
+          throw new Error(`Ongeldige dataset op ${url}`);
+        }
+        return items;
+      } catch (error) {
+        // Probeer volgende fallback URL.
       }
-      return response.json();
-    })
+    }
+    throw new Error('Geen enkele mentions dataset beschikbaar');
+  };
+
+  fetchMentions()
     .then((items) => {
-      if (!Array.isArray(items)) {
-        throw new Error('Ongeldige dataset');
-      }
-
-      const press = items.filter((item) => item.type === 'press');
-      const profiles = items.filter((item) => item.type === 'profile');
-
-      pressList.replaceChildren(...press.map((item) => makePressItem(item)));
-      profileList.replaceChildren(...profiles.map((item) => makeProfileItem(item)));
-
-      if (countPress) countPress.textContent = String(press.length);
-      if (countProfile) countProfile.textContent = String(profiles.length);
-      if (countTotal) countTotal.textContent = String(items.length);
-
-      if (updated) {
-        const now = new Date();
-        updated.dateTime = now.toISOString();
-        updated.textContent = now.toLocaleDateString('nl-BE');
-      }
+      renderItems(items);
     })
     .catch(() => {
       setErrorState();
-      if (updated) {
-        updated.textContent = 'onbekend';
-      }
     });
 })();
