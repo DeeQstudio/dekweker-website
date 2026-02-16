@@ -12,6 +12,55 @@
   const countTotal = document.getElementById('count-total');
   const updated = document.getElementById('sporen-updated');
 
+  const isValidHttpUrl = (value = '') => {
+    try {
+      const url = new URL(value);
+      return url.protocol === 'https:' || url.protocol === 'http:';
+    } catch {
+      return false;
+    }
+  };
+
+  const sanitizeItem = (item) => {
+    if (!item || typeof item !== 'object') return null;
+    const type = item.type === 'press' || item.type === 'profile' ? item.type : null;
+    if (!type) return null;
+
+    const title = typeof item.title === 'string' ? item.title.trim() : '';
+    const url = typeof item.url === 'string' ? item.url.trim() : '';
+    if (!title || !isValidHttpUrl(url)) return null;
+
+    if (type === 'press') {
+      const publisher =
+        typeof item.publisher === 'string' ? item.publisher.trim() : '';
+      if (!publisher) return null;
+      return { type, title, url, publisher };
+    }
+
+    const platform =
+      typeof item.platform === 'string' ? item.platform.trim() : '';
+    if (!platform) return null;
+    return { type, title, url, platform };
+  };
+
+  const normalizeItems = (items) => {
+    const seen = new Set();
+    const normalized = [];
+
+    items.forEach((rawItem) => {
+      const item = sanitizeItem(rawItem);
+      if (!item) return;
+
+      const dedupeKey = `${item.type}:${item.url.toLowerCase()}`;
+      if (seen.has(dedupeKey)) return;
+
+      seen.add(dedupeKey);
+      normalized.push(item);
+    });
+
+    return normalized;
+  };
+
   if (!pressList || !profileList) return;
 
   const normalizePlatform = (value = '') =>
@@ -144,14 +193,15 @@
     return li;
   };
 
-  const setUpdated = () => {
+  const setUpdated = (lastModifiedHeader = '') => {
     if (!updated) return;
-    const now = new Date();
-    updated.dateTime = now.toISOString();
-    updated.textContent = now.toLocaleDateString('nl-BE');
+    const parsed = lastModifiedHeader ? new Date(lastModifiedHeader) : new Date();
+    const date = Number.isNaN(parsed.getTime()) ? new Date() : parsed;
+    updated.dateTime = date.toISOString();
+    updated.textContent = date.toLocaleDateString('nl-BE');
   };
 
-  const renderItems = (items) => {
+  const renderItems = (items, lastModifiedHeader = '') => {
     const press = items.filter((item) => item.type === 'press');
     const profiles = items.filter((item) => item.type === 'profile');
 
@@ -162,7 +212,7 @@
     if (countProfile) countProfile.textContent = String(profiles.length);
     if (countTotal) countTotal.textContent = String(items.length);
 
-    setUpdated();
+    setUpdated(lastModifiedHeader);
   };
 
   const setErrorState = () => {
@@ -182,13 +232,16 @@
       try {
         const response = await fetch(url, { cache: 'no-store' });
         if (!response.ok) {
-          throw new Error(`Dataset niet beschikbaar op ${url}`);
+          throw new Error('Dataset niet beschikbaar op ' + url);
         }
         const items = await response.json();
         if (!Array.isArray(items)) {
-          throw new Error(`Ongeldige dataset op ${url}`);
+          throw new Error('Ongeldige dataset op ' + url);
         }
-        return items;
+        return {
+          items,
+          lastModifiedHeader: response.headers.get('last-modified') || ''
+        };
       } catch (error) {
         // Probeer volgende fallback URL.
       }
@@ -197,8 +250,13 @@
   };
 
   fetchMentions()
-    .then((items) => {
-      renderItems(items);
+    .then(({ items, lastModifiedHeader }) => {
+      const safeItems = normalizeItems(items);
+      if (!safeItems.length) {
+        setErrorState();
+        return;
+      }
+      renderItems(safeItems, lastModifiedHeader);
     })
     .catch(() => {
       setErrorState();
