@@ -12,6 +12,10 @@
   const countTotal = document.getElementById('count-total');
   const updated = document.getElementById('sporen-updated');
 
+  const FEATURED_PRESS_URLS = new Set([
+    'https://kw.be/nieuws/cultuur/muziek/joey-de-kweker-de-queecker-31-rapt-in-het-brugs-mijn-moeilijke-jeugd-vormt-een-belangrijke-inspiratie/'
+  ]);
+
   const isValidHttpUrl = (value = '') => {
     try {
       const url = new URL(value);
