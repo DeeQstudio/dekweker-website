@@ -2623,10 +2623,10 @@ body {
 .featured-article-media img {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 7;
-  max-height: 158px;
+  aspect-ratio: 4 / 3;
+  max-height: 176px;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center 24%;
 }
 
 .featured-article-copy {
@@ -2677,6 +2677,14 @@ body {
   }
 
   .featured-article-media img {
-    max-height: 190px;
+    max-height: 196px;
   }
 }
+
+.featured-article-credit {
+  margin: -0.12rem 0 0.1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.62);
+}
+
