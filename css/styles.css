@@ -2626,6 +2626,7 @@ body {
   aspect-ratio: 16 / 7;
   max-height: 158px;
   object-fit: cover;
+  object-position: center 40%;
 }
 
 .featured-article-copy {

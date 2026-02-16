@@ -65,6 +65,53 @@
     }
   }
 
+  const profileImage = document.querySelector('[data-artist-profile-img]');
+  if (profileImage instanceof HTMLImageElement) {
+    const spotifyArtistId = profileImage.dataset.spotifyArtistId || '';
+    const youtubeHandle = profileImage.dataset.youtubeHandle || '';
+
+    const endpoints = [];
+    if (spotifyArtistId) {
+      endpoints.push(
+        'https://open.spotify.com/oembed?url=https://open.spotify.com/artist/' +
+          encodeURIComponent(spotifyArtistId)
+      );
+    }
+    if (youtubeHandle) {
+      endpoints.push(
+        'https://www.youtube.com/oembed?url=https://www.youtube.com/@' +
+          encodeURIComponent(youtubeHandle) +
+          '&format=json'
+      );
+    }
+
+    const isHttpImage = (value = '') => /^https?:\/\//i.test(value);
+
+    const loadProfileImage = async () => {
+      for (const endpoint of endpoints) {
+        try {
+          const response = await fetch(endpoint, { cache: 'no-store' });
+          if (!response.ok) continue;
+
+          const payload = await response.json();
+          const thumbnail =
+            typeof payload?.thumbnail_url === 'string'
+              ? payload.thumbnail_url.trim()
+              : '';
+
+          if (!isHttpImage(thumbnail)) continue;
+
+          profileImage.src = thumbnail;
+          profileImage.classList.add('is-live-profile');
+          return;
+        } catch {
+          // probeer volgende endpoint
+        }
+      }
+    };
+
+    loadProfileImage();
+  }
   const reveals = document.querySelectorAll('.reveal');
   if (!reveals.length) return;
 
