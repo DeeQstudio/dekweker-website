@@ -130,6 +130,12 @@
     return meta;
   };
 
+  const normalizeComparableUrl = (value = '') =>
+    String(value || '').trim().replace(/\/?$/, '/').toLowerCase();
+
+  const isFeaturedPressItem = (item) =>
+    FEATURED_PRESS_URLS.has(normalizeComparableUrl(item?.url || ''));
+
   const makePressItem = (item) => {
     const li = document.createElement('li');
     li.className = 'sporen-item';
@@ -145,6 +151,15 @@
     a.textContent = item.title;
 
     main.appendChild(a);
+
+    if (isFeaturedPressItem(item)) {
+      li.classList.add('sporen-item-featured');
+      const featured = document.createElement('span');
+      featured.className = 'sporen-featured-tag';
+      featured.textContent = 'Uitgelicht';
+      main.appendChild(featured);
+    }
+
     main.appendChild(makeMeta(item.publisher || 'Press'));
 
     li.appendChild(main);
