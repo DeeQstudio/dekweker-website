@@ -65,6 +65,81 @@
     }
   }
 
+  const eventsFeed = document.querySelector('[data-events-feed]');
+  if (eventsFeed) {
+    const escapeHtml = (value) =>
+      String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+    const renderEvents = (items) => {
+      if (!items.length) {
+        eventsFeed.innerHTML =
+          "<p class='events-empty'>Nieuwe data worden binnenkort toegevoegd.</p>";
+        return;
+      }
+
+      const markup = items
+        .map((item) => {
+          const title = escapeHtml(item.title || 'Live moment');
+          const when = escapeHtml(item.when || 'Datum volgt');
+          const location = item.location
+            ? `<p class='events-meta'>${escapeHtml(item.location)}</p>`
+            : '';
+
+          const links = Array.isArray(item.links)
+            ? item.links
+                .slice(0, 3)
+                .map((link) => {
+                  const label = escapeHtml(link.label || 'Link');
+                  const url = escapeHtml(link.url || '#');
+                  return `<a href='${url}' target='_blank' rel='noopener noreferrer'>${label}</a>`;
+                })
+                .join('')
+            : '';
+
+          const linksBlock = links
+            ? `<div class='events-item-links'>${links}</div>`
+            : "<p class='events-meta'>Info volgt binnenkort.</p>";
+
+          return `
+            <li class='events-item'>
+              <p class='events-date'>${when}</p>
+              <h3 class='events-title'>${title}</h3>
+              ${location}
+              ${linksBlock}
+            </li>
+          `;
+        })
+        .join('');
+
+      eventsFeed.innerHTML = `<ul class='events-list'>${markup}</ul>`;
+    };
+
+    const loadEvents = async () => {
+      try {
+        const response = await fetch('/api/events?limit=4', {
+          cache: 'no-store',
+        });
+
+        if (!response.ok) {
+          throw new Error('events_not_available');
+        }
+
+        const payload = await response.json();
+        renderEvents(Array.isArray(payload.events) ? payload.events : []);
+      } catch {
+        eventsFeed.innerHTML =
+          "<p class='events-error'>Events tijdelijk niet beschikbaar.</p>";
+      }
+    };
+
+    loadEvents();
+  }
+
   const reveals = document.querySelectorAll('.reveal');
   if (!reveals.length) return;
 

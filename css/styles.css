@@ -664,13 +664,102 @@ p {
   gap: 2.2rem;
 }
 
-.signature-grid {
+.events-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  align-items: center;
+  align-items: start;
 }
 
+.events-copy {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.events-copy h2 {
+  margin: 0;
+}
+
+.events-copy p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.events-feed {
+  padding-top: 0.2rem;
+}
+
+.events-loading,
+.events-empty,
+.events-error {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.events-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.events-item {
+  padding: 1rem 0 1.05rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  gap: 0.38rem;
+}
+
+.events-item:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.events-date {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 154, 60, 0.88);
+}
+
+.events-title {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: rgba(247, 244, 239, 0.96);
+}
+
+.events-meta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.events-item-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin-top: 0.22rem;
+}
+
+.events-item-links a {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 200, 145, 0.95);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 154, 60, 0.5);
+  padding-bottom: 0.1rem;
+}
+
+.events-item-links a:hover {
+  color: var(--accent-2);
+  border-bottom-color: rgba(255, 154, 60, 0.85);
+}
 .bio-card {
   background: rgba(12, 10, 9, 0.78);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -2688,3 +2777,12 @@ body {
   color: rgba(255, 255, 255, 0.62);
 }
 
+@media (max-width: 700px) {
+  .events-layout {
+    gap: 1.4rem;
+  }
+
+  .events-item-links {
+    gap: 0.45rem 0.8rem;
+  }
+}
