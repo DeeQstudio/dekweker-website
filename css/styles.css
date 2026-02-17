@@ -1,17 +1,17 @@
 :root {
-  --bg: #0c0b0a;
-  --bg-alt: #14110e;
-  --bg-deep: #1a1511;
+  --bg: #120f0d;
+  --bg-alt: #1a1511;
+  --bg-deep: #231c16;
   --ink: #f7f1e9;
-  --ink-soft: rgba(255, 255, 255, 0.68);
+  --ink-soft: rgba(255, 255, 255, 0.76);
   --accent: #c97a3a;
   --accent-2: #ff9a3c;
   --accent-3: #f1c89c;
   --accent-hot: #ff9a3c;
-  --panel: rgba(14, 12, 10, 0.78);
-  --panel-dark: rgba(8, 7, 6, 0.9);
+  --panel: rgba(18, 14, 11, 0.68);
+  --panel-dark: rgba(12, 10, 8, 0.8);
   --border: rgba(255, 255, 255, 0.12);
-  --shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  --shadow: 0 26px 52px rgba(0, 0, 0, 0.34);
   --line-accent: rgba(255, 154, 60, 0.5);
   --radius-pill: 12px;
   --spotify-height: 352px;
@@ -47,8 +47,8 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.82;
-  filter: contrast(1.05) saturate(1.05);
+  opacity: 0.9;
+  filter: brightness(1.06) contrast(1.02) saturate(1.08);
   transform: scale(1.03);
   pointer-events: none;
 }
@@ -61,19 +61,19 @@ body::after {
   pointer-events: none;
   background:
     radial-gradient(ellipse at 50% 45%,
-      rgba(0, 0, 0, 0.15) 0%,
-      rgba(0, 0, 0, 0.35) 60%,
-      rgba(0, 0, 0, 0.55) 100%
+      rgba(0, 0, 0, 0.09) 0%,
+      rgba(0, 0, 0, 0.24) 60%,
+      rgba(0, 0, 0, 0.42) 100%
     ),
     radial-gradient(ellipse at top center,
-      rgba(255, 175, 120, 0.12) 0%,
+      rgba(255, 175, 120, 0.18) 0%,
       rgba(0, 0, 0, 0) 62%
     ),
     linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.04) 40%,
-      rgba(0, 0, 0, 0.2)
+      rgba(0, 0, 0, 0.06),
+      rgba(0, 0, 0, 0.02) 40%,
+      rgba(0, 0, 0, 0.12)
     );
 }
 
@@ -186,7 +186,7 @@ p {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(10, 10, 10, 0.6);
+  background: rgba(14, 12, 10, 0.5);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -761,7 +761,7 @@ p {
   border-bottom-color: rgba(255, 154, 60, 0.85);
 }
 .bio-card {
-  background: rgba(12, 10, 9, 0.78);
+  background: rgba(14, 11, 9, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 1.4rem;
   padding: 2.4rem;
@@ -851,7 +851,7 @@ p {
 }
 
 .metric {
-  background: rgba(12, 10, 9, 0.72);
+  background: rgba(14, 11, 9, 0.64);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;
   padding: 1.2rem;
@@ -872,7 +872,7 @@ p {
 }
 
 .signature-board {
-  background: rgba(10, 10, 10, 0.85);
+  background: rgba(14, 12, 10, 0.76);
   color: var(--ink);
   border-radius: 1.2rem;
   padding: 2rem;
@@ -930,7 +930,7 @@ p {
 }
 
 .release-card {
-  background: rgba(12, 10, 9, 0.72);
+  background: rgba(14, 11, 9, 0.64);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.2rem;
   overflow: hidden;
@@ -1000,7 +1000,7 @@ p {
   gap: 2rem;
   align-items: start;
   margin-bottom: 2rem;
-  background: rgba(12, 10, 9, 0.72);
+  background: rgba(14, 11, 9, 0.64);
   border: 1px solid rgba(255, 154, 60, 0.2);
   border-radius: 1.2rem;
   padding: 1.8rem;
@@ -1071,7 +1071,7 @@ p {
 }
 
 .music-card {
-  background: rgba(12, 10, 9, 0.72);
+  background: rgba(14, 11, 9, 0.64);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.2rem;
   padding: 1.6rem;
@@ -1188,7 +1188,7 @@ p {
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-left: 2px solid rgba(255, 154, 60, 0.45);
-  background: rgba(8, 7, 6, 0.55);
+  background: rgba(10, 9, 7, 0.46);
   position: relative;
   min-height: 320px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -1370,7 +1370,7 @@ p {
 .service-card,
 .event-card,
 .legal-card {
-  background: rgba(12, 10, 9, 0.72);
+  background: rgba(14, 11, 9, 0.64);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;
   padding: 1.6rem;
@@ -1397,7 +1397,7 @@ p {
 }
 
 .timeline-item {
-  background: rgba(12, 10, 9, 0.72);
+  background: rgba(14, 11, 9, 0.64);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;
   padding: 1.4rem;
@@ -1545,7 +1545,7 @@ p {
 }
 
 .contact {
-  background: rgba(10, 10, 10, 0.85);
+  background: rgba(14, 12, 10, 0.76);
   color: var(--ink);
   padding: 4rem 0 2rem;
   position: relative;
@@ -1646,7 +1646,7 @@ p {
   gap: 1rem;
   align-items: center;
   padding: 1rem 1.2rem;
-  background: rgba(12, 10, 9, 0.72);
+  background: rgba(14, 11, 9, 0.64);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;
 }
@@ -1669,7 +1669,7 @@ p {
 }
 
 .product-card {
-  background: rgba(12, 10, 9, 0.72);
+  background: rgba(14, 11, 9, 0.64);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.2rem;
   padding: 1.4rem;
@@ -2680,7 +2680,7 @@ body {
   }
 }
 .panel {
-  background: rgba(12, 10, 9, 0.78);
+  background: rgba(14, 11, 9, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 1.4rem;
   padding: 2rem;
