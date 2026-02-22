@@ -122,7 +122,7 @@
     const loadEvents = async () => {
       try {
         const response = await fetch('/api/events?limit=4', {
-          cache: 'no-store',
+          cache: 'default',
         });
 
         if (!response.ok) {

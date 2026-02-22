@@ -39,7 +39,7 @@
     <meta property='og:image:alt' content='Media van De Kweker - externe pers en officiele profielen' />
     <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:title' content='Media | De Kweker' />
-    
+    <meta name='twitter:url' content='https://www.kwkr.be/media/' />
     <meta
       name='twitter:description'
       content='Persstukken en officiele profielen van De Kweker, allemaal samen op een plek.'
@@ -55,12 +55,26 @@
     <link rel='icon' type='image/png' sizes='16x16' href='../favicon-16x16.png' />
     <link rel='apple-touch-icon' sizes='180x180' href='../apple-touch-icon.png' />
     <link rel='manifest' href='../site.webmanifest' />
+    <link rel='preload' as='image' href='/assets/bg-studio.webp' fetchpriority='high' />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
+      rel='preload'
+      as='style'
+      href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
+    />
+    <link
       href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
       rel='stylesheet'
+      media='print'
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href='https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap'
+        rel='stylesheet'
+      />
+    </noscript>
     <link rel='stylesheet' href='../css/styles.css' />
     <script type='application/ld+json'>
       {
@@ -298,6 +312,10 @@
       </div>
       <div class='footer-line container'>
         <span>Brugge (8000) - De Kweker</span>
+        <div class='footer-links'>
+          <a class='footer-media' href='/'>Home</a>
+          <a class='footer-media' href='/privacy/'>Privacy</a>
+        </div>
         <span class='footer-brand'>
           <span>Powered by</span>
           <a
@@ -331,8 +349,8 @@
       </div>
     </noscript>
 
-    <script src='/script.js'></script>
-    <script src='/media/media.js'></script>
+    <script src='/script.js' defer></script>
+    <script src='/media/media.js' defer></script>
   </body>
 </html>
 

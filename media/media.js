@@ -249,7 +249,7 @@
   const fetchMentions = async () => {
     for (const url of DATA_URLS) {
       try {
-        const response = await fetch(url, { cache: 'no-store' });
+        const response = await fetch(url, { cache: 'default' });
         if (!response.ok) {
           throw new Error('Dataset niet beschikbaar op ' + url);
         }

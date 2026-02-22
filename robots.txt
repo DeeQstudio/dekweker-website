@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /site.html
-Disallow: /maintenance.html
 Disallow: /context
 Disallow: /context/
+
 Sitemap: https://www.kwkr.be/sitemap.xml

@@ -247,7 +247,10 @@ p {
 
 .nav-links a {
   position: relative;
-  padding-bottom: 0.2rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0 0.2rem;
   color: rgba(255, 255, 255, 0.75);
 }
 
@@ -1610,6 +1613,12 @@ p {
   color: rgba(255, 154, 60, 0.8);
 }
 
+.footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 .footer-brand {
   display: inline-flex;
   align-items: center;
@@ -1930,6 +1939,18 @@ select {
   transform: translateY(0);
 }
 
+@supports (content-visibility: auto) {
+  .music,
+  .signature,
+  .studio,
+  .events,
+  .sporen-section,
+  .contact {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -2008,7 +2029,9 @@ select {
   }
 
   .nav-links a {
-    padding: 0.2rem 0;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.35rem 0;
   }
 
   .nav-cta {
@@ -2127,6 +2150,10 @@ select {
   .footer-line {
     flex-direction: column;
     gap: 0.4rem;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
   }
 
   .track {
