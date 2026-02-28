@@ -4,3 +4,4 @@ Disallow: /context
 Disallow: /context/
 
 Sitemap: https://www.kwkr.be/sitemap.xml
+Sitemap: https://www.kwkr.be/image-sitemap.xml
