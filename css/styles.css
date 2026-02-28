@@ -3285,3 +3285,156 @@ body {
     left: 0.6rem;
   }
 }
+/* Final polish pass */
+:root {
+  --section-space: clamp(3.6rem, 5.2vw, 5.2rem);
+}
+
+.music,
+.signature,
+.studio,
+.events {
+  padding: var(--section-space) 0;
+}
+
+.hero-copy .lead {
+  max-width: 39rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.flow-band {
+  padding: clamp(0.82rem, 1.5vw, 1.14rem) clamp(0.88rem, 1.75vw, 1.3rem);
+  background: linear-gradient(
+    90deg,
+    rgba(10, 9, 8, 0.48) 0%,
+    rgba(10, 9, 8, 0.2) 72%,
+    rgba(10, 9, 8, 0) 100%
+  );
+  border-top: 1px solid rgba(255, 154, 60, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.flow-band h2 {
+  margin-bottom: 0.55rem;
+}
+
+.flow-band p {
+  line-height: 1.52;
+}
+
+.release-note {
+  margin-top: 1.08rem;
+  padding: 0.62rem 0 0.54rem;
+}
+
+.bio-card--split {
+  grid-template-columns: minmax(0, 1.14fr) minmax(230px, 0.76fr);
+  gap: clamp(1rem, 1.8vw, 1.55rem);
+}
+
+.bio-content .eyebrow {
+  margin-bottom: 0.46rem;
+}
+
+.bio-content h2 {
+  margin-bottom: 0.72rem;
+}
+
+.bio-copy {
+  max-width: 49ch;
+  gap: 0.8rem;
+}
+
+.bio-copy p {
+  line-height: 1.55;
+}
+
+.bio-links {
+  margin-top: 1.2rem;
+}
+
+.bio-media {
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-top: 0.15rem;
+}
+
+.bio-slider {
+  width: min(100%, 315px);
+  border-radius: 1rem;
+}
+
+.bio-slide-caption {
+  top: 0.62rem;
+  bottom: auto;
+  right: auto;
+  max-width: calc(100% - 1.2rem);
+  padding: 0.24rem 0.52rem;
+  border-radius: 999px;
+  background: rgba(10, 8, 7, 0.56);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.bio-slider-controls {
+  left: auto;
+  right: 0.5rem;
+  bottom: 0.46rem;
+  width: auto;
+  justify-content: flex-end;
+  gap: 0.32rem;
+}
+
+.bio-slider-btn {
+  width: 1.68rem;
+  height: 1.68rem;
+  background: rgba(10, 8, 7, 0.58);
+}
+
+.bio-slider-dots {
+  padding: 0.24rem 0.4rem;
+}
+
+.bio-slider-dot {
+  width: 0.34rem;
+  height: 0.34rem;
+}
+
+.music-top {
+  margin-bottom: 1.35rem;
+}
+
+.music-spotlight {
+  margin-bottom: 1.65rem;
+}
+
+.studio-grid {
+  column-gap: 2.3rem;
+  row-gap: 2rem;
+}
+
+.contact-inner {
+  align-items: flex-start;
+}
+
+.contact-actions {
+  padding-top: 0.2rem;
+}
+
+@media (max-width: 980px) {
+  .bio-media {
+    max-width: 380px;
+    justify-content: flex-start;
+    padding-top: 0.55rem;
+  }
+
+  .bio-slider {
+    width: min(100%, 340px);
+  }
+
+  .bio-slide-caption {
+    font-size: 0.6rem;
+  }
+}
