@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /context
 Disallow: /context/
+Disallow: /mediakit
+Disallow: /mediakit/
 
 Sitemap: https://www.kwkr.be/sitemap.xml
 Sitemap: https://www.kwkr.be/image-sitemap.xml

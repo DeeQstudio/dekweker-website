@@ -20,7 +20,8 @@
     { "src": "^/site\\.html$", "status": 308, "headers": { "Location": "/" } },
     { "src": "^/maintenance\\.html$", "status": 308, "headers": { "Location": "/" } },
 
-    { "src": "^/context$", "dest": "/context/de-kweker-context.pdf", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive" } },
+    { "src": "^/context/?$", "status": 308, "headers": { "Location": "/context/de-kweker-context.pdf", "X-Robots-Tag": "noindex, nofollow, noarchive" } },
+    { "src": "^/mediakit/?$", "status": 308, "headers": { "Location": "/context/de-kweker-context.pdf", "X-Robots-Tag": "noindex, nofollow, noarchive" } },
     { "src": "^/context/(.*)$", "dest": "/context/$1", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive" } },
 
     { "src": "^/media$", "dest": "/media/index.html" },
