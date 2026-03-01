@@ -117,6 +117,21 @@
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path d="M16 5.4v8.4a2.6 2.6 0 1 1-1.6-2.4V7l-5.2 1.2v7a2.6 2.6 0 1 1-1.6-2.4V6.9z" fill="currentColor"/>
       </svg>
+    `,
+    bandcamp: `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M8.2 16.5h9.4L15.8 20H6.4z" fill="currentColor"/>
+        <path d="M10.1 8.2h9.4l-1.8 3.5H8.3z" fill="currentColor"/>
+        <path d="M6.4 12.3h9.4L14 15.8H4.6z" fill="currentColor"/>
+      </svg>
+    `,
+    musicbrainz: `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+        <circle cx="9.1" cy="10.2" r="1.2" fill="currentColor"/>
+        <circle cx="14.9" cy="10.2" r="1.2" fill="currentColor"/>
+        <path d="M8.6 14.2c1 .9 2.1 1.3 3.4 1.3s2.4-.4 3.4-1.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
     `
   };
 
@@ -124,6 +139,8 @@
     const key = normalizePlatform(platform);
     if (key === 'vibe' || key === 'vibeplatform') return 'vibe';
     if (key === 'applemusic') return 'applemusic';
+    if (key === 'bandcampcom') return 'bandcamp';
+    if (key === 'musicbrainzorg') return 'musicbrainz';
     return key;
   };
 
@@ -195,7 +212,7 @@
     action.className = `sporen-platform-link is-${key}`;
     action.href = item.url;
     action.target = '_blank';
-    action.rel = 'noopener noreferrer';
+    action.rel = 'me noopener noreferrer';
     action.setAttribute(
       'aria-label',
       `Open ${item.platform || 'platform'} profiel van De Kweker`
