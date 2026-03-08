@@ -5,6 +5,7 @@
 
   const STORE = {
     live: false,
+    checkoutEndpoint: '/api/create-checkout-session',
     currency: 'EUR',
     locale: 'nl-BE',
     vatRate: 0.21,
@@ -31,6 +32,7 @@
   const termsAccept = document.getElementById('terms-accept');
 
   let cart = loadCart();
+  let checkoutBusy = false;
 
   const formatter = new Intl.NumberFormat(STORE.locale, {
     style: 'currency',
@@ -48,14 +50,19 @@
   function loadCart() {
     try {
       const raw = localStorage.getItem('kweker-cart');
-      return raw ? JSON.parse(raw) : [];
-    } catch (error) {
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
       return [];
     }
   }
 
   function saveCart() {
-    localStorage.setItem('kweker-cart', JSON.stringify(cart));
+    try {
+      localStorage.setItem('kweker-cart', JSON.stringify(cart));
+    } catch {
+      // ignore storage errors
+    }
   }
 
   function getShipping(subtotal) {
@@ -68,6 +75,16 @@
       base = 0;
     }
     return roundMoney(base);
+  }
+
+  function getTotals() {
+    const subtotal = roundMoney(
+      cart.reduce((sum, item) => sum + item.price * item.qty, 0)
+    );
+    const shipping = getShipping(subtotal);
+    const vat = roundMoney(subtotal * STORE.vatRate);
+    const total = roundMoney(subtotal + shipping + vat);
+    return { subtotal, shipping, vat, total };
   }
 
   function openCart() {
@@ -93,41 +110,52 @@
   function updateCount() {
     if (!cartCountEl) return;
     const count = cart.reduce((sum, item) => sum + item.qty, 0);
-    cartCountEl.textContent = count;
+    cartCountEl.textContent = String(count);
   }
 
   function updateTotals() {
-    const subtotal = roundMoney(
-      cart.reduce((sum, item) => sum + item.price * item.qty, 0)
-    );
-    const shipping = getShipping(subtotal);
-    const vat = roundMoney(subtotal * STORE.vatRate);
-    const total = roundMoney(subtotal + shipping + vat);
+    const totals = getTotals();
+    if (subtotalEl) subtotalEl.textContent = formatMoney(totals.subtotal);
+    if (shippingEl) shippingEl.textContent = formatMoney(totals.shipping);
+    if (vatEl) vatEl.textContent = formatMoney(totals.vat);
+    if (totalEl) totalEl.textContent = formatMoney(totals.total);
+  }
 
-    if (subtotalEl) subtotalEl.textContent = formatMoney(subtotal);
-    if (shippingEl) shippingEl.textContent = formatMoney(shipping);
-    if (vatEl) vatEl.textContent = formatMoney(vat);
-    if (totalEl) totalEl.textContent = formatMoney(total);
+  function setCheckoutNote(message) {
+    if (checkoutNote) {
+      checkoutNote.textContent = message;
+    }
   }
 
   function updateCheckoutState() {
-    if (!checkoutBtn || !checkoutNote) return;
+    if (!checkoutBtn) return;
+
     const hasItems = cart.length > 0;
     const termsOk = termsAccept ? termsAccept.checked : true;
-
-    const canCheckout = STORE.live && hasItems && termsOk;
+    const canCheckout = STORE.live && hasItems && termsOk && !checkoutBusy;
     checkoutBtn.disabled = !canCheckout;
 
-    if (!STORE.live) {
-      checkoutNote.textContent =
-        'Prelaunch: checkout is locked until the store goes live.';
-    } else if (!hasItems) {
-      checkoutNote.textContent = 'Add items to continue.';
-    } else if (!termsOk) {
-      checkoutNote.textContent = 'Accept the terms to continue.';
-    } else {
-      checkoutNote.textContent = 'Ready for checkout.';
+    if (checkoutBusy) {
+      setCheckoutNote('Checkout voorbereiden...');
+      return;
     }
+
+    if (!STORE.live) {
+      setCheckoutNote('Prelaunch: checkout staat nog niet live.');
+      return;
+    }
+
+    if (!hasItems) {
+      setCheckoutNote('Voeg eerst items toe aan je cart.');
+      return;
+    }
+
+    if (!termsOk) {
+      setCheckoutNote('Gelieve eerst akkoord te gaan met de voorwaarden.');
+      return;
+    }
+
+    setCheckoutNote('Klaar om af te rekenen.');
   }
 
   function buildCartItem(item) {
@@ -164,7 +192,7 @@
 
     const qty = document.createElement('span');
     qty.className = 'qty';
-    qty.textContent = item.qty;
+    qty.textContent = String(item.qty);
 
     const plus = document.createElement('button');
     plus.type = 'button';
@@ -176,7 +204,7 @@
     const remove = document.createElement('button');
     remove.type = 'button';
     remove.className = 'link-btn';
-    remove.textContent = 'Remove';
+    remove.textContent = 'Verwijder';
     remove.dataset.action = 'remove';
     remove.dataset.key = item.key;
 
@@ -187,14 +215,13 @@
 
     li.appendChild(info);
     li.appendChild(controls);
-
     return li;
   }
 
   function renderCart() {
     if (!cartItemsEl || !cartEmptyEl) return;
-    cartItemsEl.innerHTML = '';
 
+    cartItemsEl.innerHTML = '';
     if (cart.length === 0) {
       cartEmptyEl.style.display = 'block';
     } else {
@@ -225,7 +252,7 @@
     renderCart();
   }
 
-  function updateItem(key, delta) {
+  function updateItemQty(key, delta) {
     cart = cart
       .map((item) => {
         if (item.key === key) {
@@ -249,32 +276,83 @@
     renderCart();
   }
 
-  document.querySelectorAll('[data-cart-open]').forEach((btn) => {
-    btn.addEventListener('click', openCart);
-  });
-
-  document.querySelectorAll('[data-cart-close]').forEach((btn) => {
-    btn.addEventListener('click', closeCart);
-  });
-
-  if (cartBackdrop) {
-    cartBackdrop.addEventListener('click', closeCart);
+  function buildCheckoutPayload() {
+    return {
+      items: cart.map((item) => ({
+        id: item.id,
+        name: `${item.name} - ${item.variant}`,
+        price: item.price,
+        qty: item.qty
+      }))
+    };
   }
 
-  document.querySelectorAll('.add-to-cart').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const card = btn.closest('.product-card');
+  async function startCheckout() {
+    if (!STORE.live || checkoutBusy) return;
+
+    const hasItems = cart.length > 0;
+    const termsOk = termsAccept ? termsAccept.checked : true;
+    if (!hasItems || !termsOk) {
+      updateCheckoutState();
+      return;
+    }
+
+    checkoutBusy = true;
+    updateCheckoutState();
+
+    try {
+      const response = await fetch(STORE.checkoutEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(buildCheckoutPayload())
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || !payload.url) {
+        throw new Error(payload.message || payload.error || 'checkout_failed');
+      }
+
+      window.location.href = payload.url;
+    } catch {
+      setCheckoutNote('Checkout tijdelijk niet beschikbaar. Probeer later opnieuw.');
+    } finally {
+      checkoutBusy = false;
+      updateCheckoutState();
+    }
+  }
+
+  document.querySelectorAll('[data-cart-open]').forEach((button) => {
+    button.addEventListener('click', openCart);
+  });
+
+  document.querySelectorAll('[data-cart-close]').forEach((button) => {
+    button.addEventListener('click', closeCart);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeCart();
+    }
+  });
+
+  document.querySelectorAll('.add-to-cart').forEach((button) => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.product-card');
       if (!card) return;
+
       const id = card.dataset.productId;
       const name = card.dataset.productName;
       const price = Number(card.dataset.productPrice || 0);
+      if (!id || !name || !Number.isFinite(price) || price <= 0) return;
+
       const sizeSelect = card.querySelector("select[name='size']");
       const colorSelect = card.querySelector("select[name='color']");
-
       const size = sizeSelect ? sizeSelect.value : 'One size';
       const color = colorSelect ? colorSelect.value : 'Standard';
-      const variant = size + ' / ' + color;
-      const key = id + '::' + variant;
+      const variant = `${size} / ${color}`;
+      const key = `${id}::${variant}`;
 
       addItem({
         key,
@@ -295,8 +373,8 @@
       const key = button.dataset.key;
       if (!action || !key) return;
 
-      if (action === 'increase') updateItem(key, 1);
-      if (action === 'decrease') updateItem(key, -1);
+      if (action === 'increase') updateItemQty(key, 1);
+      if (action === 'decrease') updateItemQty(key, -1);
       if (action === 'remove') removeItem(key);
     });
   }
@@ -314,11 +392,8 @@
 
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', (event) => {
-      if (!STORE.live) {
-        event.preventDefault();
-        return;
-      }
-      // Hook for payment provider integration.
+      event.preventDefault();
+      startCheckout();
     });
   }
 
