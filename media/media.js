@@ -138,6 +138,7 @@
   const platformToKey = (platform = '') => {
     const key = normalizePlatform(platform);
     if (key === 'vibe' || key === 'vibeplatform') return 'vibe';
+    if (key === 'kwartierwest' || key === 'kwartierwestbe') return 'vibe';
     if (key === 'applemusic') return 'applemusic';
     if (key === 'bandcampcom') return 'bandcamp';
     if (key === 'musicbrainzorg') return 'musicbrainz';
@@ -252,12 +253,7 @@
   };
 
   const setErrorState = () => {
-    const message = document.createElement('li');
-    message.className = 'sporen-empty';
-    message.textContent =
-      'Bronnen konden niet geladen worden. Probeer later opnieuw.';
-    pressList.replaceChildren(message.cloneNode(true));
-    profileList.replaceChildren(message);
+    // Keep server-rendered lists as fallback when fetch fails.
     if (updated) {
       updated.textContent = 'onbekend';
     }

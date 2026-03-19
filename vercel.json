@@ -19,13 +19,16 @@
     { "src": "^/muziek/?$", "headers": { "Cache-Control": "no-store, no-cache, must-revalidate" } },
     { "src": "^/muziek/index\\.html$", "headers": { "Cache-Control": "no-store, no-cache, must-revalidate" } },
 
-    { "src": "^/site\\.html$", "status": 308, "headers": { "Location": "/" } },
-    { "src": "^/maintenance\\.html$", "status": 308, "headers": { "Location": "/" } },
+    { "src": "^/site\\.html$", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive, noimageindex" } },
+    { "src": "^/maintenance\\.html$", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive" } },
 
-    { "src": "^/context/?$", "status": 308, "headers": { "Location": "/context/de-kweker-context.pdf", "X-Robots-Tag": "noindex, nofollow, noarchive" } },
-    { "src": "^/mediakit/?$", "status": 308, "headers": { "Location": "/context/de-kweker-context.pdf", "X-Robots-Tag": "noindex, nofollow, noarchive" } },
+    { "src": "^/context/?$", "dest": "/context/index.html", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive" } },
     { "src": "^/context/(.*)$", "dest": "/context/$1", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive" } },
+    { "src": "^/mediakit/?$", "dest": "/mediakit/index.html", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive" } },
+    { "src": "^/mediakit/(.*)$", "dest": "/mediakit/$1", "headers": { "X-Robots-Tag": "noindex, nofollow, noarchive" } },
 
+    { "src": "^/de-kweker$", "dest": "/de-kweker/index.html" },
+    { "src": "^/de-kweker/$", "dest": "/de-kweker/index.html" },
     { "src": "^/media$", "dest": "/media/index.html" },
     { "src": "^/media/$", "dest": "/media/index.html" },
     { "src": "^/sporen$", "dest": "/media/index.html" },
@@ -33,7 +36,6 @@
     { "src": "^/privacy$", "dest": "/privacy/index.html" },
     { "src": "^/privacy/$", "dest": "/privacy/index.html" },
 
-    { "handle": "filesystem" },
-    { "src": "^(.*)$", "dest": "/index.html" }
+    { "handle": "filesystem" }
   ]
 }

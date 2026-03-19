@@ -17,7 +17,7 @@
     <title>Muziek van De Kweker | West-Vlaamse rap uit Brugge (8000)</title>
     <meta
       name='description'
-      content='Muziek van De Kweker uit Brugge (8000): Lekt Em, releases en directe embeds voor Spotify, YouTube, Apple Music en SoundCloud op een warme, overzichtelijke pagina.'
+      content='Muziekpagina van De Kweker met releases, clips en directe luisterlinks naar de officiele platformen.'
     />
     <meta name='author' content='De Kweker' />
     <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
@@ -28,7 +28,7 @@
     <meta property='og:title' content='Muziek van De Kweker | West-Vlaamse rap uit Brugge (8000)' />
     <meta
       property='og:description'
-      content='Muziek van De Kweker uit Brugge (8000): Lekt Em, releases en directe embeds voor Spotify, YouTube, Apple Music en SoundCloud op een warme, overzichtelijke pagina.'
+      content='Muziekpagina van De Kweker met releases, clips en directe luisterlinks naar de officiele platformen.'
     />
     <meta property='og:type' content='music.musician' />
     <meta property='og:site_name' content='De Kweker' />
@@ -44,7 +44,7 @@
     <meta name='twitter:title' content='Muziek van De Kweker | West-Vlaamse rap uit Brugge (8000)' />
     <meta
       name='twitter:description'
-      content='Muziek van De Kweker uit Brugge (8000): Lekt Em, releases en directe embeds voor Spotify, YouTube, Apple Music en SoundCloud op een warme, overzichtelijke pagina.'
+      content='Muziekpagina van De Kweker met releases, clips en directe luisterlinks naar de officiele platformen.'
     />
     <meta name='twitter:url' content='https://www.kwkr.be/muziek/' />
     <meta name='twitter:image' content='https://www.kwkr.be/assets/og-cover.jpg' />
@@ -86,53 +86,17 @@
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "MusicGroup",
-            "@id": "https://www.kwkr.be/#artist",
-            "name": "De Kweker",
-            "url": "https://www.kwkr.be/",
-            "genre": ["Hiphop", "Rap"],
-            "foundingLocation": {
-              "@type": "Place",
-              "name": "Brugge (8000), Belgie"
-            },
-            "sameAs": [
-              "https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG",
-              "https://www.youtube.com/@De.Kweker",
-              "https://soundcloud.com/dekweker",
-              "https://music.apple.com/be/artist/de-kweker/1747400203?l=nl",
-              "https://dekweker.bandcamp.com/"
-            ]
-          },
-          {
-            "@type": "MusicRecording",
-            "name": "Lekt Em",
-            "byArtist": { "@id": "https://www.kwkr.be/#artist" },
-            "url": "https://www.youtube.com/watch?v=8Q0LB68kxRw",
-            "inLanguage": "nl-BE"
-          },
-          {
-            "@type": "MusicRecording",
-            "name": "Alles of Niets",
-            "byArtist": { "@id": "https://www.kwkr.be/#artist" },
-            "inLanguage": "nl-BE"
-          },
-          {
-            "@type": "MusicRecording",
-            "name": "Wurggreep",
-            "byArtist": { "@id": "https://www.kwkr.be/#artist" },
-            "inLanguage": "nl-BE"
-          },
-          {
-            "@type": "MusicRecording",
-            "name": "verre alverwege",
-            "byArtist": { "@id": "https://www.kwkr.be/#artist" },
-            "inLanguage": "nl-BE"
-          },
-          {
             "@type": "CollectionPage",
             "@id": "https://www.kwkr.be/muziek/#page",
             "url": "https://www.kwkr.be/muziek/",
             "name": "Muziek van De Kweker",
+            "description": "Overzicht van releases, clips en luisterlinks van De Kweker.",
+            "isPartOf": {
+              "@id": "https://www.kwkr.be/#website"
+            },
+            "about": {
+              "@id": "https://www.kwkr.be/#artist"
+            },
             "inLanguage": "nl-BE"
           }
         ]

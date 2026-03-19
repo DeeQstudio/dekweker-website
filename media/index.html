@@ -16,7 +16,7 @@
     <title>Media en pers | De Kweker uit Brugge (8000) officieel</title>
     <meta
       name='description'
-      content='Media en pers van De Kweker uit Brugge (8000): externe artikels, officiele profielen en directe bronnen op een heldere pagina.'
+      content='Media en perspagina van De Kweker met externe artikels en officiele profiel-links.'
     />
     <meta name='author' content='De Kweker' />
     <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
@@ -27,7 +27,7 @@
     <meta property='og:title' content='Media en pers | De Kweker uit Brugge (8000) officieel' />
     <meta
       property='og:description'
-      content='Media en pers van De Kweker uit Brugge (8000): externe artikels, officiele profielen en directe bronnen op een heldere pagina.'
+      content='Media en perspagina van De Kweker met externe artikels en officiele profiel-links.'
     />
     <meta property='og:type' content='website' />
     <meta property='og:site_name' content='De Kweker' />
@@ -43,7 +43,7 @@
     <meta name='twitter:title' content='Media en pers | De Kweker uit Brugge (8000) officieel' />
     <meta
       name='twitter:description'
-      content='Media en pers van De Kweker uit Brugge (8000): externe artikels, officiele profielen en directe bronnen op een heldere pagina.'
+      content='Media en perspagina van De Kweker met externe artikels en officiele profiel-links.'
     />
     <meta name='twitter:url' content='https://www.kwkr.be/media/' />
     <meta name='twitter:image' content='https://www.kwkr.be/assets/og-cover.jpg' />
@@ -89,14 +89,14 @@
             "@id": "https://www.kwkr.be/media/#page",
             "name": "Media en pers | De Kweker uit Brugge (8000) officieel",
             "url": "https://www.kwkr.be/media/",
-            "description": "Media en pers van De Kweker uit Brugge (8000): externe artikels, officiele profielen en directe bronnen op een heldere pagina.",
-            "inLanguage": "nl-BE"
-          },
-          {
-            "@type": "ItemList",
-            "@id": "https://www.kwkr.be/media/#items",
-            "name": "Pers en officiele profielen van De Kweker",
-            "numberOfItems": 14
+            "description": "Media en perspagina van De Kweker met externe artikels en officiele profiel-links.",
+            "inLanguage": "nl-BE",
+            "isPartOf": {
+              "@id": "https://www.kwkr.be/#website"
+            },
+            "about": {
+              "@id": "https://www.kwkr.be/#artist"
+            }
           }
         ]
       }
@@ -150,34 +150,34 @@
           <p class='kicker'>Media</p>
           <h1>Pers en profielen van De Kweker.</h1>
           <p class='lead'>
-            Externe persstukken en officiele kanalen van De Kweker staan hier samen,
-            zodat je meteen de juiste bron vindt.
+            Hier vind je perslinks en officiele profielen.
+            Alles op een plek.
           </p>
           <div class='hero-actions'>
-            <a class='btn primary' href='#press'>Bekijk pers</a>
-            <a class='btn ghost' href='#profielen'>Bekijk profielen</a>
+            <a class='btn primary' href='#press'>Naar pers</a>
+            <a class='btn ghost' href='#profielen'>Naar profielen</a>
           </div>
         </div>
         <aside class='media-hero-stats' aria-label='Overzicht media'>
           <p class='kicker'>Overzicht</p>
-          <h3>Actuele bronset</h3>
+          <h3>Wat je hier vindt</h3>
           <div class='media-stats-grid'>
             <div class='media-stat'>
-              <strong id='count-press'>0</strong>
+              <strong id='count-press'>5</strong>
               <span>Press</span>
             </div>
             <div class='media-stat'>
-              <strong id='count-profile'>0</strong>
+              <strong id='count-profile'>9</strong>
               <span>Profielen</span>
             </div>
             <div class='media-stat'>
-              <strong id='count-total'>0</strong>
+              <strong id='count-total'>14</strong>
               <span>Totaal</span>
             </div>
           </div>
           <p class='muted'>
             Laatste update:
-            <time id='sporen-updated' datetime=''></time>
+            <time id='sporen-updated' datetime='2026-03-19'>19/03/2026</time>
           </p>
         </aside>
       </section>
@@ -203,8 +203,8 @@
             <p class='kicker'>Uitgelicht</p>
             <h2>Interview in Krant van West-Vlaanderen.</h2>
             <p class='muted'>
-              Recente coverage over De Kweker, zijn Brugse roots en hoe die lijn terugkomt in de muziek.
-              Foto door Davy Coghe.
+              Dit stuk gaat over de Brugse basis en hoe dat in de tracks zit.
+              Foto: Davy Coghe.
             </p>
             <a class='textLink' href='https://kw.be/nieuws/cultuur/muziek/joey-de-kweker-de-queecker-31-rapt-in-het-brugs-mijn-moeilijke-jeugd-vormt-een-belangrijke-inspiratie/' target='_blank' rel='noopener noreferrer'>Lees artikel</a>
           </div>
@@ -215,35 +215,148 @@
         <div class='section-head'>
           <p class='kicker'>Press</p>
           <h2>Externe vermeldingen</h2>
-          <p class='muted'>Artikels en publicaties waar De Kweker vermeld staat.</p>
+          <p class='muted'>Artikels en publicaties waar De Kweker in voorkomt.</p>
         </div>
-        <ul id='press-list' class='sporen-list' aria-live='polite'></ul>
+        <ul id='press-list' class='sporen-list' aria-live='polite'>
+          <li class='sporen-item'>
+            <div class='sporen-item-main'>
+              <a class='textLink' href='https://pokoemagazine.nl/de-kweker-verroader/' target='_blank' rel='noopener noreferrer'>De Kweker - V(err)oader</a>
+              <span class='sporen-source'>Pokoe Magazine</span>
+            </div>
+          </li>
+          <li class='sporen-item'>
+            <div class='sporen-item-main'>
+              <a class='textLink' href='https://pokoemagazine.nl/de-kweker-ft-king-skam-alles-of-niets/' target='_blank' rel='noopener noreferrer'>De Kweker ft. King Skam - Alles of Niets</a>
+              <span class='sporen-source'>Pokoe Magazine</span>
+            </div>
+          </li>
+          <li class='sporen-item'>
+            <div class='sporen-item-main'>
+              <a class='textLink' href='https://pokoemagazine.nl/de-kweker-moediger/' target='_blank' rel='noopener noreferrer'>De Kweker - Moed(ig)er</a>
+              <span class='sporen-source'>Pokoe Magazine</span>
+            </div>
+          </li>
+          <li class='sporen-item'>
+            <div class='sporen-item-main'>
+              <a class='textLink' href='https://pokoemagazine.nl/king-skam-ft-de-kweker-wurggreep/' target='_blank' rel='noopener noreferrer'>King Skam ft. De Kweker - Wurggreep</a>
+              <span class='sporen-source'>Pokoe Magazine</span>
+            </div>
+          </li>
+          <li class='sporen-item'>
+            <div class='sporen-item-main'>
+              <a class='textLink' href='https://kw.be/nieuws/cultuur/muziek/joey-de-kweker-de-queecker-31-rapt-in-het-brugs-mijn-moeilijke-jeugd-vormt-een-belangrijke-inspiratie/' target='_blank' rel='noopener noreferrer'>Joey "De Kweker" De Queecker (KW)</a>
+              <span class='sporen-source'>Krant van West-Vlaanderen</span>
+            </div>
+          </li>
+        </ul>
       </section>
 
       <section id='profielen' class='section-shell container reveal'>
         <div class='section-head'>
           <p class='kicker'>Profielen</p>
-          <h2>Officiele artiestkanalen</h2>
-          <p class='muted'>Directe links naar alle platformen waar De Kweker officieel actief is.</p>
+          <h2>Officiele kanalen</h2>
+          <p class='muted'>Rechtstreekse links naar de platformen die actief gebruikt worden.</p>
         </div>
-        <ul id='profile-list' class='sporen-list' aria-live='polite'></ul>
+        <ul id='profile-list' class='sporen-list' aria-live='polite'>
+          <li class='sporen-item sporen-item-profile'>
+            <div class='sporen-item-main'>
+              <p class='sporen-title'>De Kweker op VI.BE</p>
+              <p class='sporen-source'>VI.BE</p>
+            </div>
+            <a class='sporen-platform-link is-vibe' href='https://vi.be/platform/DeKweker' target='_blank' rel='me noopener noreferrer' aria-label='Open VI.BE profiel van De Kweker'>
+              <span class='sporen-platform-icon'></span>
+            </a>
+          </li>
+          <li class='sporen-item sporen-item-profile'>
+            <div class='sporen-item-main'>
+              <p class='sporen-title'>De Kweker op Spotify</p>
+              <p class='sporen-source'>Spotify</p>
+            </div>
+            <a class='sporen-platform-link is-spotify' href='https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG' target='_blank' rel='me noopener noreferrer' aria-label='Open Spotify profiel van De Kweker'>
+              <span class='sporen-platform-icon'></span>
+            </a>
+          </li>
+          <li class='sporen-item sporen-item-profile'>
+            <div class='sporen-item-main'>
+              <p class='sporen-title'>De Kweker op YouTube</p>
+              <p class='sporen-source'>YouTube</p>
+            </div>
+            <a class='sporen-platform-link is-youtube' href='https://www.youtube.com/@De.Kweker' target='_blank' rel='me noopener noreferrer' aria-label='Open YouTube profiel van De Kweker'>
+              <span class='sporen-platform-icon'></span>
+            </a>
+          </li>
+          <li class='sporen-item sporen-item-profile'>
+            <div class='sporen-item-main'>
+              <p class='sporen-title'>De Kweker op SoundCloud</p>
+              <p class='sporen-source'>SoundCloud</p>
+            </div>
+            <a class='sporen-platform-link is-soundcloud' href='https://soundcloud.com/dekweker' target='_blank' rel='me noopener noreferrer' aria-label='Open SoundCloud profiel van De Kweker'>
+              <span class='sporen-platform-icon'></span>
+            </a>
+          </li>
+          <li class='sporen-item sporen-item-profile'>
+            <div class='sporen-item-main'>
+              <p class='sporen-title'>De Kweker op Instagram</p>
+              <p class='sporen-source'>Instagram</p>
+            </div>
+            <a class='sporen-platform-link is-instagram' href='https://www.instagram.com/dekweker_/' target='_blank' rel='me noopener noreferrer' aria-label='Open Instagram profiel van De Kweker'>
+              <span class='sporen-platform-icon'></span>
+            </a>
+          </li>
+          <li class='sporen-item sporen-item-profile'>
+            <div class='sporen-item-main'>
+              <p class='sporen-title'>De Kweker op TikTok</p>
+              <p class='sporen-source'>TikTok</p>
+            </div>
+            <a class='sporen-platform-link is-tiktok' href='https://www.tiktok.com/@de.kweker' target='_blank' rel='me noopener noreferrer' aria-label='Open TikTok profiel van De Kweker'>
+              <span class='sporen-platform-icon'></span>
+            </a>
+          </li>
+          <li class='sporen-item sporen-item-profile'>
+            <div class='sporen-item-main'>
+              <p class='sporen-title'>De Kweker op Kwartier West</p>
+              <p class='sporen-source'>Kwartier West</p>
+            </div>
+            <a class='sporen-platform-link is-vibe' href='https://kwartierwest.be/pages/hiphop/artist/de-kweker' target='_blank' rel='me noopener noreferrer' aria-label='Open Kwartier West profiel van De Kweker'>
+              <span class='sporen-platform-icon'></span>
+            </a>
+          </li>
+          <li class='sporen-item sporen-item-profile'>
+            <div class='sporen-item-main'>
+              <p class='sporen-title'>De Kweker op Bandcamp</p>
+              <p class='sporen-source'>Bandcamp</p>
+            </div>
+            <a class='sporen-platform-link is-bandcamp' href='https://dekweker.bandcamp.com/' target='_blank' rel='me noopener noreferrer' aria-label='Open Bandcamp profiel van De Kweker'>
+              <span class='sporen-platform-icon'></span>
+            </a>
+          </li>
+          <li class='sporen-item sporen-item-profile'>
+            <div class='sporen-item-main'>
+              <p class='sporen-title'>De Kweker op MusicBrainz</p>
+              <p class='sporen-source'>MusicBrainz</p>
+            </div>
+            <a class='sporen-platform-link is-musicbrainz' href='https://musicbrainz.org/artist/f9fc6031-beef-42b2-97f4-f66845a6d557' target='_blank' rel='me noopener noreferrer' aria-label='Open MusicBrainz profiel van De Kweker'>
+              <span class='sporen-platform-icon'></span>
+            </a>
+          </li>
+        </ul>
       </section>
 
       <section id='contact' class='section-shell container reveal'>
         <div class='split'>
           <div class='music-block'>
             <p class='kicker'>Contact</p>
-            <h2>Vragen over media of bookings?</h2>
+            <h2>Pers of booking?</h2>
             <p class='muted'>
-              Voor persvragen, samenwerkingen en boekingen kan je rechtstreeks mailen.
+              Voor vragen of aanvragen: mail rechtstreeks.
             </p>
             <div class='hero-actions'>
               <a class='btn primary' href='mailto:info@kwkr.be'>info@kwkr.be</a>
             </div>
           </div>
           <div class='contact-card'>
-            <p class='kicker'>Snel links</p>
-            <h3>Belangrijkste kanalen</h3>
+            <p class='kicker'>Snelle links</p>
+            <h3>Kernkanalen</h3>
             <ul>
               <li><a href='https://www.youtube.com/@De.Kweker' target='_blank' rel='noopener noreferrer'>YouTube</a></li>
               <li><a href='https://open.spotify.com/artist/2v5Tuugqs8s4vaONc286EG?si=qxSTBIvlTvmpoofpAtg1ew' target='_blank' rel='noopener noreferrer'>Spotify</a></li>
@@ -260,8 +373,8 @@
       <div class='site-footer-grid'>
         <div>
           <p class='kicker'>Media</p>
-          <h3>Pers en officiele profielen op een vaste plek.</h3>
-          <p class='muted'>Deze pagina blijft de bron voor externe media en platformlinks.</p>
+          <h3>Pers en officiele profielen op een plek.</h3>
+          <p class='muted'>Dit blijft de vaste bron voor media en platformlinks.</p>
         </div>
         <div>
           <p class='kicker'>Site</p>

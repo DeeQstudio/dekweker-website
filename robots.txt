@@ -4,6 +4,8 @@ Disallow: /context
 Disallow: /context/
 Disallow: /mediakit
 Disallow: /mediakit/
+Disallow: /maintenance.html
+Disallow: /site.html
 
 Sitemap: https://www.kwkr.be/sitemap.xml
 Sitemap: https://www.kwkr.be/image-sitemap.xml
