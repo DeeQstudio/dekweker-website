@@ -1053,14 +1053,31 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 12px;
   overflow: hidden;
-  background:
-    radial-gradient(120% 100% at 50% 35%, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.92) 72%),
-    #000;
+  min-height: clamp(420px, 46vw, 700px);
+  isolation: isolate;
+}
+
+.official-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.62)),
+    url('/assets/portrait/bio/kwekerbio-1.jpg');
+  background-size: cover;
+  background-position: center 24%;
+  filter: grayscale(100%);
+  transform: scale(1.05);
+  opacity: 0.5;
+  z-index: 0;
 }
 
 .official-hero img {
-  width: 100%;
-  height: clamp(360px, 42vw, 620px);
+  position: relative;
+  z-index: 1;
+  width: auto;
+  max-width: min(86%, 720px);
+  height: clamp(380px, 44vw, 660px);
   display: block;
   object-fit: contain;
   object-position: center bottom;
@@ -1071,6 +1088,7 @@ h3 {
   position: absolute;
   left: 0.75rem;
   bottom: 0.75rem;
+  z-index: 2;
   margin: 0;
   padding: 0.34rem 0.58rem;
   color: var(--muted);
@@ -1956,8 +1974,13 @@ h3 {
     gap: 0.18rem;
   }
 
+  .official-hero {
+    min-height: clamp(420px, 108vw, 700px);
+  }
+
   .official-hero img {
-    height: clamp(380px, 95vw, 620px);
+    max-width: 92%;
+    height: clamp(400px, 102vw, 650px);
     object-position: center bottom;
   }
 
