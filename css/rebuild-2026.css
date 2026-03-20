@@ -1048,18 +1048,22 @@ h3 {
 .official-hero {
   margin: 0;
   position: relative;
+  display: grid;
+  place-items: center;
   border: 1px solid var(--line);
   border-radius: 12px;
   overflow: hidden;
-  background: #000;
+  background:
+    radial-gradient(120% 100% at 50% 35%, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.92) 72%),
+    #000;
 }
 
 .official-hero img {
   width: 100%;
-  height: clamp(290px, 34vw, 480px);
+  height: clamp(360px, 42vw, 620px);
   display: block;
-  object-fit: cover;
-  object-position: center 10%;
+  object-fit: contain;
+  object-position: center bottom;
   filter: grayscale(100%);
 }
 
@@ -1953,8 +1957,8 @@ h3 {
   }
 
   .official-hero img {
-    height: clamp(300px, 72vw, 430px);
-    object-position: center 12%;
+    height: clamp(380px, 95vw, 620px);
+    object-position: center bottom;
   }
 
   .section-shell {
