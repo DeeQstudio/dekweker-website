@@ -1056,11 +1056,10 @@ h3 {
 
 .official-hero img {
   width: 100%;
-  aspect-ratio: 16 / 7;
-  height: auto;
+  height: clamp(290px, 34vw, 480px);
   display: block;
   object-fit: cover;
-  object-position: center 28%;
+  object-position: center 10%;
   filter: grayscale(100%);
 }
 
@@ -1954,8 +1953,8 @@ h3 {
   }
 
   .official-hero img {
-    aspect-ratio: 4 / 5;
-    object-position: center 20%;
+    height: clamp(300px, 72vw, 430px);
+    object-position: center 12%;
   }
 
   .section-shell {
