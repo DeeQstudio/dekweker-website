@@ -1011,6 +1011,73 @@ h3 {
   color: var(--accent);
 }
 
+.page-official .official-intro {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.page-official .official-intro .split {
+  align-items: start;
+}
+
+.page-official .music-block dl {
+  margin: 0.25rem 0 0;
+  display: grid;
+  grid-template-columns: minmax(118px, auto) 1fr;
+  gap: 0.35rem 0.8rem;
+}
+
+.page-official .music-block dt {
+  margin: 0;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+.page-official .music-block dd {
+  margin: 0;
+  color: #f2e4d5;
+}
+
+.official-card {
+  gap: 0.85rem;
+}
+
+.official-hero {
+  margin: 0;
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.official-hero img {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: grayscale(100%);
+}
+
+.official-hero figcaption {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  margin: 0;
+  padding: 0.34rem 0.58rem;
+  color: var(--muted);
+  font-size: 0.77rem;
+  line-height: 1;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.56);
+}
+
 .site-footer {
   margin-top: clamp(2.5rem, 4.8vw, 5rem);
   padding-block: clamp(2rem, 3.4vw, 3.4rem) clamp(1rem, 2vw, 1.5rem);
@@ -1879,6 +1946,16 @@ h3 {
 
   .hero-media {
     min-height: 340px;
+  }
+
+  .page-official .music-block dl {
+    grid-template-columns: 1fr;
+    gap: 0.18rem;
+  }
+
+  .official-hero img {
+    aspect-ratio: 4 / 5;
+    object-position: center 20%;
   }
 
   .section-shell {
