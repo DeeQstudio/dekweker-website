@@ -5,15 +5,15 @@ import { siteUrl } from "@/lib/seo/site";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [releases, events] = await Promise.all([getReleases(), getEvents()]);
   const staticPaths = [
-    "", "/muziek", "/live", "/archief", "/media", "/de-kweker",
-    "/booking", "/contact", "/privacy", "/voorwaarden"
+    "/", "/muziek", "/live", "/media", "/de-kweker",
+    "/booking", "/privacy", "/voorwaarden"
   ];
 
   return [
     ...staticPaths.map((path) => ({
       url: `${siteUrl}${path}`,
-      changeFrequency: path === "" ? "weekly" as const : "monthly" as const,
-      priority: path === "" ? 1 : 0.7
+      changeFrequency: path === "/" ? "weekly" as const : "monthly" as const,
+      priority: path === "/" ? 1 : 0.7
     })),
     ...releases.map((release) => ({
       url: `${siteUrl}/muziek/${release.slug}`,

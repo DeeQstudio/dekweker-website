@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
@@ -42,6 +44,7 @@ export default async function ReleasePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
         <div className="detail-copy" data-reveal>
+          <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Muziek", path: "/muziek" }, { name: release.title, path: `/muziek/${release.slug}` }]} />
           <p className="eyebrow eyebrow-accent">{isFeature ? "Feature" : release.kind} / {release.releaseYear}</p>
           <h1>{release.title}</h1>
           <p className="lead">{release.description ?? `${release.title} van ${fullReleaseCredit(release)}.`}</p>
@@ -57,6 +60,7 @@ export default async function ReleasePage({ params }: { params: Promise<{ slug: 
             {release.links.map((link) => <a key={link.url} className="button button-secondary" href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>)}
             {release.videoUrl ? <a className="button button-secondary" href={release.videoUrl} target="_blank" rel="noopener noreferrer">{release.videoLabel ?? "Video"}</a> : null}
           </div>
+          <Link className="text-link" href="/de-kweker">Over De Kweker</Link>
         </div>
       </section>
     </div>

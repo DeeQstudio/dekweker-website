@@ -16,14 +16,18 @@ export function artistEntityGraph(artist: ArtistProfile) {
         "@id": ids.website,
         url: siteUrl,
         name: "De Kweker",
+        alternateName: "KWKR",
         inLanguage: "nl-BE",
         publisher: { "@id": ids.artist }
       },
       {
         "@type": "Person",
         "@id": ids.person,
-        name: artist.legalName ?? artist.name,
-        alternateName: artist.name,
+        name: artist.name,
+        alternateName: artist.legalName,
+        description: artist.shortBio,
+        jobTitle: "Rapper",
+        mainEntityOfPage: `${siteUrl}/de-kweker`,
         url: `${siteUrl}/de-kweker`,
         image: new URL(artist.portraitImage, siteUrl).toString(),
         homeLocation: {
@@ -36,6 +40,7 @@ export function artistEntityGraph(artist: ArtistProfile) {
         "@type": "MusicGroup",
         "@id": ids.artist,
         name: artist.name,
+        description: artist.shortBio,
         url: `${siteUrl}/de-kweker`,
         image: new URL(artist.heroImage, siteUrl).toString(),
         genre: ["Hip hop", "West-Vlaamse rap", "Belgian hip hop"],
@@ -76,6 +81,7 @@ export function releaseSchema(release: Release) {
   const common = {
     "@context": "https://schema.org",
     name: release.title,
+    description: release.description,
     url,
     datePublished: release.releaseDate,
     image: release.coverImage ? new URL(release.coverImage, siteUrl).toString() : undefined,
@@ -120,11 +126,28 @@ export function profilePageSchema(artist: ArtistProfile) {
     mainEntity: {
       "@id": ids.person,
       "@type": "Person",
-      name: artist.legalName ?? artist.name,
-      alternateName: artist.name,
+      name: artist.name,
+      alternateName: artist.legalName,
+      description: artist.shortBio,
+      url: `${siteUrl}/de-kweker`,
       image: new URL(artist.portraitImage, siteUrl).toString(),
       sameAs: artist.links.map((link) => link.url)
     }
+  };
+}
+
+export type BreadcrumbItem = { name: string; path: string };
+
+export function breadcrumbSchema(items: BreadcrumbItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: new URL(item.path, siteUrl).toString()
+    }))
   };
 }
 

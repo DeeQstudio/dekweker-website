@@ -49,7 +49,6 @@ export function SiteIntro() {
       </div>
       <div className="site-intro-meta">
         <span>De Kweker</span>
-        <span>51°12′ N / 3°13′ E</span>
         <span>Brugge, BE</span>
       </div>
     </div>

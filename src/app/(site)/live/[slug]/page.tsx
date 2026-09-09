@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
@@ -35,6 +37,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           </div>
         </div>
         <div className="detail-copy" data-reveal>
+          <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Live", path: "/live" }, { name: event.title, path: `/live/${event.slug}` }]} />
           <p className="eyebrow eyebrow-accent">Live / {event.status === "past" ? "archief" : event.status}</p>
           <h1>{event.title}</h1>
           <p className="lead">{event.description ?? `De Kweker live in ${event.city}.`}</p>
@@ -49,6 +52,7 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
           </div>
           {event.ticketUrl ? <a href={event.ticketUrl} target="_blank" rel="noopener noreferrer" className="button">Tickets</a> : null}
           {event.sourceUrl ? <a href={event.sourceUrl} target="_blank" rel="noopener noreferrer" className="button button-secondary">Officiële eventinfo</a> : null}
+          <Link className="text-link" href="/booking">De Kweker boeken</Link>
         </div>
       </section>
     </div>

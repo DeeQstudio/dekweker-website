@@ -53,7 +53,7 @@ for (const file of files) {
 if (totalBytes > 35 * 1024 * 1024) errors.push(`Repository payload exceeds 35 MiB release budget (${Math.round(totalBytes / 1024 / 1024)} MiB).`);
 
 const packageJson = JSON.parse(readFileSync(resolve(root, "package.json"), "utf8"));
-const allowedDependencies = new Set(["@vercel/analytics", "@vercel/speed-insights", "next", "react", "react-dom"]);
+const allowedDependencies = new Set(["@vercel/analytics", "@vercel/speed-insights", "next", "react", "react-dom", "gsap"]);
 for (const name of Object.keys(packageJson.dependencies ?? {})) if (!allowedDependencies.has(name)) errors.push(`Unexpected production dependency: ${name}`);
 if (packageJson.engines?.node !== "22.x") errors.push("Node engine must be pinned to the Vercel-supported 22.x line.");
 if (packageJson.devDependencies?.typescript !== "6.0.3") errors.push("TypeScript must remain pinned to 6.0.3 for the reviewed toolchain.");

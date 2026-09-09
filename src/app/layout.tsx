@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { defaultDescription, siteUrl } from "@/lib/seo/site";
 import { siteIntroBootstrap } from "@/lib/ui/site-intro";
 import "./globals.css";
+import "./experience.css";
 
 const shouldIndex = process.env.VERCEL_ENV ? process.env.VERCEL_ENV === "production" : process.env.NODE_ENV === "production";
 
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="nl-BE" suppressHydrationWarning>
+    <html lang="nl-BE" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: siteIntroBootstrap }} />
       </head>

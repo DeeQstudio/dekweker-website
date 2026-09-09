@@ -51,7 +51,7 @@ export function SiteMotion() {
           const rect = node.getBoundingClientRect();
           if (rect.bottom < -120 || rect.top > window.innerHeight + 120) continue;
           const center = rect.top + rect.height / 2;
-          const rel = (center - window.innerHeight / 2) / Math.max(1, window.innerHeight);
+          const rel = Math.max(-1, Math.min(1, (center - window.innerHeight / 2) / Math.max(1, window.innerHeight)));
           const amount = Number(node.dataset.depth || 18);
           node.style.setProperty("--depth-y", `${(-rel * amount).toFixed(2)}px`);
           node.style.setProperty("--depth-r", `${(rel * amount * 0.08).toFixed(2)}deg`);

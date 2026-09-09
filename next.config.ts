@@ -10,7 +10,7 @@ const contentSecurityPolicy = [
   "media-src 'self' https:",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
-  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+  `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://va.vercel-scripts.com`,
   "frame-src https://www.youtube-nocookie.com",
   "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com"
 ].join("; ");
@@ -32,6 +32,16 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: "www.kwkr.be" }],
         destination: "https://kwkr.be/:path*",
+        permanent: true
+      },
+      {
+        source: "/contact",
+        destination: "/booking",
+        permanent: true
+      },
+      {
+        source: "/archief",
+        destination: "/live",
         permanent: true
       },
       {

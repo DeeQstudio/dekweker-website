@@ -1,16 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import { BookingCueMark } from "@/components/PageMotionMarks";
 import { getEvents } from "@/lib/content/repository";
 import { pageMetadata } from "@/lib/seo/site";
+import { BookingComposer } from "@/components/BookingComposer";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Booking",
+  title: "De Kweker boeken | West-Vlaamse rapper uit Brugge",
   path: "/booking",
-  description: "Boek De Kweker voor shows, festivals, clubs, features en pers via info@kwkr.be."
+  description: "De Kweker boeken voor een clubshow, festival of support? Neem rechtstreeks contact op met de West-Vlaamse rapper uit Brugge. Ook voor features en pers."
 });
-
-const bookingMail = "mailto:info@kwkr.be?subject=Booking%20De%20Kweker&body=Naam%20organisatie%3A%0ADatum%3A%0ALocatie%3A%0AType%20event%3A%0ATiming%3A%0ABudget%3A%0AExtra%20info%3A";
 
 export default async function BookingPage() {
   const bookingImage = (await getEvents()).find((event) => event.slug === "dominus-mma-iv-2025")?.image;
@@ -19,20 +18,18 @@ export default async function BookingPage() {
       <section className="booking-page-hero" data-scroll-scene>
         {bookingImage ? <div className="booking-page-image" data-depth="26"><Image src={bookingImage} alt="De Kweker live op het podium" fill priority sizes="100vw" /></div> : null}
         <div className="booking-page-shade" aria-hidden="true" />
-        <BookingCueMark />
         <div className="booking-page-copy" data-reveal>
           <p className="eyebrow eyebrow-accent">Booking / shows / features / pers</p>
           <h1>DE KWEKER<br /><span>OP JOUW EVENT?</span></h1>
           <p>Voor clubshows, festivals, support, features en pers. Mail rechtstreeks naar info@kwkr.be.</p>
-          <a className="button" href={bookingMail}>Mail voor booking</a>
+          <a className="button" href="#aanvraag">Stel je aanvraag samen</a>
         </div>
       </section>
-      <section className="booking-mail-guide section">
-        <div className="section-heading" data-reveal>
-          <div><p className="eyebrow eyebrow-accent">Wat stuur je mee?</p><h2>STUUR DIT<br />MEE.</h2></div>
-          <div className="section-heading-aside"><p>Datum, locatie, type event, timing en een korte context. Als er al een budget of technische info is, mag die er meteen bij.</p></div>
-        </div>
-        <a className="booking-address" href={bookingMail}>info@kwkr.be</a>
+      <BookingComposer />
+      <section className="booking-notes">
+        <div><h2>Live</h2><p>West-Vlaamse rap op jouw podium. Het livearchief omvat shows in Brugge, Roeselare en Oostende.</p><Link className="text-link" href="/live">Optredens bekijken</Link></div>
+        <div><h2>Samenwerken</h2><p>Stuur je idee, een demo of luisterlink en de beoogde planning mee bij je aanvraag.</p><Link className="text-link" href="/muziek">De muziek beluisteren</Link></div>
+        <div><h2>Pers</h2><p>Vermeld voor een interview het medium, het onderwerp en je deadline. Beeld en eerdere artikels vind je bij media.</p><Link className="text-link" href="/media">Beeld &amp; pers</Link></div>
       </section>
     </div>
   );

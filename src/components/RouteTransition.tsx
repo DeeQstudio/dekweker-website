@@ -6,7 +6,7 @@ import { getRouteTransition, type RouteTransitionDescriptor } from "@/lib/ui/rou
 
 type TransitionPhase = "idle" | "entering" | "covered" | "leaving";
 
-const ENTER_MS = 560;
+const ENTER_MS = 380;
 const ROUTE_SETTLE_MS = 70;
 const FALLBACK_RELEASE_MS = 1600;
 
@@ -155,11 +155,9 @@ export function RouteTransition() {
       aria-hidden="true"
       onTransitionEnd={onTransitionEnd}
     >
-      <div className="route-transition-index">{descriptor.index}</div>
       <div className="route-transition-word">{descriptor.word}</div>
       <div className="route-transition-meta">
         <span>{descriptor.label}</span>
-        <span>51°12′ N / 3°13′ E</span>
         <span>Brugge, BE</span>
       </div>
     </div>

@@ -1,0 +1,267 @@
+/* Shared direction: photographic spreads, dimensional sleeves, clear controls. */
+:root { --paper: #e4dece; --experience-ease: cubic-bezier(.16, 1, .3, 1); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+button, input, textarea { font-family: inherit; }
+button { cursor: pointer; }
+body:has(dialog[open]) { overflow: hidden; }
+dialog { color: var(--paper); }
+dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
+.text-link, .button, .artist-inline-link { transition: color .2s, text-decoration-color .2s, background .2s; }
+.site-header .header-actions { display: flex; gap: 28px; }
+.explore-trigger { display: flex; align-items: center; gap: 12px; background: none; color: var(--paper); border: 0; min-height: 44px; padding: 8px 0; font-size: 12px; }
+.menu-glyph { display: grid; gap: 5px; width: 20px; }
+.menu-glyph i { height: 2px; width: 100%; background: currentColor; transition: transform .3s; }
+.explore-trigger:hover .menu-glyph i:first-child { transform: translateX(4px); }
+.explore-trigger:hover .menu-glyph i:last-child { transform: translateX(-4px); }
+.explore-dialog { position: fixed; inset: 0; margin: 0; border: 0; padding: 30px var(--pad); width: 100%; max-width: none; height: 100svh; max-height: none; background: #141411; }
+.explore-dialog[open] { display: grid; grid-template-rows: auto 1fr auto; gap: 30px; animation: menu-arrive .45s var(--experience-ease); }
+.explore-top, .explore-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.explore-top button, .photo-dialog button { min-height: 44px; padding: 8px 12px; background: none; color: inherit; border: 0; font-size: 14px; }
+.explore-top button:hover, .photo-dialog button:hover { color: var(--ember); }
+.explore-body { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 8vw; min-height: 0; }
+.explore-body nav { display: flex; flex-direction: column; align-items: start; }
+.explore-body nav a { font-family: "Bebas"; font-size: clamp(56px, 7.5vw, 130px); line-height: 1.02; letter-spacing: -.02em; transition: color .25s, transform .45s var(--experience-ease); }
+.explore-body nav a[data-active="true"] { color: var(--ember); transform: translateX(18px); }
+.explore-preview { position: relative; height: min(65vh, 680px); overflow: hidden; }
+.explore-preview img { object-fit: cover; opacity: 0; transform: scale(1.08); transition: opacity .4s, transform .8s var(--experience-ease); }
+.explore-preview img.is-active { opacity: 1; transform: scale(1); }
+.explore-preview > span { position: absolute; bottom: 0; inset-inline: 0; padding: 70px 20px 22px; background: linear-gradient(transparent, #080806d9); font-size: 14px; }
+.explore-bottom { padding-top: 16px; border-top: 1px solid var(--line); font-size: 12px; }
+@keyframes menu-arrive { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
+
+/* One cover interaction appears on home and in the discography. */
+.record-experience-section { background: var(--paper); color: var(--ink); padding: 50px var(--pad) 64px; overflow: hidden; }
+.record-explorer { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: 20px 7vw; padding-top: 35px; }
+.record-deck { position: relative; height: clamp(380px, 43vw, 690px); perspective: 1400px; isolation: isolate; touch-action: pan-y; }
+.record-object { --record-offset: 0; position: absolute; left: 9%; top: 8%; width: 72%; aspect-ratio: 1; padding: 0; background: none; border: 0; z-index: var(--record-order); transform: translateX(calc(var(--record-offset) * 34px)) translateY(calc(var(--record-offset) * -8px)) rotateY(-20deg) rotateZ(-5deg); transition: transform .75s var(--experience-ease), filter .6s; filter: brightness(.65); }
+.record-object.is-selected { transform: translateX(-10px) rotateY(-12deg) rotateZ(-4deg); filter: brightness(1); }
+.record-object.is-selected:hover { transform: translateX(-10px) translateY(-8px) rotateY(-4deg) rotateZ(-2deg); }
+.record-sleeve { position: absolute; inset: 0; display: block; transform-style: preserve-3d; transition: transform .85s var(--experience-ease); box-shadow: -3px 3px 0 #6b685e, -6px 6px 0 #999488, 0 32px 40px -18px #302a2390; }
+.record-object.is-flipped .record-sleeve { transform: rotateY(180deg); }
+.record-front, .record-back { position: absolute; inset: 0; display: block; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
+.record-front { background: var(--ink); }
+.record-front::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(105deg, transparent 12%, #ffffff14 36%, transparent 52%); box-shadow: inset 1px 0 0 #ffffff99, inset 6px 0 8px #00000025; }
+.record-front img { object-fit: cover; }
+.record-back { display: flex; flex-direction: column; justify-content: center; align-items: start; gap: 16px; padding: 10%; transform: rotateY(180deg); background: #24251f; color: var(--paper); text-align: left; }
+.record-back > span:first-child { font-family: "Bebas"; font-size: clamp(40px, 4.5vw, 72px); line-height: .95; }
+.record-back strong { font-size: clamp(14px, 1.4vw, 22px); font-weight: 500; }
+.record-back > span { font-size: 14px; }
+.record-back small { margin-top: auto; font-size: 11px; opacity: .7; }
+.record-info { animation: record-arrive .5s var(--experience-ease); }
+.record-info h2 { font-family: "Bebas"; font-size: clamp(68px, 7.5vw, 124px); line-height: .9; font-weight: 400; letter-spacing: -.025em; margin: 20px 0; overflow-wrap: anywhere; }
+.record-info .eyebrow { color: #655f51; }
+.record-credit { font-size: 15px; line-height: 1.65; color: #625b4f; max-width: 370px; }
+.record-listen { display: flex; flex-wrap: wrap; gap: 14px 26px; margin-top: 30px; }
+.record-listen a { display: inline-block; min-height: 44px; padding-block: 8px; font-size: clamp(22px, 2.2vw, 32px); letter-spacing: -.05em; border-bottom: 1px solid #a79b89; }
+.record-info .text-link { margin-top: 18px; }
+.record-info .video-dialog-trigger { display: block; width: fit-content; margin-top: 0; }
+.video-dialog { width: min(1200px, 95vw); padding: 16px; border: 1px solid var(--line); background: var(--ink); }
+.video-dialog > div { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 12px; font-size: 15px; }
+.video-dialog button { min-height: 44px; padding: 8px 12px; background: none; border: 0; color: var(--paper); }
+.video-dialog iframe { width: 100%; aspect-ratio: 16 / 9; display: block; border: 0; }
+.record-credit-toggle { display: block; padding: 12px 0; min-height: 44px; margin-top: 10px; border: 0; background: none; color: #625b4f; font-size: 12px; }
+.record-credit-toggle:hover, .record-info a:hover { color: #a02e0a; }
+.record-selector { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 24px; border-block: 1px solid #bdb4a2; }
+.record-selector button { position: relative; padding: 22px 16px; display: flex; flex-direction: column; align-items: start; gap: 8px; color: #716a5d; background: none; border: 0; text-align: left; transition: background .3s, color .3s; }
+.record-selector button + button { border-left: 1px solid #bdb4a2; }
+.record-selector button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.record-selector button:hover:not([aria-pressed="true"]) { background: #d3c9b6; color: var(--ink); }
+.record-selector span { font-size: clamp(16px, 1.7vw, 24px); letter-spacing: -.04em; }
+.record-selector small { font-size: 11px; }
+.record-explorer :focus-visible { outline-color: #962b08; }
+@keyframes record-arrive { from { opacity: .2; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* The same photographic treatment for gallery, archive and event pages. */
+.gallery-section { background: var(--paper); color: var(--ink); }
+.gallery-section .catalog-heading > p { color: #625b4f; }
+.gallery-section h2 { margin: 0; font: 400 clamp(64px, 7vw, 110px)/.95 "Bebas"; }
+.photo-gallery { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px 5vw; align-items: start; }
+.photo-print { display: block; padding: 0; border: 0; text-align: left; background: none; color: inherit; }
+.photo-print:nth-child(even) { margin-top: 100px; }
+.photo-print-image { display: block; position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #171915; }
+.photo-print:nth-child(3n) .photo-print-image { aspect-ratio: 4 / 3; }
+.photo-print img { object-fit: contain; transition: transform .8s var(--experience-ease); }
+.photo-print:hover img { transform: scale(1.035); }
+.photo-print-caption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; padding-top: 16px; }
+.photo-print-caption strong { font-size: 17px; font-weight: 500; }
+.photo-print-caption small { font-size: 12px; color: #625b4f; }
+.photo-dialog { inset: 0; width: 100%; max-width: none; height: 100svh; max-height: none; margin: 0; border: 0; padding: 16px var(--pad); background: #0c0c0a; }
+.photo-dialog[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 12px; animation: record-arrive .3s ease-out; }
+.photo-dialog-toolbar, .photo-dialog-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 13px; }
+.photo-dialog-image { position: relative; min-height: 0; }
+.photo-dialog-image img { object-fit: contain; }
+.photo-dialog-footer p { text-align: center; font-size: 14px; }
+.photo-dialog-footer small { display: block; color: var(--paper-muted); margin-top: 6px; font-size: 11px; }
+.clip-player { position: relative; aspect-ratio: 1; background: var(--ink); }
+.clip-player > a { position: absolute; inset: 0; display: block; }
+.clip-player img { object-fit: cover; }
+.clip-play { position: absolute; inset: auto 0 0; min-height: 58px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--ink); color: var(--paper); }
+.clip-play > span { font-size: 15px; text-decoration: underline; text-underline-offset: 4px; }
+.clip-play small { max-width: 45%; font-size: 11px; color: var(--paper-muted); }
+.clip-player iframe { height: 100%; width: 100%; border: 0; }
+.clip-close { position: absolute; top: 10px; right: 10px; min-height: 44px; padding: 8px 12px; background: var(--ink); color: var(--paper); border: 1px solid var(--line); }
+.clip-close span { padding-left: 15px; }
+.video-card-copy h3 { font-size: 22px; }
+.archive-heading { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 36px; }
+.archive-heading h2 { margin: 0; font: 400 clamp(64px, 7vw, 112px)/.9 "Bebas"; }
+.archive-filters { display: flex; gap: 8px; }
+.archive-filters button { min-height: 44px; padding: 8px 18px; border: 1px solid var(--line); background: transparent; color: var(--paper); font-size: 14px; }
+.archive-filters button[aria-pressed="true"] { background: var(--paper); color: var(--ink); }
+.archive-body { display: grid; grid-template-columns: 1fr 1.05fr; gap: 5vw; align-items: start; }
+.archive-preview { position: sticky; top: 100px; aspect-ratio: 4 / 5; background: #151510; }
+.archive-preview img { object-fit: contain; animation: record-arrive .4s ease-out; }
+.archive-preview p { position: absolute; inset: auto 0 0; margin: 0; padding: 40px 22px 20px; background: linear-gradient(transparent, #080806ee); font-size: 16px; }
+.archive-preview span { display: block; margin-top: 6px; color: var(--paper-muted); font-size: 12px; }
+.archive-rows > a { display: block; padding: 24px 12px 28px; border-top: 1px solid var(--line); transition: padding .4s var(--experience-ease), background .3s; }
+.archive-rows > a.is-active { padding-left: 28px; background: #181812; }
+.archive-rows time { color: var(--ember); font-size: 13px; }
+.archive-rows h3 { margin: 12px 0 10px; font-size: clamp(22px, 2.5vw, 36px); font-weight: 500; letter-spacing: -.04em; line-height: 1.15; }
+.archive-rows > a > span { font-size: 12px; color: var(--paper-muted); }
+
+/* Booking is an intentional task, with one clear finish. */
+.booking-composer { display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; padding: 90px var(--pad); background: var(--paper); color: var(--ink); scroll-margin-top: 80px; }
+.booking-compose-intro .eyebrow { color: #625b4f; }
+.booking-compose-intro h2 { font: 400 clamp(68px, 7vw, 112px)/.9 "Bebas"; margin: 24px 0 30px; }
+.booking-compose-intro > a { display: inline-block; font-size: clamp(24px, 3vw, 46px); letter-spacing: -.05em; text-decoration: underline; text-underline-offset: 7px; }
+.booking-compose-intro > p:last-child { max-width: 300px; font-size: 14px; color: #625b4f; line-height: 1.7; }
+.booking-intents { border: 0; padding: 0; margin: 0 0 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+.booking-intents legend { font-size: 14px; margin-bottom: 16px; }
+.booking-intents label { position: relative; }
+.booking-intents input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; cursor: pointer; }
+.booking-intents span { display: block; padding: 12px 16px; border: 1px solid #a79b89; font-size: 15px; transition: background .2s, color .2s; }
+.booking-intents input:checked + span { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.booking-intents input:focus-visible + span { outline: 2px solid #962b08; outline-offset: 3px; }
+.compose-field { display: block; margin-bottom: 26px; font-size: 13px; }
+.compose-field > small { color: #625b4f; margin-left: 6px; }
+.compose-field input, .compose-field textarea { display: block; width: 100%; max-width: 100%; margin-top: 10px; border: 0; border-bottom: 1px solid #a79b89; padding: 10px 0; color: var(--ink); background: transparent; border-radius: 0; font-size: 18px; line-height: 1.5; color-scheme: light; }
+.compose-field textarea { resize: vertical; }
+.compose-field input:focus, .compose-field textarea:focus { outline: 0; border-bottom: 2px solid var(--ink); }
+.compose-field input::placeholder, .compose-field textarea::placeholder { color: #777061; }
+.compose-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.compose-submit { display: inline-block; min-height: 54px; padding: 14px 24px; border: 0; background: var(--ink); color: var(--paper); font-size: 16px; transition: background .2s; }
+.compose-submit:hover { background: #a02e0a; }
+.compose-note { font-size: 12px; line-height: 1.7; color: #625b4f; }
+.booking-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6vw; padding: 72px var(--pad); }
+.booking-notes h2 { margin: 0 0 20px; font: 400 clamp(36px, 4vw, 60px)/1 "Bebas"; }
+.booking-notes p { color: var(--paper-muted); font-size: 15px; line-height: 1.7; }
+
+/* Page family: shared proportions, contrast and image treatment. */
+.home-page .home-hero.home-hero { min-height: 96svh; }
+.home-page .home-hero .home-hero-inner { min-height: calc(96svh - var(--header-safe-height)); }
+.home-page .home-hero .home-hero-title { font-size: clamp(130px, 15.5vw, 255px); letter-spacing: -.05em; }
+.home-page .home-hero-main { width: min(760px, 60vw); }
+.home-page .home-music { overflow: hidden; padding-top: 46px; }
+.home-page .music-section-top h2 { margin: 0; font: 400 clamp(44px, 5vw, 72px)/1 "Bebas"; }
+.home-page .music-section-top { border-bottom: 1px solid #bdb4a2; padding-bottom: 24px; }
+.home-page .home-feature { padding-top: 32px; }
+.music-page-hero, .live-page-hero, .media-page-hero { padding-top: calc(var(--header-safe-height) + 64px); }
+.music-page-hero > div, .live-page-hero > div, .media-page-hero > div { display: grid; grid-template-columns: 1.2fr .8fr; gap: 0 7vw; align-items: end; }
+.music-page-hero .eyebrow, .live-page-hero .eyebrow, .media-page-hero .eyebrow { grid-column: 1 / -1; }
+.music-page-hero .page-title, .live-page-hero .page-title, .media-page-hero .page-title { font-size: clamp(100px, 12vw, 190px); }
+.music-page-hero .page-intro, .live-page-hero .page-intro, .media-page-hero .page-intro { max-width: 390px; font-size: 17px; }
+.music-experience-page .catalog-block { padding-block: 64px; }
+.catalog-grid .release-card:nth-child(even) { margin-top: 40px; }
+.release-art { border: 0; }
+.release-art img { transition: transform .7s var(--experience-ease); }
+.release-card h3 a:hover { color: var(--ember); }
+.detail-stage:not(.event-detail-stage) { position: relative; gap: 7vw; }
+.detail-stage:not(.event-detail-stage) .detail-art-wrap { perspective: 1500px; }
+.detail-stage:not(.event-detail-stage) .detail-media { transform: rotateY(-10deg) rotateZ(-3deg); box-shadow: -4px 4px 0 #797367, 0 30px 65px #000; transition: transform .6s var(--experience-ease); }
+.detail-stage:not(.event-detail-stage) .detail-media:hover { transform: rotateY(0) rotateZ(0); }
+.detail-copy h1 { font-size: clamp(64px, 7vw, 112px); }
+.detail-copy .lead { font-size: 17px; line-height: 1.75; max-width: 650px; }
+.meta-stack { margin-block: 30px; }
+.meta-line { padding-block: 13px; }
+.event-detail-stage .detail-media { background: #151510; }
+.artist-page .artist-records { border-radius: 0; }
+.profile-links { display: flex; flex-wrap: wrap; gap: 8px 28px; border: 0; }
+.profile-links a:nth-child(n) { border: 0; padding: 10px 0; font-size: clamp(20px, 2.5vw, 36px); letter-spacing: -.04em; }
+.footer-wordmark { white-space: nowrap; font-size: clamp(90px, 19vw, 320px); line-height: .85; letter-spacing: -.035em; }
+.footer-wordmark span { color: var(--paper); -webkit-text-stroke: 0; }
+.site-footer { overflow: hidden; padding-top: 72px; }
+.footer-grid { margin-top: 60px; }
+
+@media (max-width: 1100px) {
+  .site-header .header-actions { display: flex; }
+  .record-explorer { gap: 20px 4vw; }
+  .record-deck { height: 46vw; }
+  .record-object { width: 78%; left: 3%; top: 10%; }
+  .record-info h2 { font-size: 72px; }
+  .home-page .home-hero .home-hero-title { font-size: 20vw; }
+  .home-page .home-hero-main { width: 86vw; }
+  .booking-composer { gap: 5vw; grid-template-columns: .85fr 1.15fr; }
+  .explore-body nav a { font-size: 9vw; }
+}
+@media (max-width: 760px) {
+  .site-header .header-actions { gap: 20px; }
+  .site-header .header-booking { display: none; }
+  .explore-trigger { font-size: 13px; }
+  .explore-dialog { padding: 20px var(--pad); }
+  .explore-body { grid-template-columns: 1fr; }
+  .explore-body nav a { font-size: clamp(58px, 15vw, 96px); }
+  .explore-preview { display: none; }
+  .explore-bottom { flex-wrap: wrap; gap: 12px; }
+  .record-experience-section { padding-top: 15px; padding-bottom: 36px; }
+  .record-explorer { grid-template-columns: 1fr; gap: 8px; padding-top: 16px; }
+  .record-deck { height: 91vw; max-height: 620px; }
+  .record-object { width: 73%; left: 9%; top: 12%; transform: translateX(calc(var(--record-offset) * 21px)) translateY(calc(var(--record-offset) * -7px)) rotateY(-18deg) rotateZ(-5deg); }
+  .record-object.is-selected { transform: translateX(-6px) rotateY(-10deg) rotateZ(-4deg); }
+  .record-info { padding: 0 2px; }
+  .record-info h2 { font-size: clamp(68px, 20vw, 110px); margin-block: 14px; }
+  .record-credit { margin-bottom: 0; }
+  .record-listen { margin-top: 14px; gap: 22px; }
+  .record-info .text-link { margin-top: 10px; }
+  .record-credit-toggle { display: inline-block; margin: 0 0 0 16px; }
+  .record-selector { grid-template-columns: 1fr 1fr; margin-top: 20px; }
+  .record-selector button { padding: 16px 12px; }
+  .record-selector button:nth-child(3) { border-left: 0; }
+  .record-selector button:nth-child(n+3) { border-top: 1px solid #bdb4a2; }
+  .record-selector span { font-size: 17px; }
+  .record-back > span:first-child { font-size: 42px; }
+  .record-back { gap: 12px; }
+  .record-back > span { font-size: 12px; }
+  .photo-gallery { grid-template-columns: 1fr; gap: 36px; }
+  .photo-print:nth-child(even) { width: 88%; margin: 0 0 0 auto; }
+  .photo-print-caption { flex-direction: column; }
+  .photo-dialog { padding-inline: 10px; }
+  .photo-dialog-footer { gap: 4px; }
+  .photo-dialog-footer p { font-size: 12px; }
+  .photo-dialog-footer small { display: none; }
+  .archive-body { grid-template-columns: 1fr; gap: 24px; }
+  .archive-preview { position: relative; top: auto; aspect-ratio: 4 / 3; }
+  .archive-rows > a { padding-block: 22px; }
+  .archive-rows h3 { font-size: 27px; }
+  .archive-heading h2 { font-size: 68px; }
+  .booking-composer { grid-template-columns: 1fr; padding-block: 52px; gap: 30px; }
+  .booking-notes { grid-template-columns: 1fr; gap: 32px; padding-block: 48px; }
+  .booking-compose-intro h2 { font-size: 76px; }
+  .booking-compose-intro > p:last-child { max-width: 100%; }
+  .booking-intents span { padding-inline: 12px; font-size: 14px; }
+  .compose-pair { gap: 16px; }
+  .compose-field input { min-width: 0; font-size: 16px; }
+  .home-page .home-hero .home-hero-title { font-size: 28vw; }
+  .home-page .home-hero-main { width: 100%; }
+  .home-page .home-hero .home-hero-inner { min-height: calc(100svh - var(--header-safe-height)); }
+  .home-page .home-music { padding-top: 30px; }
+  .home-page .music-section-top h2 { font-size: 44px; }
+  .music-page-hero > div, .live-page-hero > div, .media-page-hero > div { grid-template-columns: 1fr; }
+  .music-page-hero .page-title, .live-page-hero .page-title, .media-page-hero .page-title { font-size: clamp(86px, 27vw, 140px); }
+  .music-page-hero .page-intro, .live-page-hero .page-intro, .media-page-hero .page-intro { font-size: 15px; }
+  .catalog-grid .release-card:nth-child(even) { margin-top: 0; }
+  .detail-stage:not(.event-detail-stage) .detail-media { transform: rotateZ(-2deg); }
+  .detail-copy h1 { font-size: clamp(60px, 17vw, 92px); }
+  .site-footer { padding-top: 46px; }
+  .footer-wordmark { font-size: 21vw; }
+  .footer-grid { margin-top: 38px; }
+}
+@media (max-height: 550px) and (orientation: landscape) {
+  .explore-body nav { flex-direction: row; flex-wrap: wrap; gap: 15px 30px; }
+  .explore-body nav a { font-size: 48px; }
+  .explore-preview { display: none; }
+  .explore-body { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .record-object, .record-sleeve, .record-info, .explore-dialog[open], .photo-dialog[open], .archive-preview img { animation: none; transition: none; }
+  .record-object.is-selected:hover { transform: translateX(-10px) rotateY(-12deg) rotateZ(-4deg); }
+  .explore-body nav a, .photo-print img, .detail-stage:not(.event-detail-stage) .detail-media { transition: none; }
+}

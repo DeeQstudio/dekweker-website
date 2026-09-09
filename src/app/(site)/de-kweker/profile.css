@@ -1,0 +1,95 @@
+.artist-page { --artist-paper: #e4dece; }
+.artist-page .profile-hero { min-height: 88svh; }
+.artist-page .profile-hero-copy { padding-bottom: 150px; }
+.artist-biography { position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr); gap: clamp(36px, 7vw, 120px); padding: 0 var(--pad) 90px; background: var(--artist-paper); color: var(--ink); }
+.artist-portrait { position: relative; margin: -76px 0 0; align-self: start; }
+.artist-portrait > div { position: relative; aspect-ratio: 4 / 5; background: #232720; }
+.artist-portrait img { object-fit: cover; }
+.artist-portrait figcaption { display: flex; justify-content: space-between; gap: 16px; padding-top: 16px; font-size: 12px; }
+.artist-portrait figcaption span { color: #5c594f; }
+.artist-introduction { padding-top: 66px; }
+.artist-label { margin: 0 0 22px; font-size: 12px; }
+.artist-introduction h2 { margin: 0 0 32px; font-family: "Space", sans-serif; font-size: clamp(48px, 5.7vw, 98px); font-weight: 500; line-height: .98; letter-spacing: -.065em; }
+.artist-lead { max-width: 650px; margin: 0; font-size: clamp(20px, 1.9vw, 30px); line-height: 1.45; letter-spacing: -.035em; }
+.artist-biography-detail { display: grid; grid-template-columns: 1fr .8fr; gap: 30px; margin-top: 32px; }
+.artist-biography-detail p { margin: 0; max-width: 360px; font-size: 14px; line-height: 1.8; color: #514d43; }
+.artist-interview { display: flex; flex-direction: column; align-items: start; padding-left: 28px; border-left: 1px solid #b8b1a2; }
+.artist-interview > span:first-child { margin-bottom: 10px; font-size: 12px; color: #514d43; }
+.artist-interview strong { font-size: 19px; font-weight: 500; line-height: 1.25; letter-spacing: -.03em; }
+.artist-inline-link { display: inline-block; padding-block: 12px; min-height: 44px; font-size: 14px; line-height: 1.5; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.artist-inline-link:hover, .artist-interview:hover .artist-inline-link { text-decoration-thickness: 2px; }
+.artist-records { padding: 0 var(--pad) 90px; background: var(--artist-paper); color: var(--ink); }
+.artist-records-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; border-top: 1px solid #b8b1a2; padding-top: 40px; margin-bottom: 32px; }
+.artist-records h2 { font-family: "Bebas"; font-size: clamp(70px, 8vw, 128px); font-weight: 400; margin: 0; line-height: .9; }
+.artist-records-heading p { max-width: 380px; justify-self: end; margin: 0; font-size: 15px; line-height: 1.7; color: #514d43; }
+.artist-record-shelf { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 2.5vw, 42px); align-items: start; margin-bottom: 12px; }
+.artist-record { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 14px 8px; padding-bottom: 8px; }
+.artist-record:nth-child(even) { margin-top: 48px; }
+.artist-record-cover { position: relative; aspect-ratio: 1; grid-column: 1 / -1; box-shadow: 0 16px 20px -16px #544735; transition: transform .3s; }
+.artist-record-cover img { object-fit: cover; }
+.artist-record:hover .artist-record-cover { transform: translateY(-6px); }
+.artist-record h3 { margin: 0; font-size: clamp(16px, 1.7vw, 25px); line-height: 1.2; font-weight: 500; letter-spacing: -.04em; }
+.artist-record > span { font-size: 11px; color: #514d43; }
+.artist-live { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); align-items: center; padding-block: 90px; }
+.artist-live-copy { position: relative; z-index: 1; padding: 30px 0 30px var(--pad); }
+.artist-live .artist-label { color: var(--paper-muted); }
+.artist-live h2 { position: relative; width: max-content; max-width: 100%; margin: 0 0 30px; font-family: "Bebas"; font-size: clamp(74px, 8.8vw, 150px); font-weight: 400; line-height: .82; color: var(--ember); text-transform: uppercase; }
+.artist-live-copy > p:not(.artist-label) { max-width: 300px; padding-right: 22px; color: var(--paper-muted); font-size: 15px; line-height: 1.8; }
+.artist-live-image { position: relative; display: block; aspect-ratio: 4 / 3; background: #111; }
+.artist-live-image img { object-fit: contain; }
+.artist-live-image > span { position: absolute; bottom: 0; left: 0; right: 0; padding: 50px 24px 20px; background: linear-gradient(transparent, #080806eb); font-size: 14px; }
+.artist-live-image small { display: block; margin-top: 6px; color: var(--paper-muted); font-size: 12px; }
+.artist-connections { margin-inline: var(--pad); border-top: 1px solid var(--line); padding-block: 48px 80px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 60px; }
+.artist-connections h2 { font-size: clamp(26px, 2.7vw, 40px); font-weight: 500; letter-spacing: -.04em; margin: 0 0 20px; }
+.artist-connections p { max-width: 380px; font-size: 14px; color: var(--paper-muted); line-height: 1.8; }
+.artist-connections p a { text-decoration: underline; text-underline-offset: 3px; color: var(--paper); }
+.artist-socials { display: flex; flex-wrap: wrap; align-content: start; align-items: baseline; gap: 8px 28px; }
+.artist-socials a { padding-block: 8px; font-size: clamp(19px, 2.5vw, 34px); line-height: 1.25; letter-spacing: -.04em; }
+.artist-socials a:hover { color: var(--ember); }
+.artist-biography :focus-visible, .artist-records :focus-visible { outline-color: var(--ink); }
+@media (min-width: 1800px) {
+  .artist-biography, .artist-records { padding-inline: max(var(--pad), calc((100vw - 1640px) / 2)); }
+}
+@media (max-width: 1000px) {
+  .artist-biography { gap: 36px; grid-template-columns: 1fr 1.15fr; }
+  .artist-biography-detail { grid-template-columns: 1fr; gap: 24px; }
+  .artist-interview { padding-left: 0; border-left: 0; }
+  .artist-introduction { padding-top: 40px; }
+  .artist-introduction h2 { font-size: 6vw; }
+  .artist-record h3 { font-size: 17px; }
+  .artist-connections { gap: 36px; }
+}
+@media (max-width: 760px) {
+  .artist-page .profile-hero { min-height: 82svh; }
+  .artist-page .profile-hero-copy { padding-bottom: 110px; }
+  .artist-biography { grid-template-columns: 1fr; gap: 0; padding-bottom: 48px; }
+  .artist-portrait { width: 86%; margin-top: -52px; }
+  .artist-introduction { padding-top: 38px; }
+  .artist-introduction h2 { font-size: clamp(44px, 12vw, 78px); margin-bottom: 24px; }
+  .artist-lead { font-size: 23px; }
+  .artist-biography-detail { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .artist-biography-detail p { font-size: 13px; }
+  .artist-interview strong { font-size: 18px; }
+  .artist-records { padding-bottom: 50px; }
+  .artist-records-heading { grid-template-columns: 1fr; gap: 20px; }
+  .artist-records-heading p { justify-self: start; }
+  .artist-records h2 { font-size: 76px; }
+  .artist-record-shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 18px; }
+  .artist-record:nth-child(even) { margin-top: 32px; }
+  .artist-record { grid-template-columns: 1fr; gap: 8px; }
+  .artist-record > span { font-size: 12px; }
+  .artist-live { grid-template-columns: 1fr; padding-block: 48px; gap: 20px; }
+  .artist-live-copy { padding: 0 var(--pad); }
+  .artist-live h2 { font-size: clamp(76px, 21vw, 120px); }
+  .artist-live-copy > p:not(.artist-label) { max-width: 380px; }
+  .artist-connections { grid-template-columns: 1fr; gap: 20px; padding-block: 36px 48px; }
+  .artist-socials { gap: 8px 24px; }
+  .artist-socials a { font-size: 24px; }
+}
+@media (max-width: 380px) {
+  .artist-biography-detail { grid-template-columns: 1fr; }
+  .artist-lead { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .artist-record:hover .artist-record-cover { transform: none; }
+}

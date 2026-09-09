@@ -1,8 +1,9 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { MediaFrameMark } from "@/components/PageMotionMarks";
-import { getArtist, getEvents, getPress, getVideos } from "@/lib/content/repository";
+import { PhotoGallery } from "@/components/PhotoGallery";
+import { ClipPlayer } from "@/components/ClipPlayer";
+import { getArtist, getEvents, getPress, getVideos, getReleases } from "@/lib/content/repository";
 import { formatEventDate } from "@/lib/content/events";
 import { videoSchema } from "@/lib/seo/schema";
 import { pageMetadata } from "@/lib/seo/site";
@@ -14,14 +15,13 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function MediaPage() {
-  const [artist, events, press, videos] = await Promise.all([getArtist(), getEvents(), getPress(), getVideos()]);
+  const [artist, events, press, videos, releases] = await Promise.all([getArtist(), getEvents(), getPress(), getVideos(), getReleases()]);
   const mediaLead = events.find((event) => event.slug === "wijklanken-plukketuffer-2026");
   return (
     <div className="page-shell">
       {videos.map((video) => <JsonLd key={video.slug} data={videoSchema(video)} />)}
       <header className="page-hero media-page-hero" data-scroll-scene>
         <div data-reveal><p className="eyebrow eyebrow-accent">Media</p><h1 className="page-title">BEELD.<br />PERS.</h1><p className="page-intro">Videoclips, livebeelden, interviews en officiële kanalen.</p></div>
-        <MediaFrameMark />
       </header>
 
       {mediaLead?.image ? (
@@ -31,12 +31,14 @@ export default async function MediaPage() {
         </section>
       ) : null}
 
+      <section className="page-content gallery-section"><div className="catalog-heading"><h2>Beeldarchief</h2><p>Open een beeld om het op groot formaat te bekijken.</p></div><PhotoGallery photos={[{ src: artist.portraitImage, title: "De Kweker", caption: "Portret · Brugge" }, ...events.filter((event) => event.image && event.slug !== "villa-west-de-kweker-friends-2026").slice(0, 3).map((event) => ({ src: event.image!, title: event.title, caption: `${event.venue} · ${event.city}` }))]} /></section>
+
       <section className="page-content">
         <div className="catalog-heading" data-reveal><div><p className="eyebrow">Video</p><h2>KIJK.</h2></div><p>Officiële clips en video’s waarin De Kweker te horen of te zien is.</p></div>
         <div className="video-grid" data-reveal>
           {videos.map((video) => (
             <article key={video.slug} className="video-card">
-              <iframe src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`} title={video.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+              <ClipPlayer video={video} cover={releases.find((release) => release.videoUrl?.includes(video.youtubeId))?.coverImage ?? artist.pressImage} title={video.title} />
               <div className="video-card-copy"><p className="eyebrow">Video</p><h3>{video.title}</h3></div>
             </article>
           ))}
@@ -49,7 +51,7 @@ export default async function MediaPage() {
           {press[0] ? (
             <a className="press-lead" href={press[0].url} target="_blank" rel="noopener noreferrer">
               {press[0].image ? <Image src={press[0].image} alt="De Kweker in Krant van West-Vlaanderen" fill sizes="(max-width: 900px) 100vw, 62vw" /> : null}
-              <div className="press-lead-copy"><p className="eyebrow">{press[0].publisher}</p><h3>{press[0].title}</h3><span className="rule-link">Lees artikel</span></div>
+              <div className="press-lead-copy"><p className="eyebrow">{press[0].publisher}</p><h3>{press[0].title}</h3><span className="text-link">Lees artikel</span></div>
             </a>
           ) : null}
           <div className="press-list">
