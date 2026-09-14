@@ -33,7 +33,7 @@ describe("music platform links", () => {
     );
 
     expect(release?.coverImage).toBe(
-      "/assets/releases/lekt-em-cover.jpg"
+      "/assets/releases/lekt-em-cover-1600.jpg"
     );
 
     expect(release?.videoUrl).toBe(

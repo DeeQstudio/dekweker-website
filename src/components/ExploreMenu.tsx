@@ -19,7 +19,7 @@ export function ExploreMenu({ images }: { images: string[] }) {
   const [active, setActive] = useState(0);
   useEffect(() => { dialog.current?.close(); }, [pathname]);
   return <>
-    <button type="button" className="explore-trigger" onClick={() => dialog.current?.showModal()} aria-haspopup="dialog">Menu<span aria-hidden="true" className="menu-glyph"><i /><i /></span></button>
+    <button type="button" className="explore-trigger" onClick={(event) => { event.currentTarget.focus(); dialog.current?.showModal(); }} aria-haspopup="dialog">Menu<span aria-hidden="true" className="menu-glyph"><i /><i /></span></button>
     <dialog ref={dialog} className="explore-dialog" aria-label="Verken De Kweker">
       <div className="explore-top"><Link href="/" className="wordmark" onClick={() => dialog.current?.close()}>DE KWEKER</Link><button type="button" onClick={() => dialog.current?.close()}>Sluiten</button></div>
       <div className="explore-body"><nav aria-label="Verken de website">{destinations.map((item, index) => <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined} onMouseEnter={() => setActive(index)} onFocus={() => setActive(index)} onClick={() => dialog.current?.close()} data-active={index === active}>{item.title}</Link>)}</nav>

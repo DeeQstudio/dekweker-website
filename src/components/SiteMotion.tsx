@@ -31,7 +31,7 @@ export function SiteMotion() {
       }
       lastY = y;
 
-      if (!reduce) {
+      if (!reduce && finePointer) {
         for (const scene of scenes) {
           const rect = scene.getBoundingClientRect();
           const travel = rect.height + window.innerHeight;
@@ -67,19 +67,6 @@ export function SiteMotion() {
     window.addEventListener("resize", schedule, { passive: true });
     update();
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            (entry.target as HTMLElement).classList.add("is-in");
-            observer.unobserve(entry.target);
-          }
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -7%" }
-    );
-    document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((node) => observer.observe(node));
-
     const cleanupTilt: Array<() => void> = [];
     if (!reduce && finePointer) {
       document.querySelectorAll<HTMLElement>("[data-tilt]").forEach((node) => {
@@ -106,7 +93,6 @@ export function SiteMotion() {
     return () => {
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
-      observer.disconnect();
       cleanupTilt.forEach((fn) => fn());
       if (frame) cancelAnimationFrame(frame);
     };

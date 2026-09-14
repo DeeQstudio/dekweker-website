@@ -6,7 +6,26 @@ button { cursor: pointer; }
 body:has(dialog[open]) { overflow: hidden; }
 dialog { color: var(--paper); }
 dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
-.text-link, .button, .artist-inline-link { transition: color .2s, text-decoration-color .2s, background .2s; }
+/* Shared legibility and quiet interaction feedback. */
+body { line-height: 1.6; }
+.site-header { background: linear-gradient(#080806e6, #08080699 65%, #08080600); }
+:where(h1, h2, h3, p) { overflow-wrap: break-word; }
+:where(h1, h2, h3) { text-wrap: balance; }
+.page-title, .detail-copy h1, .booking-page-copy h1, .profile-hero-copy h1 { line-height: .98; }
+.section-heading h2, .catalog-heading h2 { line-height: .98; }
+.meta-line span:first-child, .release-index { font-size: 11px; }
+.release-index { padding: 5px 7px; background: #080806bf; }
+.release-card-copy p:last-child { line-height: 1.6; }
+.footer-links a { width: fit-content; min-height: 36px; display: inline-flex; align-items: center; }
+:where(.text-link, .button, .header-booking, .artist-inline-link) { text-underline-offset: .3em; }
+:where(.text-link, .button, .header-booking, .artist-inline-link):is(:hover, :focus-visible) { text-underline-offset: .5em; }
+:where(.footer-links a, .footer-meta a, .artist-socials a, .record-listen a, .release-card h3 a, .explore-bottom a) { transition: color .22s ease, border-color .22s ease, text-underline-offset .22s ease; }
+.record-listen a:is(:hover, :focus-visible) { border-color: currentColor; }
+.archive-filters button { transition: color .2s, background .2s, border-color .2s; }
+.archive-filters button:hover { border-color: var(--paper); }
+.catalog-grid { grid-template-columns: repeat(4, minmax(0, 320px)); gap: clamp(24px, 3vw, 48px); }
+.catalog-grid-features { grid-template-columns: repeat(3, minmax(0, 320px)); }
+.text-link, .button, .artist-inline-link, .header-booking { transition: color .2s, text-decoration-color .2s, text-underline-offset .2s, background .2s; }
 .site-header .header-actions { display: flex; gap: 28px; }
 .explore-trigger { display: flex; align-items: center; gap: 12px; background: none; color: var(--paper); border: 0; min-height: 44px; padding: 8px 0; font-size: 12px; }
 .menu-glyph { display: grid; gap: 5px; width: 20px; }
@@ -31,11 +50,11 @@ dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
 
 /* One cover interaction appears on home and in the discography. */
 .record-experience-section { background: var(--paper); color: var(--ink); padding: 50px var(--pad) 64px; overflow: hidden; }
-.record-explorer { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: 20px 7vw; padding-top: 35px; }
-.record-deck { position: relative; height: clamp(380px, 43vw, 690px); perspective: 1400px; isolation: isolate; touch-action: pan-y; }
-.record-object { --record-offset: 0; position: absolute; left: 9%; top: 8%; width: 72%; aspect-ratio: 1; padding: 0; background: none; border: 0; z-index: var(--record-order); transform: translateX(calc(var(--record-offset) * 34px)) translateY(calc(var(--record-offset) * -8px)) rotateY(-20deg) rotateZ(-5deg); transition: transform .75s var(--experience-ease), filter .6s; filter: brightness(.65); }
-.record-object.is-selected { transform: translateX(-10px) rotateY(-12deg) rotateZ(-4deg); filter: brightness(1); }
-.record-object.is-selected:hover { transform: translateX(-10px) translateY(-8px) rotateY(-4deg) rotateZ(-2deg); }
+.record-explorer { position: relative; width: min(100%, 1240px); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 24px clamp(32px, 5vw, 80px); padding-top: 40px; }
+.record-deck { position: relative; height: clamp(340px, 33vw, 460px); perspective: 1400px; isolation: isolate; touch-action: pan-y; }
+.record-object { --record-offset: 0; position: absolute; left: 6%; top: 8%; width: min(72%, 380px); aspect-ratio: 1; padding: 0; background: none; border: 0; z-index: var(--record-order); transform: translateX(calc(var(--record-offset) * 34px)) translateY(calc(var(--record-offset) * -8px)) rotate(-3deg); transition: transform .6s var(--experience-ease); }
+.record-object.is-selected { transform: translateX(-10px); }
+.record-object.is-selected:hover { transform: translate(-10px, -4px); }
 .record-sleeve { position: absolute; inset: 0; display: block; transform-style: preserve-3d; transition: transform .85s var(--experience-ease); box-shadow: -3px 3px 0 #6b685e, -6px 6px 0 #999488, 0 32px 40px -18px #302a2390; }
 .record-object.is-flipped .record-sleeve { transform: rotateY(180deg); }
 .record-front, .record-back { position: absolute; inset: 0; display: block; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
@@ -48,7 +67,7 @@ dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
 .record-back > span { font-size: 14px; }
 .record-back small { margin-top: auto; font-size: 11px; opacity: .7; }
 .record-info { animation: record-arrive .5s var(--experience-ease); }
-.record-info h2 { font-family: "Bebas"; font-size: clamp(68px, 7.5vw, 124px); line-height: .9; font-weight: 400; letter-spacing: -.025em; margin: 20px 0; overflow-wrap: anywhere; }
+.record-info h2 { font-family: "Bebas"; font-size: clamp(60px, 6vw, 96px); line-height: 1; font-weight: 400; letter-spacing: -.025em; margin: 20px 0; overflow-wrap: anywhere; }
 .record-info .eyebrow { color: #655f51; }
 .record-credit { font-size: 15px; line-height: 1.65; color: #625b4f; max-width: 370px; }
 .record-listen { display: flex; flex-wrap: wrap; gap: 14px 26px; margin-top: 30px; }
@@ -62,7 +81,7 @@ dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
 .record-credit-toggle { display: block; padding: 12px 0; min-height: 44px; margin-top: 10px; border: 0; background: none; color: #625b4f; font-size: 12px; }
 .record-credit-toggle:hover, .record-info a:hover { color: #a02e0a; }
 .record-selector { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 24px; border-block: 1px solid #bdb4a2; }
-.record-selector button { position: relative; padding: 22px 16px; display: flex; flex-direction: column; align-items: start; gap: 8px; color: #716a5d; background: none; border: 0; text-align: left; transition: background .3s, color .3s; }
+.record-selector button { position: relative; padding: 22px 16px; display: flex; flex-direction: column; align-items: start; gap: 8px; color: #595347; background: none; border: 0; text-align: left; transition: background .3s, color .3s; }
 .record-selector button + button { border-left: 1px solid #bdb4a2; }
 .record-selector button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .record-selector button:hover:not([aria-pressed="true"]) { background: #d3c9b6; color: var(--ink); }
@@ -148,7 +167,7 @@ dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
 /* Page family: shared proportions, contrast and image treatment. */
 .home-page .home-hero.home-hero { min-height: 96svh; }
 .home-page .home-hero .home-hero-inner { min-height: calc(96svh - var(--header-safe-height)); }
-.home-page .home-hero .home-hero-title { font-size: clamp(130px, 15.5vw, 255px); letter-spacing: -.05em; }
+.home-page .home-hero .home-hero-title { font-size: clamp(120px, min(13.5vw, 24svh), 216px); line-height: .92; letter-spacing: -.035em; }
 .home-page .home-hero-main { width: min(760px, 60vw); }
 .home-page .home-music { overflow: hidden; padding-top: 46px; }
 .home-page .music-section-top h2 { margin: 0; font: 400 clamp(44px, 5vw, 72px)/1 "Bebas"; }
@@ -164,9 +183,9 @@ dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
 .release-art { border: 0; }
 .release-art img { transition: transform .7s var(--experience-ease); }
 .release-card h3 a:hover { color: var(--ember); }
-.detail-stage:not(.event-detail-stage) { position: relative; gap: 7vw; }
+.detail-stage:not(.event-detail-stage) { position: relative; max-width: 1360px; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: clamp(36px, 6vw, 90px); }
 .detail-stage:not(.event-detail-stage) .detail-art-wrap { perspective: 1500px; }
-.detail-stage:not(.event-detail-stage) .detail-media { transform: rotateY(-10deg) rotateZ(-3deg); box-shadow: -4px 4px 0 #797367, 0 30px 65px #000; transition: transform .6s var(--experience-ease); }
+.detail-stage:not(.event-detail-stage) .detail-media { transform: none; box-shadow: 0 24px 60px #0006; transition: transform .6s var(--experience-ease); }
 .detail-stage:not(.event-detail-stage) .detail-media:hover { transform: rotateY(0) rotateZ(0); }
 .detail-copy h1 { font-size: clamp(64px, 7vw, 112px); }
 .detail-copy .lead { font-size: 17px; line-height: 1.75; max-width: 650px; }
@@ -182,17 +201,20 @@ dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
 .footer-grid { margin-top: 60px; }
 
 @media (max-width: 1100px) {
+  .catalog-grid, .catalog-grid-features { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .site-header .header-actions { display: flex; }
   .record-explorer { gap: 20px 4vw; }
-  .record-deck { height: 46vw; }
-  .record-object { width: 78%; left: 3%; top: 10%; }
-  .record-info h2 { font-size: 72px; }
+  .record-deck { height: 38vw; }
+  .record-object { width: 72%; left: 4%; top: 10%; }
+  .record-info h2 { font-size: clamp(48px, 6.2vw, 68px); }
   .home-page .home-hero .home-hero-title { font-size: 20vw; }
   .home-page .home-hero-main { width: 86vw; }
   .booking-composer { gap: 5vw; grid-template-columns: .85fr 1.15fr; }
   .explore-body nav a { font-size: 9vw; }
 }
 @media (max-width: 760px) {
+  .catalog-grid, .catalog-grid-features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .record-back { overflow-y: auto; }
   .site-header .header-actions { gap: 20px; }
   .site-header .header-booking { display: none; }
   .explore-trigger { font-size: 13px; }
@@ -203,15 +225,15 @@ dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
   .explore-bottom { flex-wrap: wrap; gap: 12px; }
   .record-experience-section { padding-top: 15px; padding-bottom: 36px; }
   .record-explorer { grid-template-columns: 1fr; gap: 8px; padding-top: 16px; }
-  .record-deck { height: 91vw; max-height: 620px; }
-  .record-object { width: 73%; left: 9%; top: 12%; transform: translateX(calc(var(--record-offset) * 21px)) translateY(calc(var(--record-offset) * -7px)) rotateY(-18deg) rotateZ(-5deg); }
-  .record-object.is-selected { transform: translateX(-6px) rotateY(-10deg) rotateZ(-4deg); }
+  .record-deck { height: min(86vw, 460px); width: min(100%, 520px); margin-inline: auto; }
+  .record-object { width: 73%; left: 9%; top: 12%; transform: translateX(calc(var(--record-offset) * 21px)) translateY(calc(var(--record-offset) * -7px)) rotate(-3deg); }
+  .record-object.is-selected { transform: translateX(-6px); }
   .record-info { padding: 0 2px; }
-  .record-info h2 { font-size: clamp(68px, 20vw, 110px); margin-block: 14px; }
+  .record-info h2 { font-size: clamp(56px, 16vw, 88px); margin-block: 14px; }
   .record-credit { margin-bottom: 0; }
   .record-listen { margin-top: 14px; gap: 22px; }
   .record-info .text-link { margin-top: 10px; }
-  .record-credit-toggle { display: inline-block; margin: 0 0 0 16px; }
+  .record-credit-toggle { display: block; margin: 0; }
   .record-selector { grid-template-columns: 1fr 1fr; margin-top: 20px; }
   .record-selector button { padding: 16px 12px; }
   .record-selector button:nth-child(3) { border-left: 0; }
@@ -248,7 +270,8 @@ dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
   .music-page-hero .page-title, .live-page-hero .page-title, .media-page-hero .page-title { font-size: clamp(86px, 27vw, 140px); }
   .music-page-hero .page-intro, .live-page-hero .page-intro, .media-page-hero .page-intro { font-size: 15px; }
   .catalog-grid .release-card:nth-child(even) { margin-top: 0; }
-  .detail-stage:not(.event-detail-stage) .detail-media { transform: rotateZ(-2deg); }
+  .detail-stage:not(.event-detail-stage) { grid-template-columns: 1fr; }
+  .detail-stage:not(.event-detail-stage) .detail-media { width: min(100%, 420px); transform: none; }
   .detail-copy h1 { font-size: clamp(60px, 17vw, 92px); }
   .site-footer { padding-top: 46px; }
   .footer-wordmark { font-size: 21vw; }
@@ -260,8 +283,15 @@ dialog::backdrop { background: rgb(0 0 0 / 85%); backdrop-filter: blur(8px); }
   .explore-preview { display: none; }
   .explore-body { grid-template-columns: 1fr; }
 }
+@media (max-width: 560px) {
+  .catalog-grid, .catalog-grid-features { grid-template-columns: minmax(0, 360px); justify-content: center; }
+  .compose-pair { grid-template-columns: 1fr; gap: 0; }
+}
+@media (hover: none) {
+  .record-object.is-selected:hover { transform: translateX(-6px); }
+}
 @media (prefers-reduced-motion: reduce) {
   .record-object, .record-sleeve, .record-info, .explore-dialog[open], .photo-dialog[open], .archive-preview img { animation: none; transition: none; }
-  .record-object.is-selected:hover { transform: translateX(-10px) rotateY(-12deg) rotateZ(-4deg); }
+  .record-object.is-selected:hover { transform: translateX(-10px); }
   .explore-body nav a, .photo-print img, .detail-stage:not(.event-detail-stage) .detail-media { transition: none; }
 }

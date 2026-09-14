@@ -29,7 +29,7 @@ export function RecordExplorer({ releases }: { releases: Release[] }) {
     }}>
       {releases.map((release, index) => <button type="button" key={release.slug} className={`record-object${index === active ? " is-selected" : ""}${index === active && credits ? " is-flipped" : ""}`} style={{ "--record-offset": index - active, "--record-order": releases.length - Math.abs(index - active) } as CSSProperties} onClick={() => index === active ? setCredits(!credits) : select(index)} aria-label={index === active ? `${credits ? "Toon cover" : "Bekijk credits"} van ${release.title}` : `Selecteer ${release.title}`} aria-pressed={index === active}>
         <span className="record-sleeve">
-          <span className="record-front">{release.coverImage ? <Image src={release.coverImage} alt={`Cover van ${release.title}`} fill sizes="(max-width: 760px) 72vw, 36vw" /> : <span>{release.title}</span>}</span>
+          <span className="record-front" aria-hidden={index === active && credits}>{release.coverImage ? <Image src={release.coverImage} alt={`Cover van ${release.title}`} fill quality={90} sizes="(max-width: 760px) 72vw, (max-width: 1100px) 33vw, 380px" /> : <span>{release.title}</span>}</span>
           <span className="record-back" aria-hidden={!(index === active && credits)}><span>{release.title}</span><strong>{fullReleaseCredit(release)}</strong>{release.producer ? <span>Productie: {release.producer}</span> : null}<span>{release.releaseYear}</span><small>Klik om de cover te bekijken</small></span>
         </span>
       </button>)}

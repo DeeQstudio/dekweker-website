@@ -317,8 +317,7 @@ main { overflow: clip; }
 .footer-studio strong { color: var(--paper); font-size: 10px; font-weight: 700; transition: color .2s ease; }
 .footer-studio:hover strong { color: var(--ember); }
 
-html[data-js="true"] [data-reveal] { opacity: 0; transform: translateY(30px); transition: opacity .78s var(--ease), transform .78s var(--ease); }
-html[data-js="true"] [data-reveal].is-in { opacity: 1; transform: none; }
+html[data-js="true"] [data-reveal] { opacity: 1; transform: none; }
 [data-depth] { will-change: transform; }
 
 @media (min-width: 1800px) {

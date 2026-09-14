@@ -39,8 +39,8 @@ export default async function ReleasePage({ params }: { params: Promise<{ slug: 
       <JsonLd data={releaseSchema(release)} />
       <section className="detail-stage" data-scroll-scene>
         <div className="detail-art-wrap" data-reveal>
-          <div className="detail-media" data-tilt>
-            {release.coverImage ? <Image src={release.coverImage} alt={`Cover van ${release.title}`} fill priority sizes="(max-width: 900px) 88vw, 520px" /> : <div className="release-art-fallback">8000</div>}
+          <div className="detail-media">
+            {release.coverImage ? <Image src={release.coverImage} alt={`Cover van ${release.title}`} fill preload quality={90} sizes="(max-width: 760px) 90vw, 420px" /> : <div className="release-art-fallback">8000</div>}
           </div>
         </div>
         <div className="detail-copy" data-reveal>

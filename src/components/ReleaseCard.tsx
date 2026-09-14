@@ -9,8 +9,8 @@ export function ReleaseCard({ release, priority = false }: { release: Release; p
 
   return (
     <article className="release-card">
-      <Link href={`/muziek/${release.slug}`} className="release-art" aria-label={`Open ${release.title}`} data-tilt>
-        {release.coverImage ? <Image src={release.coverImage} alt={`Cover van ${release.title}`} fill sizes="(max-width: 700px) 92vw, (max-width: 1300px) 31vw, 420px" priority={priority} /> : <div className="release-art-fallback">8000</div>}
+      <Link href={`/muziek/${release.slug}`} className="release-art" aria-label={`Open ${release.title}`}>
+        {release.coverImage ? <Image src={release.coverImage} alt={`Cover van ${release.title}`} fill quality={90} sizes="(max-width: 560px) 90vw, (max-width: 760px) 44vw, (max-width: 1100px) 30vw, 320px" preload={priority} /> : <div className="release-art-fallback">8000</div>}
         <span className="release-index">{release.releaseYear}</span>
       </Link>
       <div className="release-card-copy">
