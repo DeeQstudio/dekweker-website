@@ -265,7 +265,7 @@ main { overflow: clip; }
 .profile-hero-media img { object-fit: cover; object-position: center 35%; filter: grayscale(1) contrast(1.05); }
 .profile-hero-overlay { position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, rgba(8,8,6,.93), rgba(8,8,6,.4) 52%, rgba(8,8,6,.1)), linear-gradient(0deg, rgba(8,8,6,.75), transparent 50%); }
 .profile-hero-copy { width: min(100%, var(--content)); margin-inline: auto; padding: calc(var(--header-safe-height) + 100px) var(--pad) 72px; }
-.profile-hero-copy h1 { max-width: 5ch; margin: 14px 0 24px; font-family: "Bebas"; font-size: clamp(112px, 13vw, 218px); font-weight: 400; line-height: .66; letter-spacing: -.035em; }
+.profile-hero-copy h1 { width: fit-content; max-width: 100%; white-space: nowrap; margin: 14px 0 24px; font-family: "Bebas"; font-size: clamp(112px, 13vw, 218px); font-weight: 400; line-height: .66; letter-spacing: -.035em; }
 .profile-hero-copy > p:last-child { max-width: 560px; margin: 0; color: #ddd7cd; font-size: clamp(17px, 1.3vw, 21px); line-height: 1.5; }
 .profile-story-grid { display: grid; grid-template-columns: minmax(300px, 500px) minmax(0,1fr); gap: clamp(60px, 8vw, 140px); align-items: start; }
 .profile-portrait { position: sticky; top: 110px; aspect-ratio: 4 / 5; overflow: hidden; }
