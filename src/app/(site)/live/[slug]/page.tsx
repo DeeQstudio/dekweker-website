@@ -30,13 +30,13 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   return (
     <div className="page-shell">
       {structuredData ? <JsonLd data={structuredData} /> : null}
-      <section className="detail-stage event-detail-stage" data-scroll-scene>
-        <div className="detail-art-wrap" data-reveal>
+      <section className="detail-stage event-detail-stage">
+        <div className="detail-art-wrap">
           <div className="detail-media detail-media-event" data-depth="18">
             {event.image ? <Image src={event.image} alt={`De Kweker live tijdens ${event.title}`} fill priority sizes="(max-width: 900px) 92vw, 620px" /> : <div className="release-art-fallback">LIVE</div>}
           </div>
         </div>
-        <div className="detail-copy" data-reveal>
+        <div className="detail-copy">
           <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Live", path: "/live" }, { name: event.title, path: `/live/${event.slug}` }]} />
           <p className="eyebrow eyebrow-accent">Live / {event.status === "past" ? "archief" : event.status}</p>
           <h1>{event.title}</h1>

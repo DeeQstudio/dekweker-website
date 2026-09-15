@@ -13,7 +13,7 @@ export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
   if (!current) return null;
   return <>
     <div className="photo-gallery">
-      {photos.map((photo, index) => <button className="photo-print" type="button" key={photo.src} onClick={() => { setActive(index); dialog.current?.showModal(); }} aria-label={`Vergroot: ${photo.title}`}>
+      {photos.map((photo, index) => <button className="photo-print" type="button" key={photo.src} onClick={(event) => { event.currentTarget.focus(); setActive(index); dialog.current?.showModal(); }} aria-label={`Vergroot: ${photo.title}`}>
         <span className="photo-print-image"><Image src={photo.src} alt={photo.title} fill sizes="(max-width: 700px) 90vw, 44vw" /></span>
         <span className="photo-print-caption"><strong>{photo.title}</strong><small>{photo.caption ?? "Foto vergroten"}</small></span>
       </button>)}

@@ -11,6 +11,7 @@ export function VideoDialog({ url, title }: { url: string; title: string }) {
     <a className="text-link video-dialog-trigger" href={url} target="_blank" rel="noopener noreferrer" onClick={(event) => {
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
+      event.currentTarget.focus();
       setPlaying(true);
       dialog.current?.showModal();
     }}>Bekijk de videoclip</a>

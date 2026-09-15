@@ -37,13 +37,13 @@ export default async function ReleasePage({ params }: { params: Promise<{ slug: 
   return (
     <div className="page-shell">
       <JsonLd data={releaseSchema(release)} />
-      <section className="detail-stage" data-scroll-scene>
-        <div className="detail-art-wrap" data-reveal>
+      <section className="detail-stage release-detail-stage">
+        <div className="detail-art-wrap">
           <div className="detail-media">
             {release.coverImage ? <Image src={release.coverImage} alt={`Cover van ${release.title}`} fill preload quality={90} sizes="(max-width: 760px) 90vw, 420px" /> : <div className="release-art-fallback">8000</div>}
           </div>
         </div>
-        <div className="detail-copy" data-reveal>
+        <div className="detail-copy">
           <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Muziek", path: "/muziek" }, { name: release.title, path: `/muziek/${release.slug}` }]} />
           <p className="eyebrow eyebrow-accent">{isFeature ? "Feature" : release.kind} / {release.releaseYear}</p>
           <h1>{release.title}</h1>

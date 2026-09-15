@@ -6,7 +6,6 @@ import { getArtist, getEvents, getPress, getReleases } from "@/lib/content/repos
 import { isPrimaryReleaseForSiteArtist } from "@/lib/content/release-credit";
 import { profilePageSchema } from "@/lib/seo/schema";
 import { pageMetadata } from "@/lib/seo/site";
-import "./profile.css";
 
 export const metadata: Metadata = pageMetadata({
   title: "Over De Kweker | West-Vlaamse rapper uit Brugge",
@@ -24,10 +23,10 @@ export default async function ArtistPage() {
   return (
     <div className="page-shell artist-page">
       <JsonLd data={profilePageSchema(artist)} />
-      <section className="profile-hero" data-scroll-scene>
+      <section className="profile-hero">
         <div className="profile-hero-media" data-depth="23"><Image src={artist.heroImage} alt="De Kweker in Brugge" fill priority sizes="100vw" /></div>
         <div className="profile-hero-overlay" aria-hidden="true" />
-        <div className="profile-hero-copy" data-reveal><p className="eyebrow eyebrow-accent">De Kweker / Brugge 8000</p><h1>DE<br />KWEKER.</h1><p>{artist.tagline}</p></div>
+        <div className="profile-hero-copy"><p className="eyebrow eyebrow-accent">De Kweker / Brugge 8000</p><h1>DE<br />KWEKER.</h1><p>{artist.tagline}</p></div>
       </section>
 
       <section className="artist-biography" aria-labelledby="artist-name">

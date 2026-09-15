@@ -9,6 +9,7 @@ type TransitionPhase = "idle" | "entering" | "covered" | "leaving";
 const ENTER_MS = 380;
 const ROUTE_SETTLE_MS = 70;
 const FALLBACK_RELEASE_MS = 1600;
+const EXIT_FALLBACK_MS = 500;
 
 function isPlainInternalNavigation(event: MouseEvent, anchor: HTMLAnchorElement) {
   if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
@@ -39,6 +40,7 @@ export function RouteTransition() {
   const navigationTimerRef = useRef<number | null>(null);
   const releaseTimerRef = useRef<number | null>(null);
   const settleTimerRef = useRef<number | null>(null);
+  const exitTimerRef = useRef<number | null>(null);
 
   const setTransitionPhase = useCallback((next: TransitionPhase) => {
     phaseRef.current = next;
@@ -49,14 +51,18 @@ export function RouteTransition() {
     if (navigationTimerRef.current !== null) window.clearTimeout(navigationTimerRef.current);
     if (releaseTimerRef.current !== null) window.clearTimeout(releaseTimerRef.current);
     if (settleTimerRef.current !== null) window.clearTimeout(settleTimerRef.current);
+    if (exitTimerRef.current !== null) window.clearTimeout(exitTimerRef.current);
     navigationTimerRef.current = null;
     releaseTimerRef.current = null;
     settleTimerRef.current = null;
+    exitTimerRef.current = null;
   }, []);
 
   const leave = useCallback(() => {
     if (phaseRef.current === "idle" || phaseRef.current === "leaving") return;
     setTransitionPhase("leaving");
+    // A media preference change or interrupted CSS transition may skip transitionend.
+    exitTimerRef.current = window.setTimeout(() => setTransitionPhase("idle"), EXIT_FALLBACK_MS);
   }, [setTransitionPhase]);
 
   const navigate = useCallback((url: URL) => {
@@ -143,7 +149,11 @@ export function RouteTransition() {
   const onTransitionEnd = (event: TransitionEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget || event.propertyName !== "transform") return;
     if (phaseRef.current === "entering") setTransitionPhase("covered");
-    if (phaseRef.current === "leaving") setTransitionPhase("idle");
+    if (phaseRef.current === "leaving") {
+      if (exitTimerRef.current !== null) window.clearTimeout(exitTimerRef.current);
+      exitTimerRef.current = null;
+      setTransitionPhase("idle");
+    }
   };
 
   return (

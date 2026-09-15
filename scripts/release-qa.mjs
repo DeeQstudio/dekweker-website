@@ -1,10 +1,11 @@
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { extname, join, relative, resolve } from "node:path";
+import { readStyles } from "./styles.mjs";
 
 const root = process.cwd();
 const errors = [];
 const textExtensions = new Set([".ts", ".tsx", ".js", ".mjs", ".css", ".json", ".md", ".txt", ".bat"]);
-const generatedDirs = new Set(["node_modules", ".next", ".vercel", "coverage", ".git"]);
+const generatedDirs = new Set(["node_modules", ".next", ".vercel", "coverage", ".git", "playwright-report", "test-results"]);
 const dormantDirs = new Set(["drizzle", "sanity"]);
 const forbiddenFilePatterns = [/\.tsbuildinfo$/i, /\.log$/i, /\.zip$/i, /\.psd$/i, /\.ai$/i, /^\.env\.local$/i, /^\.env\.production$/i];
 const forbiddenSourceTerms = ["@neondatabase", "drizzle-orm", "next-sanity", "@sanity/", "stripe", "resend", "cloudflare.com/turnstile", "KWKR_COMMERCE_ENABLED", "KWKR_CONTENT_SOURCE"];
@@ -110,13 +111,13 @@ if (!nextConfig.includes('type: "host", value: "www.kwkr.be"') || !nextConfig.in
 }
 
 const header = readFileSync(resolve(root, "src/components/Header.tsx"), "utf8");
-const css = readFileSync(resolve(root, "src/app/globals.css"), "utf8");
+const css = readStyles(root).map((sheet) => sheet.css).join("\n");
 const transition = readFileSync(resolve(root, "src/lib/ui/route-transition.ts"), "utf8");
 const siteMotion = readFileSync(resolve(root, "src/components/SiteMotion.tsx"), "utf8");
 if (!/<Link\s+className="header-booking"\s+href="\/booking"/.test(header)) errors.push("Header booking CTA must route through /booking.");
 if (transition.includes('pathname === "/shop"') || transition.includes('pathname.startsWith("/shop/"')) errors.push("Removed shop choreography remains in route transitions.");
-if (!siteMotion.includes("usePathname")) errors.push("SiteMotion must re-register scenes on App Router pathname changes.");
-for (const required of ["safe-area-inset-top", "--viewport-h", "prefers-reduced-motion", 'html[data-js="true"] [data-reveal]', ".skip-link", ".route-transition", ".site-intro"]) {
+if (!siteMotion.includes("usePathname")) errors.push("SiteMotion must refresh depth elements on App Router pathname changes.");
+for (const required of ["safe-area-inset-top", "--viewport-h", "prefers-reduced-motion", ".skip-link", ".route-transition", ".site-intro"]) {
   if (!css.includes(required)) errors.push(`Responsive/accessibility safeguard missing from CSS: ${required}`);
 }
 if (!/\.live-feature-image img \{[^}]*object-fit: contain/s.test(css)) errors.push("Live editorial portrait image may be cropped in wide panels.");

@@ -18,8 +18,8 @@ export default async function MusicPage() {
 
   return (
     <div className="page-shell music-experience-page">
-      <header className="page-hero music-page-hero" data-scroll-scene>
-        <div data-reveal>
+      <header className="page-hero index-hero">
+        <div>
           <p className="eyebrow eyebrow-accent">Discografie</p>
           <h1 className="page-title">MUZIEK.</h1>
           <p className="page-intro">Van Moed(ig)er tot Lekt Em. De eigen tracks van De Kweker en de samenwerkingen.</p>
@@ -29,20 +29,20 @@ export default async function MusicPage() {
       <section className="record-experience-section" aria-label="Interactieve discografie"><RecordExplorer releases={ownReleases} /></section>
 
       <section className="page-content catalog-block">
-        <div className="catalog-heading" data-reveal>
+        <div className="catalog-heading">
           <div><h2>EIGEN RELEASES.</h2></div>
         </div>
-        <div className="catalog-grid" data-reveal>
+        <div className="catalog-grid">
           {ownReleases.map((release, index) => <ReleaseCard key={release.slug} release={release} priority={index < 2} />)}
         </div>
       </section>
 
       {features.length ? (
         <section className="page-content catalog-block catalog-secondary">
-          <div className="catalog-heading" data-reveal>
+          <div className="catalog-heading">
             <div><p className="eyebrow">Features</p><h2>OOK TE HOREN OP.</h2></div>
           </div>
-          <div className="catalog-grid catalog-grid-features" data-reveal>
+          <div className="catalog-grid catalog-grid-features">
             {features.map((release) => <ReleaseCard key={release.slug} release={release} />)}
           </div>
         </section>

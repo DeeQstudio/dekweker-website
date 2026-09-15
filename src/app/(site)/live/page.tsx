@@ -22,14 +22,14 @@ export default async function LivePage() {
 
   return (
     <div className="page-shell">
-      <header className="page-hero live-page-hero" data-scroll-scene>
-        <div data-reveal><p className="eyebrow eyebrow-accent">Live</p><h1 className="page-title">OP HET<br />PODIUM.</h1><p className="page-intro">Nieuwe data zodra ze publiek zijn. Voorbije shows blijven hier staan met beeld en context.</p></div>
+      <header className="page-hero index-hero">
+        <div><p className="eyebrow eyebrow-accent">Live</p><h1 className="page-title">OP HET<br />PODIUM.</h1><p className="page-intro">Nieuwe data zodra ze publiek zijn. Voorbije shows blijven hier staan met beeld en context.</p></div>
       </header>
 
       {lead?.image ? (
-        <Link className="live-feature" href={`/live/${lead.slug}`} data-scroll-scene>
+        <Link className="live-feature" href={`/live/${lead.slug}`}>
           <div className="live-feature-image" data-depth="22"><Image src={lead.image} alt={`De Kweker live tijdens ${lead.title}`} fill priority sizes="100vw" /></div>
-          <div className="live-feature-copy" data-reveal><p className="eyebrow eyebrow-accent">Laatste livebeeld</p><h2>{lead.title}</h2><p>{lead.appearanceType === "surprise" ? "Surprise act" : "Live"} · {lead.city}</p><span className="text-link">Bekijk moment</span></div>
+          <div className="live-feature-copy"><p className="eyebrow eyebrow-accent">Laatste livebeeld</p><h2>{lead.title}</h2><p>{lead.appearanceType === "surprise" ? "Surprise act" : "Live"} · {lead.city}</p><span className="text-link">Bekijk moment</span></div>
         </Link>
       ) : null}
 

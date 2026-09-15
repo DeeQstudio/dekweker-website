@@ -1,0 +1,175 @@
+/* Base: base rules, component states, then responsive variants. */
+
+@font-face {
+  font-family: "Bebas";
+  src: url("/assets/fonts/bebas-neue-latin.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space";
+  src: url("/assets/fonts/space-grotesk-latin.woff2") format("woff2");
+  font-display: swap;
+}
+
+:root {
+  --ink: #080806;
+  --paper-muted: #aaa69d;
+  --line: rgba(238, 233, 222, 0.16);
+  --ember: #ff5a1f;
+  --content: 1640px;
+  --pad: clamp(20px, 3.2vw, 64px);
+  --header-height: 76px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --viewport-h: 100svh;
+  --header-safe-height: calc(var(--header-height) + var(--safe-top));
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --paper: #e4dece;
+  --experience-ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--ink);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 280px;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "Space", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: .17;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  font: inherit;
+  font-family: inherit;
+}
+
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--ember);
+  color: var(--ink);
+}
+
+main {
+  overflow: clip;
+}
+
+:where(a, button, summary):focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 4px;
+}
+
+main:focus {
+  outline: none;
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+dialog {
+  color: var(--paper);
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 85%);
+  backdrop-filter: blur(8px);
+}
+
+:where(h1, h2, h3, p) {
+  overflow-wrap: break-word;
+}
+
+:where(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+:where(.text-link, .button, .header-booking, .artist-inline-link) {
+  text-underline-offset: .3em;
+}
+
+:where(.text-link, .button, .header-booking, .artist-inline-link):is(:hover, :focus-visible) {
+  text-underline-offset: .5em;
+}
+
+:where(.footer-links a, .footer-meta a, .artist-socials a, .record-listen a, .release-card h3 a, .explore-bottom a) {
+  transition: color .22s ease, border-color .22s ease, text-underline-offset .22s ease;
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --content: 1600px;
+    --pad: 64px;
+  }
+}
+
+@media (max-width: 1100px) {
+  :root {
+    --header-height: 68px;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --pad: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}

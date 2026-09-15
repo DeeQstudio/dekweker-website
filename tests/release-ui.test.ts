@@ -1,8 +1,10 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { readStyles } from "../scripts/styles.mjs";
 
 const source = (path: string) => readFileSync(resolve(process.cwd(), path), "utf8");
+const css = readStyles().map((sheet: { css: string }) => sheet.css).join("\n");
 
 describe("live navigation and visual safeguards", () => {
   it("routes booking navigation through the booking page", () => {
@@ -16,16 +18,14 @@ describe("live navigation and visual safeguards", () => {
   });
 
   it("keeps documentary portrait photography uncropped in wide editorial panels", () => {
-    const css = source("src/app/globals.css");
     expect(css).toMatch(/\.live-feature-image img \{[^}]*object-fit: contain/s);
     expect(css).toMatch(/\.media-lead-photo img \{[^}]*object-fit: contain/s);
   });
 
   it("keeps a no-JS content fallback and reduced-motion support", () => {
-    const css = source("src/app/globals.css");
     const bootstrap = source("src/lib/ui/site-intro.ts");
     expect(bootstrap).toContain('root.dataset.js = "true"');
-    expect(css).toContain('html[data-js="true"] [data-reveal]');
+    expect(css).not.toContain("[data-reveal]");
     expect(css).toContain("prefers-reduced-motion: reduce");
   });
 });

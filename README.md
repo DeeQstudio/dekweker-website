@@ -19,10 +19,11 @@ On Windows, `START-KWKR-DEV.bat` performs the same setup and opens localhost whe
 ## Release verification
 
 ```bash
-npm run verify
+npx playwright install chromium webkit
+npm run verify:release
 ```
 
-This runs repository QA, TypeScript, ESLint, Vitest and a real Next.js production build. Vercel also runs those checks because they are part of the `build` script.
+This runs repository QA, TypeScript, ESLint, Vitest, a production build, Chromium/WebKit browser tests and a dependency audit. GitHub Actions runs the same command on pushes and pull requests. Vercel's `build` script runs the code checks and production build; browser tests and the audit are separate release gates.
 
 ## Production architecture
 

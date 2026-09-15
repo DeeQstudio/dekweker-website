@@ -19,7 +19,7 @@ export function LiveStage({ events }: { events: LiveStageEvent[] }) {
   const current = events[active] ?? events[0];
 
   return (
-    <div className="live-stage-grid" data-scroll-scene>
+    <div className="live-stage-grid">
       <div className="live-stage-visual" data-depth="24">
         {current?.image ? (
           <Image

@@ -4,7 +4,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { defaultDescription, siteUrl } from "@/lib/seo/site";
 import { siteIntroBootstrap } from "@/lib/ui/site-intro";
 import "./globals.css";
-import "./experience.css";
 
 const shouldIndex = process.env.VERCEL_ENV ? process.env.VERCEL_ENV === "production" : process.env.NODE_ENV === "production";
 
